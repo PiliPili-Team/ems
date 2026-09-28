@@ -3,4 +3,4 @@
 	url = git@github-openpilipili:PiliPili-Team/ems-backend.git
 [submodule "submodules/frontend"]
 	path = submodules/frontend
-	url = /Users/hsuyelin/Documents/Developer/Github/ems-frontend
+	url = git@github-openpilipili:PiliPili-Team/ems-frontend.git
