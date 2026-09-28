@@ -1,0 +1,15 @@
+version: 0.1.0
+
+ports:
+  web: 23333
+  api: 23334
+  swagger: 23335
+
+submodules:
+  backend: ems-backend
+  frontend: ems-frontend
+
+stream_modes:
+  - frontend
+  - backend
+  - dual

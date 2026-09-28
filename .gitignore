@@ -1,0 +1,17 @@
+/.agents/*
+!/.agents/AGENTS.md
+/.codegraph/
+/.idea/
+.DS_Store
+.env
+.env.*
+logs/
+target/
+node_modules/
+dist/
+coverage/
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo

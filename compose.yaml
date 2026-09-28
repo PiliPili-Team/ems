@@ -1,0 +1,43 @@
+services:
+  frontend:
+    build:
+      context: ./submodules/frontend
+      dockerfile: ../../docker/frontend.Dockerfile
+    ports:
+      - "23333:80"
+    depends_on:
+      backend:
+        condition: service_started
+
+  backend:
+    build:
+      context: ./submodules/backend
+      dockerfile: ../../docker/backend.Dockerfile
+    ports:
+      - "23334:23334"
+      - "23335:23335"
+    environment:
+      EMS_API_LISTEN: 0.0.0.0:23334
+      EMS_GATEWAY_LISTEN: 0.0.0.0:23333
+      EMS_API_ORIGIN: http://backend:23334
+      EMS_DB_URL: ${EMS_DB_URL:?EMS_DB_URL is required}
+      EMS_REDIS_URL: ${EMS_REDIS_URL:?EMS_REDIS_URL is required}
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: ems
+      POSTGRES_USER: ems
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis-data:/data
+
+volumes:
+  postgres-data:
+  redis-data:
