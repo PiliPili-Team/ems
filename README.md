@@ -23,6 +23,20 @@ Swagger: 23335
 - `backend`: stream backend serving client requests.
 - `dual`: both roles on one machine with distinct listeners.
 
+## EMS feature and role contracts
+
+The replacement frontend is gated by the integration-owned inventory and role matrix:
+
+- [`docs/ems-feature-inventory.md`](docs/ems-feature-inventory.md) — page families,
+  feature permissions, API families, and acceptance gate.
+- [`docs/ems-role-matrix.md`](docs/ems-role-matrix.md) — independent role/tier
+  visibility and editability rules.
+- [`docs/roles/`](docs/roles/) — ordinary, VIP, whitelist, administrator, and super
+  administrator references.
+
+These documents describe contracts only. Frontend guards are not authorization; the
+backend remains authoritative for every protected request.
+
 ## Child repository commands
 
 ```bash

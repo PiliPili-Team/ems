@@ -1,0 +1,47 @@
+{
+  "change": "replace-ems-web-with-open-source-platform",
+  "batch": "integration-contract-inventory",
+  "model": "jev-1.13.0",
+  "request": {
+    "questions": {
+      "work_batch": "Which single related work batch should be executed first within the already-authorized active OpenSpec change?",
+      "edit_boundary": "Which repository boundary should govern the selected first batch?"
+    },
+    "evidence": [
+      "openspec/changes/replace-ems-web-with-open-source-platform/proposal.md",
+      "openspec/changes/replace-ems-web-with-open-source-platform/design.md",
+      "openspec/changes/replace-ems-web-with-open-source-platform/tasks.md",
+      "openspec/changes/replace-ems-web-with-open-source-platform/handoff.md",
+      ".agents/AGENTS.md",
+      "submodules/frontend/src/router/index.ts",
+      "submodules/frontend/src/router/i18n-menu.ts",
+      "submodules/backend/crates/ems-api/contracts/planned-v1.json",
+      "submodules/backend/crates/ems-api/contracts/openapi-v1.json"
+    ]
+  },
+  "answers": {
+    "work_batch": {
+      "choice": "integration-contract-inventory",
+      "confidence": 1.0,
+      "probabilities": {
+        "integration-contract-inventory": 1.0,
+        "frontend-feature-implementation": 0.0,
+        "backend-contract-implementation": 0.0,
+        "final-gates-cleanup": 0.0,
+        "insufficient-context": 0.0
+      }
+    },
+    "edit_boundary": {
+      "choice": "integration-only",
+      "confidence": 0.97,
+      "probabilities": {
+        "integration-only": 0.98,
+        "cross-repository": 0.02,
+        "frontend-child": 0.0,
+        "backend-child": 0.0,
+        "insufficient-context": 0.0
+      }
+    }
+  },
+  "decision": "Create only integration-owned feature inventory, role/tier matrix, and five role reference documents. Do not edit child source or planning state."
+}
