@@ -23,5 +23,15 @@ Swagger: 23335
 - `backend`: stream backend serving client requests.
 - `dual`: both roles on one machine with distinct listeners.
 
+## Child repository commands
+
+```bash
+cd submodules/backend && scripts/ems-build.sh
+cd submodules/frontend && yarn build
+```
+
+The integration repository pins both child commits. Run child checks before updating
+the submodule pointers, then run Compose/API/E2E checks from this repository.
+
 Source ownership remains in the two child repositories. This repository must not copy
 or duplicate their source trees.
