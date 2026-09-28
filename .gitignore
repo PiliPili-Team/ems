@@ -1,6 +1,7 @@
 /.agents/*
 !/.agents/AGENTS.md
 /.codegraph/
+/openspec/
 /.idea/
 .DS_Store
 .env
@@ -15,3 +16,6 @@ coverage/
 *.bak
 *.swp
 *.swo
+/scripts/local-sync-submodules.sh
+/.idea/
+/.git/hooks/pre-push

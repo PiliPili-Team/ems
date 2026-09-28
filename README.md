@@ -35,3 +35,18 @@ the submodule pointers, then run Compose/API/E2E checks from this repository.
 
 Source ownership remains in the two child repositories. This repository must not copy
 or duplicate their source trees.
+
+## Local submodule development
+
+The integration repository keeps remote submodule URLs for reproducible CI and release
+builds. Developers may create the ignored local helper below to pin the current clean,
+committed local child repositories without pushing them first:
+
+```bash
+scripts/local-sync-submodules.sh --dry-run
+scripts/local-sync-submodules.sh
+```
+
+The helper is intentionally ignored by Git and never runs `git push`. It refuses dirty
+source or target worktrees. CI and other developers continue using the committed remote
+submodule URLs and pinned commits.
