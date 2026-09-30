@@ -64,3 +64,9 @@ scripts/local-sync-submodules.sh
 The helper is intentionally ignored by Git and never runs `git push`. It refuses dirty
 source or target worktrees. CI and other developers continue using the committed remote
 submodule URLs and pinned commits.
+
+## Local development
+
+See [local full-stack development](docs/local-development.md) for sibling source
+ownership, private runtime configuration, ports 23333/23334/23335, WebStorm launch
+settings, operator-proof bootstrap, protected Swagger, and verification limits.
