@@ -57,8 +57,8 @@ template-generated calls, native EventSource construction, and runtime plugin da
 it is not a claim of complete runtime request coverage.
 
 Exact method/path comparison with the versioned snapshot, including evidenced constant
-and template branches, currently yields 14 contract-review candidates, 429 call
-sites without an exact declared operation, eight unresolved runtime/prop-defined call
+and template branches, currently yields 15 contract-review candidates, 429 call
+sites without an exact declared operation, seven unresolved runtime/prop-defined call
 sites, and one non-API image fetch. A missing declaration does not prove a missing
 runtime handler. A matching URL does not prove DTO, admission, or mutation compatibility.
 
@@ -83,12 +83,22 @@ password changes use `PATCH auth/password` with `oldPassword`, `newPassword` and
 `revokeOthers: true`, returning204. These corrections have real PostgreSQL/Redis
 HTTP evidence, but public `auth/providers` capability ownership and complete browser
 WebAuthn acceptance remain open; candidate counts are not acceptance counts.
+The existing Telegram first-login owner is `MiniAppLogin::login_identity`, wired
+through the signed Mini App verifier; it resolves or atomically creates an EMS
+account before issuing a session. This is not a website OAuth callback or provider
+discovery implementation. No `auth/providers` or website OAuth route was found in
+the audited API/runtime sources. Google Drive OAuth configures storage and must
+not be presented as an EMS login provider. Public provider discovery needs a real
+capability owner and any advertised remote login needs its own verified flow.
 
 The current self-profile handler does not accept arbitrary HTTPS avatar URLs:
 `avatar: null` removes the avatar; a string must equal the operator's configured
 `avatar_url` and requests existing-avatar validation. The inherited image-file
-picker submits a data URL, which this handler rejects. File upload needs a real
-owned contract; changing only the string format would not complete the migration.
+picker submits a data URL, which this handler rejects. `Avatar::upload` and
+`api::avatar::router` already expose multipart `POST /me/avatar`: exactly one `file`
+field, PNG/JPEG/WebP and a 2 MiB bound, returning `avatarUrl`. Private binary reads
+require current authority. Migrate upload and authorized display together rather
+than widening profile URL validation or claiming the upload owner is missing.
 
 The inherited `FormRender` executes server-supplied expression and event strings
 with `new Function` in the authenticated application origin. Plugin-form and

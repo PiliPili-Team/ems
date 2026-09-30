@@ -1,0 +1,8 @@
+.git
+.agents
+.codegraph
+target
+logs
+.env
+.env.*
+.DS_Store

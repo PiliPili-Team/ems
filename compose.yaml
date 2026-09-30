@@ -3,40 +3,76 @@ services:
     build:
       context: ./submodules/frontend
       dockerfile: ../../docker/frontend.Dockerfile
+      additional_contexts:
+        integration: .
     ports:
       - "23333:80"
     depends_on:
       backend:
-        condition: service_started
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1/"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
 
   backend:
     build:
       context: ./submodules/backend
       dockerfile: ../../docker/backend.Dockerfile
+    command: ["run"]
     ports:
       - "23334:23334"
       - "23335:23335"
     environment:
+      EMS_RUN_ROLE: full
       EMS_API_LISTEN: 0.0.0.0:23334
       EMS_GATEWAY_LISTEN: 0.0.0.0:23333
       EMS_API_ORIGIN: http://backend:23334
       EMS_DB_URL: ${EMS_DB_URL:?EMS_DB_URL is required}
       EMS_REDIS_URL: ${EMS_REDIS_URL:?EMS_REDIS_URL is required}
+      EMS_SWAGGER_LISTEN: 0.0.0.0:23335
+      EMS_MASTER_KEY: ${EMS_MASTER_KEY:?EMS_MASTER_KEY is required}
+      EMS_BOOTSTRAP_TOKEN: ${EMS_BOOTSTRAP_TOKEN:?EMS_BOOTSTRAP_TOKEN is required}
+      EMS_ENCIPHER_KEY: ${EMS_ENCIPHER_KEY:?EMS_ENCIPHER_KEY is required}
+      EMS_ENCIPHER_IV: ${EMS_ENCIPHER_IV:?EMS_ENCIPHER_IV is required}
+      EMS_BOOTSTRAP_CORS_ORIGINS: ${EMS_BOOTSTRAP_CORS_ORIGINS:-http://127.0.0.1:23333}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:23334/api/v1/app/version"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
     restart: unless-stopped
 
   postgres:
-    image: postgres:17
+    image: postgres:17@sha256:d74eeac9a635390a49bc21bd49fccd973de707e2a53a76ac49b552b8712ec46f
     environment:
       POSTGRES_DB: ems
       POSTGRES_USER: ems
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
 
   redis:
-    image: redis:7-alpine
+    image: redis:7-alpine@sha256:858f009f9709ce576febc734aa78b8f6d624b82571f9ddb6bda4377c833b3499
     volumes:
       - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
 
 volumes:
   postgres-data:

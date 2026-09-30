@@ -91,3 +91,45 @@ creation, one-time key display, mobile login at the media setup step, protected
 Swagger rendering, document byte parity, and graceful SIGINT shutdown. These checks
 do not replace full frontend tests, inherited-page acceptance, stream-mode gates,
 Docker health checks, or final pinned-release validation.
+
+## Compose
+
+Compose builds the exact local submodule worktrees; it does not fetch a branch.
+Provide `POSTGRES_PASSWORD`, `EMS_DB_URL` (host `postgres`), `EMS_REDIS_URL`
+(host `redis`), `EMS_MASTER_KEY`, `EMS_BOOTSTRAP_TOKEN`, `EMS_ENCIPHER_KEY`
+and `EMS_ENCIPHER_IV` through private runtime environment values. The key constraints
+above also apply to containers. No usable secret defaults are included.
+
+Use Docker Compose with BuildKit/buildx support for the named integration build
+context, which supplies the versioned Nginx configuration without copying either
+source tree. Run `docker compose config --quiet`, then `docker compose up --build
+--wait`. The frontend waits for the backend's public version endpoint; the backend
+waits for PostgreSQL and Redis health checks and starts with the explicit `run`
+command. Protected diagnostics are not used as anonymous health endpoints.
+The backend build uses `cargo --locked`: it may download pinned crates during a
+clean build without changing the lockfile. `--frozen` also forces offline mode and
+cannot populate an empty build image. Dockerfile-specific ignore files exclude local
+targets, dependencies, logs and private environment files from build contexts.
+Build and runtime Debian versions must match their libc baseline; the backend runs
+as the unprivileged `ems` user from its writable home directory.
+If the official Debian host is unreachable, `DEBIAN_MIRROR` is an explicit backend
+build argument for a trusted mirror serving both Debian and Debian security paths.
+TLS certificate verification and Debian archive signature verification remain enabled;
+never disable either to work around a local proxy. The copied builder CA bundle is
+passed explicitly to apt before the runtime certificate package is installed.
+
+On macOS, an isolated Colima profile can avoid changing the default Docker context:
+`colima start --profile ems-integration --activate=false`. Point `DOCKER_HOST` at
+that profile's reported socket for each Compose invocation; do not add a login
+service for an acceptance-only runtime. Container acceptance remains separate from
+native service smoke and requires observing healthy services and browser/API flows.
+
+Observed candidate smoke used backend `04b52340848fd6e6d0e40fdb3522aac4fba2b00f`
+and frontend `bef3fa08e301e8e30130eeb05ff9784c2d921ebc` in four healthy
+containers with a fresh isolated database: browser bootstrap201, password cookie
+login200, verified super-admin profile200, logout204 and revoked profile401;
+reloading the protected route returned to login without the admin menu. These are
+candidate source commits, not updated release pins. Provider discovery404, absent RP
+capability/passkey503 and inherited dashboard contracts remain release blockers.
+Clear the disposable smoke origin's old PWA cache when switching source candidates
+before attributing browser output to the new image.
