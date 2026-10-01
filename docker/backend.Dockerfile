@@ -8,6 +8,7 @@ COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certifica
 ARG DEBIAN_MIRROR=https://deb.debian.org
 RUN sed -i "s|http://deb.debian.org|${DEBIAN_MIRROR}|g" /etc/apt/sources.list.d/debian.sources && apt-get -o Acquire::https::CaInfo=/etc/ssl/certs/ca-certificates.crt update --error-on=any && apt-get -o Acquire::https::CaInfo=/etc/ssl/certs/ca-certificates.crt install -y --no-install-recommends ca-certificates curl && rm -rf /var/lib/apt/lists/* && useradd --system --create-home ems
 COPY --from=build /src/target/release/ems /usr/local/bin/ems
+COPY --from=build /src/LICENSE /usr/share/licenses/ems/LICENSE
 USER ems
 WORKDIR /home/ems
 EXPOSE 23334 23335

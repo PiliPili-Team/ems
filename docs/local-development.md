@@ -124,6 +124,21 @@ that profile's reported socket for each Compose invocation; do not add a login
 service for an acceptance-only runtime. Container acceptance remains separate from
 native service smoke and requires observing healthy services and browser/API flows.
 
+The installed standalone `docker-compose` CLI can use `--context
+colima-ems-integration` when the Docker Compose plugin is unavailable. The build
+still needs Buildx for Dockerfile-specific ignores and the named `integration`
+context; the legacy builder transmitted local target caches and exhausted disk.
+`DEBIAN_MIRROR` is a host prefix, for example `https://mirrors.ustc.edu.cn`, not a
+prefix ending in `/debian` (the existing sources already contain that path).
+
+The current candidate pair is backend `4ddae0d3` / frontend `1eb7761`. Both
+images built with locked dependencies; all four Compose services passed health
+checks. Nginx served the application200 and safe public bootstrap200; anonymous
+profile returned401. Chromium reached the administrator form, but a loading image
+covered submit; no forced click or overlay removal was used, and this is not a
+completed browser lifecycle gate. Capability discovery now uses the implemented
+aggregate, not the former `auth/providers` request. Candidates remain unpublished.
+
 Observed candidate smoke used backend `04b52340848fd6e6d0e40fdb3522aac4fba2b00f`
 and frontend `bef3fa08e301e8e30130eeb05ff9784c2d921ebc` in four healthy
 containers with a fresh isolated database: browser bootstrap201, password cookie
@@ -133,3 +148,23 @@ candidate source commits, not updated release pins. Provider discovery404, absen
 capability/passkey503 and inherited dashboard contracts remain release blockers.
 Clear the disposable smoke origin's old PWA cache when switching source candidates
 before attributing browser output to the new image.
+
+Trusted-plugin development adds migration `20261001000036`; run the backend's
+explicit database migration command before starting an upgraded `ems run` service.
+The migration is registered in `ems-postgres` and extends the `app_settings` scope
+constraint without rewriting deployed migrations. Plugin settings use the existing
+versioned configuration publication and history, not a separate persistence store.
+Observed native-service checks cover catalog admission, diagnostics execution,
+persisted enable/disable, omitted feature reporting, stale publication conflicts,
+and current-role revocation. Dedicated Chrome on an approved Origin also exercised
+configuration revisions 3–5 and the actual diagnostics report. Remote installation
+and executable plugin packages are not supported by this candidate.
+
+The frontend candidate `73beb49779b5e85a58c19959ad2743e8f3beea6d` was built
+with the installed standalone `docker-buildx` when the Docker CLI plugin was not
+available. Its final application directory contains no Node addons, shared objects
+or libvips artifacts. The served `LICENSE` and `THIRD_PARTY_LICENSES.md` match the
+tracked source files byte-for-byte. This does not clear base-image native package,
+brand-rights or combined role/playback acceptance obligations. The backend image
+includes its existing GPL text at `/usr/share/licenses/ems/LICENSE`; complete
+dependency notices and corresponding-source distribution remain required.
