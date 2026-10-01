@@ -188,6 +188,11 @@ by receiving this entire directory alongside the executable, including `crates/`
 WebAuthn MPL-covered code is in the actual published crates, including upstream dirty
 publications; the clean upstream commit is not substituted for those sources. The
 fixed upstream MPL text is supplied in `licenses/webauthn-MPL-2.0.txt` with provenance.
+Additional license texts absent from 14 published packages are supplied from their
+exact `.cargo_vcs_info.json` commits, with Git blob and SHA256 provenance in
+`docker/licenses/registry-manifest.json`. The bundle includes only matching locked
+package versions. EFI's `AUTHORS` contains its actual permission and copyright text
+and is inventoried from the published archive, not replaced with boilerplate.
 
 Observed generation for `8ea4ab1` distributed and independently verified 466 registry
 archives. This is a source-distribution subset, not a release-compliance approval:

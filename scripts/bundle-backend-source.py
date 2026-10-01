@@ -56,7 +56,7 @@ def main():
             root = f"{package['name']}-{package['version']}/"
             cargo = tomllib.loads(archive.extractfile(root + 'Cargo.toml').read().decode())['package']
             for member in archive.getmembers():
-                if member.isfile() and re.search(r'(license|copying|notice|copyright)', member.name, re.I):
+                if member.isfile() and re.search(r'(license|copying|notice|copyright|authors)', member.name, re.I):
                     content = archive.extractfile(member).read()
                     notices.append({'path': member.name, 'sha256': sha256(content)})
         sources.append((filename, data, {
@@ -87,11 +87,31 @@ def main():
         'source': 'https://raw.githubusercontent.com/kanidm/webauthn-rs/d2c10d53ca5ef033d37ee6462e936e9eb72ad98c/LICENSE.md',
         'appliesTo': [entry['name'] for _, _, entry in sources if entry['license'] == 'MPL-2.0'],
     }]
+    integration = Path(__file__).resolve().parent.parent
+    supplemental = json.loads((integration / 'docker/licenses/registry-manifest.json').read_text())
+    locked_versions = {(entry['name'], entry['version']) for _, _, entry in sources}
+    supplemental_bytes = []
+    for record in supplemental['licenses']:
+        matching = [package for package in record['packages']
+                    if (package['name'], package['version']) in locked_versions]
+        if not matching:
+            continue
+        local_path = Path(record['path'])
+        if local_path.is_absolute() or '..' in local_path.parts:
+            raise ValueError('Supplemental license path must remain inside integration sources')
+        data = (integration / local_path).read_bytes()
+        if sha256(data) != record['sha256']:
+            raise ValueError(f"Supplemental license checksum mismatch: {record['path']}")
+        target = 'licenses/' + local_path.name
+        manifest['supplementalLicenses'].append({**record, 'path': target, 'packages': matching})
+        supplemental_bytes.append((target, data))
     args.output.mkdir(parents=True)
     (args.output / 'crates').mkdir()
     (args.output / 'ems-source.tar').write_bytes(ems)
     (args.output / 'licenses').mkdir()
     (args.output / 'licenses' / 'webauthn-MPL-2.0.txt').write_bytes(mpl)
+    for target, data in supplemental_bytes:
+        (args.output / target).write_bytes(data)
     for filename, data, _ in sources:
         (args.output / 'crates' / filename).write_bytes(data)
     (args.output / 'manifest.json').write_text(json.dumps(manifest, indent=2, sort_keys=True) + '\n')
