@@ -168,3 +168,28 @@ tracked source files byte-for-byte. This does not clear base-image native packag
 brand-rights or combined role/playback acceptance obligations. The backend image
 includes its existing GPL text at `/usr/share/licenses/ems/LICENSE`; complete
 dependency notices and corresponding-source distribution remain required.
+
+## Exact backend source distribution
+
+Use Python 3.11+ to generate a recipient-side source directory outside the repository:
+
+```sh
+python3.14 scripts/bundle-backend-source.py \
+  --backend /path/to/ems-backend \
+  --commit 8ea4ab1d86ab9a6c5991f2f1ecf26ef938ccc43f \
+  --output /tmp/ems-backend-source-distribution
+```
+
+Use the full release commit, not a branch. The output must not exist. The script
+archives tracked EMS source at that commit and redistributes every exact Cargo.lock
+registry archive after SHA256 verification. `manifest.json` records source versions,
+checksums, declared licenses and embedded notice paths. Recipients obtain the source
+by receiving this entire directory alongside the executable, including `crates/`.
+WebAuthn MPL-covered code is in the actual published crates, including upstream dirty
+publications; the clean upstream commit is not substituted for those sources. The
+fixed upstream MPL text is supplied in `licenses/webauthn-MPL-2.0.txt` with provenance.
+
+Observed generation for `8ea4ab1` distributed and independently verified 466 registry
+archives. This is a source-distribution subset, not a release-compliance approval:
+dependency notice/election review, corresponding build tooling, final-image native
+and base-package sources, frontend source distribution and brand rights remain gates.
