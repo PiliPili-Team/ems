@@ -50,17 +50,17 @@ these page families, not separate top-level permissions. The current tab invento
 
 ### Request ownership audit
 
-The 2026-09-30 sibling-source audit parsed 492 non-test TypeScript/Vue files with
-TypeScript ASTs and Vue SFC script extraction, retaining original source line numbers.
-It found 452 Axios/fetch call sites and no SFC parse errors. This count excludes
-template-generated calls, native EventSource construction, and runtime plugin dataflow;
-it is not a claim of complete runtime request coverage.
+The current sibling-source audit retains 402 Axios/fetch call sites using TypeScript
+ASTs and Vue SFC script extraction with original source line numbers. This count
+excludes template-generated calls, native EventSource construction, and runtime
+plugin dataflow; it is not a claim of complete runtime request coverage.
 
-Exact method/path comparison with the versioned snapshot, including evidenced constant
-and template branches, currently yields 15 contract-review candidates, 429 call
-sites without an exact declared operation, seven unresolved runtime/prop-defined call
-sites, and one non-API image fetch. A missing declaration does not prove a missing
-runtime handler. A matching URL does not prove DTO, admission, or mutation compatibility.
+Current method/path comparison, including evidenced constant/template branches and
+OpenAPI path parameters, yields 26 contract-review candidates, 369 call sites without
+a declared operation, five unresolved runtime/prop-defined call sites, and one non-API
+image fetch. The existing wallpaper-list endpoint was declared as E165 in `af6ab7a`.
+A missing declaration does not prove a missing runtime handler. A matching URL does
+not prove DTO, admission, or mutation compatibility.
 
 | Approved family | Observed inherited request families | Ownership gate |
 | --- | --- | --- |
@@ -81,15 +81,23 @@ remain open until every owning contract and runtime-generated request is resolve
 Canonical passkey login now uses `auth/passkey/auth/begin` and `/finish`. Profile
 password changes use `PATCH auth/password` with `oldPassword`, `newPassword` and
 `revokeOthers: true`, returning204. These corrections have real PostgreSQL/Redis
-HTTP evidence, but public `auth/providers` capability ownership and complete browser
-WebAuthn acceptance remain open; candidate counts are not acceptance counts.
+HTTP evidence. Public login capabilities now come from typed `/app/bootstrap`,
+not inherited `auth/providers`; complete browser WebAuthn acceptance remains open.
 The existing Telegram first-login owner is `MiniAppLogin::login_identity`, wired
 through the signed Mini App verifier; it resolves or atomically creates an EMS
 account before issuing a session. This is not a website OAuth callback or provider
 discovery implementation. No `auth/providers` or website OAuth route was found in
 the audited API/runtime sources. Google Drive OAuth configures storage and must
-not be presented as an EMS login provider. Public provider discovery needs a real
-capability owner and any advertised remote login needs its own verified flow.
+not be presented as an EMS login provider. Unsupported inherited provider discovery
+and remote plugin-login branches were removed from the login consumer in frontend
+candidate `1eb7761`; this does not claim website OAuth support.
+
+Public `/app/bootstrap` is implemented as E162 in backend candidate `4ddae0d3`.
+It exposes only safe setup/branding/features/release/login projections, with three
+passkey capability states and no-store responses. It performs no wallpaper request.
+PostgreSQL/Redis-backed HTTP proved anonymous200, foreign-Origin403 and query400;
+real Chromium reached initial administrator setup. Screenshot capture timed out,
+so this is not complete role-page visual sign-off. Candidates are not release pins.
 
 The current self-profile handler does not accept arbitrary HTTPS avatar URLs:
 `avatar: null` removes the avatar; a string must equal the operator's configured
@@ -108,6 +116,20 @@ Runtime-evaluation lint enforcement reports four execution sites. Release remain
 blocked until bounded expression/action contracts and real producers migrate
 together. Disabling the rule or silently dropping events would hide the defect
 or reduce the approved plugin/discovery behavior.
+
+Authenticated appearance now has a direct typed owner at `GET/PATCH /me/appearance`
+(E167/E168). Complete independent customizer and transparency sections retain all
+six themes, layout controls and 21 glass preset overrides. Omitted sections remain
+unchanged; explicit null, unknown fields and invalid bounds are rejected. The server
+rechecks current owner revision, exact API-key scope and live credential after the
+owner lock before committing the confirmed aggregate.
+PostgreSQL owner lock. Frontend candidate `bbb9f4defb58d6c0f2f091217a4c328ddcc44931`
+applies confirmed saves, serializes customizer mutations, rejects old-session queued
+writes/responses and retains failed previews. Real PostgreSQL/Redis HTTP regression
+proved session revocation during lock wait returns401 without write/audit. Normal
+390px browser interaction proved glass, purple and transparent saves, independent
+transparent preset persistence and refresh recovery without horizontal overflow.
+This appearance acceptance does not approve the remaining page/API families or a release.
 
 ## Frontend feature permissions
 
@@ -132,8 +154,9 @@ check the current principal, role, tier, permission, disabled state, and resourc
 
 ## Backend API inventory
 
-Both backend snapshots currently contain 132 paths and 161 operations: 98 implemented
-and 63 planned, as counted directly on 2026-09-30. Planned operations remain acceptance
+The current sibling candidate backend snapshots contain 137 paths and 166 operations:
+103 implemented and 63 planned, including the administrative metrics E166 cutover.
+Integration release pins have not yet been updated. Planned operations remain acceptance
 gaps, not evidence of registered runtime handlers. The planned snapshot remains the
 source for the complete target inventory.
 
@@ -151,6 +174,8 @@ the page/API mapping and implementation status:
 | Streams and system operations | E078, E082-E094, E158 |
 | Requests, points, commerce and notifications | E095-E149 |
 | Configuration, outbox and scheduler | E149-E160 |
+| Trusted plugins and public wallpaper candidates | E162-E165 |
+| Administrative process, platform facts and tracked-storage metrics | E166 |
 
 Verification MUST compare every method/path in `planned-v1.json` with the registered
 backend routes and retain the exact child commit that supplied the contract.
@@ -377,6 +402,9 @@ Observed from `submodules/backend/crates/ems-api/contracts/planned-v1.json`. Sta
 | GET | `/admin/outbox/jobs` | E159 | implemented | implement-v2-task-execution | outbox_replay | admin.system.read |
 | POST | `/admin/outbox/jobs/{id}/replay` | E160 | implemented | implement-v2-task-execution | outbox_replay | admin.scheduler.write |
 | GET | `/admin/users/{id}/avatar` | E161 | implemented | implement-v2-identity-access | avatar | admin.users.read |
+| GET | `/app/bootstrap` | E162 | implemented | replace-ems-web-with-open-source-platform | public_bootstrap | public |
+| GET | `/admin/plugins` | E163 | implemented | replace-ems-web-with-open-source-platform | trusted_plugins | admin.config.write |
+| POST | `/admin/plugins/diagnostics/run` | E164 | implemented | replace-ems-web-with-open-source-platform | trusted_plugins | admin.config.write |
 
 
 ## Current source routes and cutover classification
@@ -405,8 +433,7 @@ This source inventory does not change the approved page families above. Inherite
 | `/site` | `../pages/site.vue` | Approved organization family; EMS contract mapping pending |
 | `/user` | `../pages/user/index.vue` | Admin user directory |
 | `/profile` | `../pages/user/profile.vue` | Member profile and security |
-| `/plugins` | `../pages/plugin/index.vue` | Approved Plugin family; owning EMS contract pending |
-| `/plugin-app/:pluginId/:navKey?` | `../pages/plugin/app.vue` | Approved Plugin family; owning EMS contract pending |
+| `/plugins` | `../pages/plugin/index.vue` | Trusted built-in plugin management; E163/E164 and versioned Plugins configuration scope |
 | `/setting` | `../pages/setting.vue` | Versioned administration settings |
 | `/browse/:paths+` | `../pages/discover/browse.vue` | Approved Discovery family; EMS contract mapping pending |
 | `/credits/:paths+` | `../pages/discover/credits.vue` | Approved Discovery family; EMS contract mapping pending |
@@ -419,3 +446,12 @@ This source inventory does not change the approved page families above. Inherite
 | `service-status` | `../pages/service-status.vue` | Service unavailable surface |
 | `/:pathMatch(.*)*` | `../pages/[...all].vue` | Not-found surface |
 
+
+Trusted-plugin cutover retains built-in extension registration and system diagnostics,
+with persisted enable/disable, administrator admission and three-language management.
+Remote installation, marketplace and the old `/plugin-app/:pluginId/:navKey?` execution
+route are intentionally unsupported in the approved bounded retention decision.
+The exact historical frontend recovery baseline is
+`1eb776165043576855549783a31324b55603f220`; see child `docs/build-fix.md` for the removed
+integration boundaries. Restoring federation alone does not supply package verification,
+current backend contracts, isolation or safe lifecycle management.
