@@ -28,6 +28,7 @@ Never commit real secrets or paste them into shared run configurations.
 
 ```bash
 export EMS_RUN_ROLE=full
+export EMS_STREAM_MODE=backend
 export EMS_DB_URL=postgres://localhost/ems
 export EMS_REDIS_URL=redis://localhost/0
 export EMS_API_LISTEN=127.0.0.1:23334
@@ -39,6 +40,17 @@ export EMS_BOOTSTRAP_CORS_ORIGINS=http://127.0.0.1:23333
 # using private deployment-generated values before starting the process.
 cargo run --bin ems -- run
 ```
+
+`EMS_STREAM_MODE` is an explicit full-role deployment selector. It defaults to
+`backend`, which serves actual stream nodes on `EMS_GATEWAY_LISTEN`. `frontend`
+admits only current line-scoped relay nodes and issues recipient-bound redirects on
+that listener; `dual` additionally requires a distinct `EMS_STREAM_BACKEND_LISTEN`
+and binds both listeners in one process. Every mode rejects unknown values, extra
+backend listeners and collisions with the API or Swagger listeners before serving.
+Stream targets or provider redirects that resolve back to a bound listener fail with
+`LOOP_DETECTED`; a wrong or expired recipient-bound grant is `403`. The management API
+keeps its own listener and is unchanged in every mode. `EMS_STREAM_MODE` and
+`EMS_STREAM_BACKEND_LISTEN` are rejected for the relay-only role.
 
 Run this command from `../ems-backend`. The master key is 32 bytes encoded as hex.
 Playback encipher key and IV are text values accepted by the existing normalization;
@@ -171,20 +183,26 @@ dependency notices and corresponding-source distribution remain required.
 
 ## Exact backend source distribution
 
-Use Python 3.11+ to generate a recipient-side source directory outside the repository:
+Use Python 3.11+ to generate a recipient-side source directory outside the repository.
+Both source and integration commits are mandatory exact pins:
 
 ```sh
 python3.14 scripts/bundle-backend-source.py \
   --backend /path/to/ems-backend \
-  --commit 8ea4ab1d86ab9a6c5991f2f1ecf26ef938ccc43f \
+  --commit 969dd8ba05a31725c758c8bd3bd76b5147f5f358 \
+  --integration-commit 594ec4b2443260691e06203b2d9108803d114470 \
   --output /tmp/ems-backend-source-distribution
 ```
 
-Use the full release commit, not a branch. The output must not exist. The script
-archives tracked EMS source at that commit and redistributes every exact Cargo.lock
-registry archive after SHA256 verification. `manifest.json` records source versions,
-checksums, declared licenses and embedded notice paths. Recipients obtain the source
-by receiving this entire directory alongside the executable, including `crates/`.
+Use the full release commits, not branches. The output must not exist. The script
+archives tracked EMS source and integration-owned build/deployment tooling at those
+exact commits, and redistributes every exact Cargo.lock registry archive after SHA256
+verification. `manifest.json` records both Git identities, archive/file hashes, source
+versions, declared licenses and embedded notice paths. Supplemental texts come from the
+same pinned integration commit, never its dirty working tree. Recipients receive this
+entire directory alongside the executable, including `crates/`, `licenses/`, both source
+archives and `SOURCE-INSTRUCTIONS.txt`. The instructions explain native/backend Docker
+builds, the exact frontend prerequisite for Compose and private runtime configuration.
 WebAuthn MPL-covered code is in the actual published crates, including upstream dirty
 publications; the clean upstream commit is not substituted for those sources. The
 fixed upstream MPL text is supplied in `licenses/webauthn-MPL-2.0.txt` with provenance.

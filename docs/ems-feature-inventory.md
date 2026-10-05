@@ -45,22 +45,27 @@ these page families, not separate top-level permissions. The current tab invento
 - Discovery: recommendation categories, media-source exploration.
 - Subscription: own subscriptions, popular content, sharing, calendar.
 - Settings: system, directory, site, rule, search, subscription, notification.
-- Plugins: installed plugins and marketplace.
+- Plugins: trusted built-in plugins; remote marketplace/install remains unsupported.
 - Workflow: workflow list and shared workflow view.
 
 ### Request ownership audit
 
-The current sibling-source audit retains 402 Axios/fetch call sites using TypeScript
-ASTs and Vue SFC script extraction with original source line numbers. This count
-excludes template-generated calls, native EventSource construction, and runtime
-plugin dataflow; it is not a claim of complete runtime request coverage.
+The current sibling-source audit is maintained as a generated direct-call record plus
+the reviewed integration classification in [`docs/ems-request-ownership.md`](ems-request-ownership.md).
+The current run covers 459 frontend source files and 406 direct Axios/fetch calls.
+The refreshed classification contains 48 exact operation candidates,352 rows without
+a declared operation,five unresolved prop paths and one asset. Historical dynamic
+inferences are explicitly marked; no URL match establishes DTO/admission acceptance.
+Native EventSource and runtime-plugin paths remain separate unresolved owner work.
 
-Current method/path comparison, including evidenced constant/template branches and
-OpenAPI path parameters, yields 26 contract-review candidates, 369 call sites without
-a declared operation, five unresolved runtime/prop-defined call sites, and one non-API
-image fetch. The existing wallpaper-list endpoint was declared as E165 in `af6ab7a`.
-A missing declaration does not prove a missing runtime handler. A matching URL does
-not prove DTO, admission, or mutation compatibility.
+The ownership document records current reusable/adapter-only/missing-capability
+decisions. Verified local adapters name administrative directory commands and TMDB
+catalog/person contracts; other rows require their actual DTO, admission, error and
+mutation owner. A matching URL or404 alone is not implementation evidence.
+
+The route, role/tier, and failure-state matrix remains in `docs/ems-role-matrix.md`.
+Each retained page family must satisfy both documents before its caller or backend
+producer can be marked complete.
 
 | Approved family | Observed inherited request families | Ownership gate |
 | --- | --- | --- |
@@ -176,6 +181,8 @@ the page/API mapping and implementation status:
 | Configuration, outbox and scheduler | E149-E160 |
 | Trusted plugins and public wallpaper candidates | E162-E165 |
 | Administrative process, platform facts and tracked-storage metrics | E166 |
+| TMDB catalog, person, relations and media detail producers | E174, E176-E185 |
+| Retained music producers | E186+ (see pinned backend contract) |
 
 Verification MUST compare every method/path in `planned-v1.json` with the registered
 backend routes and retain the exact child commit that supplied the contract.
