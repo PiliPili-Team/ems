@@ -50,7 +50,9 @@ function endpoint(node, source) {
 }
 function normalize(value) {
   if (!value || /^(?:https?:|data:|blob:)/.test(value)) return null
-  return '/' + value.replace(/^\/?api\/v1\//, '').replace(/^\//, '').split('?')[0]
+  // A trailing slash names the same route: `site/` and `/site` must compare equal.
+  const path = value.replace(/^\/?api\/v1\//, '').replace(/^\//, '').split('?')[0].replace(/\/+$/, '')
+  return path ? '/' + path : '/'
 }
 function candidates(endpoint, method) {
   const normalized = normalize(endpoint)

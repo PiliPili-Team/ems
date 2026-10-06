@@ -71,7 +71,7 @@ producer can be marked complete.
 | --- | --- | --- |
 | Discovery and resource search | `discover/*`, `recommend/*`, `tmdb/*`, `douban/*`, `bangumi/*`, `anilist/*`, `search/*` | Exact provider, result and streaming contracts remain unmapped; `/requests/*` is not an equivalent search contract. |
 | Music | `music/album/*`, `music/artist/*`, `music/recognize`, `media/search` | Album, artist and recognition DTO owners remain unmapped; media-account operations do not establish music-catalog ownership. |
-| Subscription and calendar | `subscribe/*`, popular, shares, execution and batch operations | Subscription lifecycle and sharing/calendar contracts remain unmapped; request quotas do not establish subscription lifecycle ownership. |
+| Subscription and calendar | `subscribe/*`, popular, shares, execution and batch operations | Canonical durable subscription producers implemented (E197-E223) with verified PostgreSQL/Redis regressions and retained consumers migrated to the camelCase adapter. |
 | Workflow and organization | `workflow/*`, `download/*`, `history/*`, `storage/*`, `site/*` | Graph execution, downloads, transfer history, filesystem and tracker contracts require explicit owners; configuration read/write alone is insufficient. |
 | Plugins | `plugin/*`, runtime dashboard/page configuration endpoints | Runtime endpoint expressions and executable plugin UI require explicit bounded contracts and admission review. |
 | Personal identity | `auth/me`, `auth/login`, `auth/logout`, `me/profile`, `me/passkeys` | Exact path candidates exist; field casing, avatar validation, WebAuthn transactions and verified-state transitions must be checked against actual handlers. |
@@ -429,15 +429,15 @@ This source inventory does not change the approved page families above. Inherite
 | `/music/album` | `../pages/music/album.vue` | Approved Resource search family; EMS contract mapping pending |
 | `/music/artist` | `../pages/music/artist/index.vue` | Approved Resource search family; EMS contract mapping pending |
 | `/music/artist/resources` | `../pages/music/artist/resources.vue` | Approved Resource search family; EMS contract mapping pending |
-| `/subscribe/movie` | `../pages/subscribe/index.vue` | Approved Subscription family; EMS contract mapping pending |
-| `/subscribe/tv` | `../pages/subscribe/index.vue` | Approved Subscription family; EMS contract mapping pending |
-| `/subscribe/music` | `../pages/subscribe/index.vue` | Approved Subscription family; EMS contract mapping pending |
-| `/subscribe-share` | `../pages/subscribe/share.vue` | Approved Subscription family; EMS contract mapping pending |
+| `/subscribe/movie` | `../pages/subscribe/index.vue` | Approved Subscription family; canonical producers implemented, consumer migration in progress |
+| `/subscribe/tv` | `../pages/subscribe/index.vue` | Approved Subscription family; canonical producers implemented, consumer migration in progress |
+| `/subscribe/music` | `../pages/subscribe/index.vue` | Approved Subscription family; canonical producers implemented, consumer migration in progress |
+| `/subscribe-share` | `../pages/subscribe/share.vue` | Approved Subscription family; canonical producers implemented, consumer migration in progress |
 | `/workflow` | `../pages/workflow.vue` | Approved Workflow family; EMS contract mapping pending |
-| `/calendar` | `../pages/subscribe/calendar.vue` | Approved Subscription family; EMS contract mapping pending |
+| `/calendar` | `../pages/subscribe/calendar.vue` | Approved Subscription family; canonical producers implemented, consumer migration in progress |
 | `/downloading` | `../pages/reorganize/downloading.vue` | Approved organization family; EMS contract mapping pending |
 | `/history` | `../pages/reorganize/history.vue` | Approved organization family; EMS contract mapping pending |
-| `/site` | `../pages/site.vue` | Approved organization family; EMS contract mapping pending |
+| `/site` | `../pages/site.vue` | Approved organization family; site registry producers implemented, consumers resolve to declared operations |
 | `/user` | `../pages/user/index.vue` | Admin user directory |
 | `/profile` | `../pages/user/profile.vue` | Member profile and security |
 | `/plugins` | `../pages/plugin/index.vue` | Trusted built-in plugin management; E163/E164 and versioned Plugins configuration scope |

@@ -5,8 +5,8 @@ Status: current integration audit for `replace-ems-web-with-open-source-platform
 ## Scope and source pins
 
 - Backend contract snapshot: `../ems-backend/crates/ems-api/contracts/openapi-v1.json`
-- Frontend source commit: `c64527f` (verified source batch; not a release pin)
-- Backend source commit: `d6be930` (verified source batch; not a release pin)
+- Frontend source commit: `dda9c5a` (verified source batch; not a release pin)
+- Backend source commit: `fdf1119` (verified source batch; not a release pin)
 - Current comprehensive collector: `scripts/audit-frontend-requests.mjs`
 - Historical direct-call records: `openspec/changes/replace-ems-web-with-open-source-platform/frontend-request-classification.json`
 
@@ -28,22 +28,25 @@ require explicit current dataflow and producer review. The collector's actual di
 TypeScript/Vue smoke covers these syntax and shadowing boundaries; it does not accept
 product DTOs, admission or mutations.
 
-The historical raw/classification records cover 459 source files and 406 direct calls.
-They are not a complete current-runtime inventory. The comprehensive collector must be
-refreshed against the final frozen source; in-flight source changes do not establish
-stable release counts. Historical inferred dynamic expressions remain review evidence,
-not resolved owners. Native stream constructors and template producers are now collected
-explicitly, but their admission and producer contracts remain independent acceptance work.
+The historical raw/classification records cover the current frozen source. Refreshed
+against frontend `dda9c5a` and backend `fdf1119`: 461 files, 364 direct calls, 5
+native streams and 27 template prop producers. They are not a complete current-runtime
+inventory. The comprehensive collector must be refreshed again against the final frozen
+source; in-flight source changes do not establish stable release counts. Historical
+inferred dynamic expressions remain review evidence, not resolved owners. Native stream
+constructors and template producers are now collected explicitly, but their admission
+and producer contracts remain independent acceptance work.
 
 ## Deterministic classification
 
 | Audit classification | Count | Integration decision |
 | --- | ---: | --- |
-| `contract-review-required` | 48 | Exact operation candidates only; DTO, admission and semantics still require owner review. |
-| `missing-declared-contract` | 352 | No exact declared operation; does not prove runtime absence. |
-| `unresolved` | 5 | Prop-defined paths require current dataflow and producer ownership resolution. |
+| `exact-operation-candidate` | 65 | Exact operation candidates only; DTO, admission and semantics still require owner review. |
+| `dynamic-operation-candidate` | 25 | Template-expression paths resolve to a declared operation; concrete dataflow still requires review. |
+| `missing-declared-contract` | 246 | No exact declared operation; does not prove runtime absence. |
+| `unresolved` | 28 | Prop-defined paths require current dataflow and producer ownership resolution. |
 | `non-api-asset` | 1 | Image fetch outside API ownership. |
-| **Total** | **406** | Every current direct-call row is retained; this is not full runtime request acceptance. |
+| **Total** | **364** | Every current direct-call row is retained; this is not full runtime request acceptance. |
 
 The current classification preserves unresolved and historical-inference evidence. E174 direct search serves selector and explicit TMDB-only browse. E176 canonical catalog browse serves filtered TMDB discovery and mixed daily trending. E177/E178 serve TMDB person detail and filmography with current admission. Rich classification facts, other sources, media detail and music producers remain open.
 
@@ -66,8 +69,8 @@ an EMS operation.
 | Discovery | EMS discovery producer | TMDB catalog/person/relations/detail have canonical adapters; `discover/*`, `recommend/*` and other provider card/person paths remain unresolved or missing | Partial producer owner; other providers open | forbidden, unavailable, empty, provider failure |
 | Resource search | EMS resource producer | `media/search` and dynamic resource paths remain missing-capability candidates | Missing producer owner | forbidden, unavailable, empty, validation |
 | Music | EMS music producer | `music/album/*`, `music/artist/*`, `music/recognize` producer batch under active implementation | Producer batch in progress | forbidden, unavailable, empty, provider failure |
-| Subscription and calendar | EMS subscription owner | `subscribe/*` and sharing/execution paths remain missing-capability candidates | Missing lifecycle owner | forbidden, conflict, validation, unavailable |
-| Workflow and organization | EMS operations owner | workflow/download/history/storage/site paths remain missing-capability candidates | Missing operations owner | forbidden, validation, conflict, unavailable |
+| Subscription and calendar | EMS subscription owner | Canonical durable subscription producers implemented and consumed (E197-E223); live browser create/list/transition/read/files/aggregates verified | Lifecycle owner implemented and migrated | forbidden, conflict, validation, unavailable |
+| Workflow and organization | EMS operations owner | workflow/download/history/storage paths remain missing-capability candidates; `site/*` registry producers (E224-E242) are implemented and the retained site consumers resolve to declared operations | Site registry implemented; other operations owner missing | forbidden, validation, conflict, unavailable |
 | Personal profile | EMS identity owner | `auth/me`, `auth/password`, `me/profile`, `me/avatar`, passkey paths have contract-review evidence | Reusable candidates with focused acceptance | unauthorized, disabled, conflict, validation, unavailable |
 | Administration and settings | EMS admin/config owner | admin config, scheduler, metrics, plugins, bot and user paths have mixed contract-review evidence | Review each DTO/admission boundary | forbidden, conflict, validation, unavailable, rate-limited |
 | Stream operations | EMS stream owner | Native EventSource/WebSocket paths are outside direct Axios audit | Separate stream-ticket audit required | unauthorized, forbidden, rate-limited, loop/startup failure |
