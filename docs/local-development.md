@@ -22,15 +22,15 @@ API. The documentation listener serves only documentation paths; other paths ret
 
 ## Backend
 
-Start PostgreSQL and Redis, create a dedicated development database, and provide
+The backend is a single binary with an embedded database; no database or cache
+service is needed. Point `EMS_DATA_DIR` at a dedicated development directory and provide
 runtime values through your shell or the IDE's private environment configuration.
 Never commit real secrets or paste them into shared run configurations.
 
 ```bash
 export EMS_RUN_ROLE=full
 export EMS_STREAM_MODE=backend
-export EMS_DB_URL=postgres://localhost/ems
-export EMS_REDIS_URL=redis://localhost/0
+export EMS_DATA_DIR=./data
 export EMS_API_LISTEN=127.0.0.1:23334
 export EMS_API_ORIGIN=http://127.0.0.1:23334
 export EMS_GATEWAY_LISTEN=127.0.0.1:24333
@@ -92,9 +92,9 @@ yarn typecheck
 yarn vitest run src/auth/__tests__/bootstrap.spec.ts src/pages/__tests__/initialize.spec.ts src/utils/__tests__/initialization.spec.ts
 yarn build
 
-# From the backend sibling, using isolated real-service test fixtures
+# From the backend sibling; the embedded store needs no external service
 
-EMS_TEST_POSTGRES_URL=postgres://localhost/postgres EMS_TEST_REDIS_URL=redis://localhost/15 cargo test -p ems-runtime --test bootstrap_contract --test swagger_contract -- --ignored
+cargo test -p ems-runtime --test embedded_bootstrap --test swagger_contract
 cargo test -p ems-api --test openapi_contract
 ```
 
@@ -107,8 +107,7 @@ Docker health checks, or final pinned-release validation.
 ## Compose
 
 Compose builds the exact local submodule worktrees; it does not fetch a branch.
-Provide `POSTGRES_PASSWORD`, `EMS_DB_URL` (host `postgres`), `EMS_REDIS_URL`
-(host `redis`), `EMS_MASTER_KEY`, `EMS_BOOTSTRAP_TOKEN`, `EMS_ENCIPHER_KEY`
+Provide `EMS_MASTER_KEY`, `EMS_BOOTSTRAP_TOKEN`, `EMS_ENCIPHER_KEY`
 and `EMS_ENCIPHER_IV` through private runtime environment values. The key constraints
 above also apply to containers. No usable secret defaults are included.
 
@@ -116,8 +115,8 @@ Use Docker Compose with BuildKit/buildx support for the named integration build
 context, which supplies the versioned Nginx configuration without copying either
 source tree. Run `docker compose config --quiet`, then `docker compose up --build
 --wait`. The frontend waits for the backend's public version endpoint; the backend
-waits for PostgreSQL and Redis health checks and starts with the explicit `run`
-command. Protected diagnostics are not used as anonymous health endpoints.
+stores its embedded database in the `ems-data` volume and starts with the explicit
+`run` command. Protected diagnostics are not used as anonymous health endpoints.
 The backend build uses `cargo --locked`: it may download pinned crates during a
 clean build without changing the lockfile. `--frozen` also forces offline mode and
 cannot populate an empty build image. Dockerfile-specific ignore files exclude local
@@ -161,10 +160,7 @@ capability/passkey503 and inherited dashboard contracts remain release blockers.
 Clear the disposable smoke origin's old PWA cache when switching source candidates
 before attributing browser output to the new image.
 
-Trusted-plugin development adds migration `20261001000036`; run the backend's
-explicit database migration command before starting an upgraded `ems run` service.
-The migration is registered in `ems-postgres` and extends the `app_settings` scope
-constraint without rewriting deployed migrations. Plugin settings use the existing
+Plugin settings use the existing
 versioned configuration publication and history, not a separate persistence store.
 Observed native-service checks cover catalog admission, diagnostics execution,
 persisted enable/disable, omitted feature reporting, stale publication conflicts,
