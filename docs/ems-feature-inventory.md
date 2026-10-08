@@ -88,9 +88,9 @@ password changes use `PATCH auth/password` with `oldPassword`, `newPassword` and
 `revokeOthers: true`, returning204. These corrections have real PostgreSQL/Redis
 HTTP evidence. Public login capabilities now come from typed `/app/bootstrap`,
 not inherited `auth/providers`; complete browser WebAuthn acceptance remains open.
-The existing Telegram first-login owner is `MiniAppLogin::login_identity`, wired
-through the signed Mini App verifier; it resolves or atomically creates an EMS
-account before issuing a session. This is not a website OAuth callback or provider
+The Telegram sign-in owner is `MiniAppLogin::login`, wired through the signed Mini App
+verifier and the login-page widget verifier; it signs in only an already bound,
+enabled EMS account and never creates one. This is not a website OAuth callback or provider
 discovery implementation. No `auth/providers` or website OAuth route was found in
 the audited API/runtime sources. Google Drive OAuth configures storage and must
 not be presented as an EMS login provider. Unsupported inherited provider discovery
