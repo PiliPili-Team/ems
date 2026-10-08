@@ -1,7 +1,6 @@
 /.agents/*
 !/.agents/AGENTS.md
 /.codegraph/
-/openspec/
 /.idea/
 .DS_Store
 .env
