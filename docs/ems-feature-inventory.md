@@ -283,6 +283,9 @@ Observed from `submodules/backend/crates/ems-api/contracts/planned-v1.json`. Sta
 | GET | `/admin/users` | E033 | implemented | implement-v2-identity-access | admin_directory | admin.users.read |
 | GET | `/admin/users/{id}` | E034 | implemented | implement-v2-identity-access | admin_directory | admin.users.read |
 | PATCH | `/admin/users/{id}/status` | E035 | implemented | implement-v2-identity-access | user_status | admin.users.disable |
+| PATCH | `/admin/users/{id}` | E244 | implemented | implement-v2-identity-access | admin_user_management | admin.users.update |
+| PATCH | `/admin/users/{id}/password` | E245 | implemented | implement-v2-identity-access | admin_user_management | admin.users.update |
+| DELETE | `/admin/users/{id}` | E246 | implemented | implement-v2-identity-access | admin_user_management | admin.users.delete |
 | PATCH | `/admin/users/{id}/media-password` | E036 | implemented | implement-v2-media-accounts | media_password_reset | admin.media.write |
 | GET | `/admin/users/{id}/tree` | E037 | planned | implement-v2-invitation-governance | invitation_tree | admin.users.read |
 | GET | `/admin/users/{id}/chain-ban/preview` | E038 | planned | implement-v2-invitation-governance | chain_preview | super.chain-ban |

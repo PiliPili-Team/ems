@@ -76,6 +76,8 @@ A backend policy can deny a feature even when the client flag is present.
 | --- | --- | --- |
 | Read scoped user directory and details | E/read if `admin.users.read` | E/read |
 | Disable or restore a user | E if `admin.users.disable` | E |
+| Edit a user or reset their password | E ordinary users only, no role or tier change, if `admin.users.update` | E, never a super admin |
+| Delete (soft) a user | E ordinary users only, if `admin.users.delete` | E, never self or a super admin |
 | Change ordinary/admin role | — | E if `super.admins.write`; self and super targets remain forbidden |
 | Change user tier or entitlement | E only through approved resource and version contract | E |
 | Update configuration | E by scope-specific permission | E, including super-only version history where documented |
