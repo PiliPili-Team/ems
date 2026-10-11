@@ -27,7 +27,7 @@ owns this document; source implementation remains in the pinned child repositori
 | Authentication and setup | `/login`, `/initialize`, `/service-status` | public/bootstrap | Login, setup, readiness | `/auth/*`, `/setup/*`, `/app/*` |
 | Dashboard | `/dashboard` | `admin` | View system dashboard | `/admin/system`, `/stats/*` |
 | App center | `/apps` | authenticated | View enabled capabilities | `/app/features`, `/app/version` |
-| Discovery | `/recommend`, `/discover`, `/browse/:paths+`, `/credits/:paths+`, `/person`, `/media` | `discovery.*` | Search and inspect media | `/stats/*`, `/requests/*`, media contract |
+| Discovery | `/browse/:paths+`, `/credits/:paths+`, `/person`, `/media` | `discovery.*` | Search and inspect media | `/stats/*`, `/requests/*`, media contract |
 | Resource search | `/resource`, `/music`, `/music/detail`, `/music/album`,
   `/music/artist`, `/music/artist/resources` | `search.resource` | Search and inspect resources | `/requests/*`, media contract |
 | Subscription | `/subscribe/movie`, `/subscribe/tv`, `/subscribe/music`,
@@ -42,7 +42,7 @@ owns this document; source implementation remains in the pinned child repositori
 The route list above is the product-facing page inventory. Nested tabs are part of
 these page families, not separate top-level permissions. The current tab inventory is:
 
-- Discovery: recommendation categories, media-source exploration.
+- Discovery: TMDB search results, detail browsing and media requests (the `/recommend` and `/discover` pages were removed by `media-request-search`).
 - Subscription: own subscriptions, popular content, sharing, calendar.
 - Settings: system, directory, site, rule, search, subscription, notification.
 - Plugins: trusted built-in plugins; remote marketplace/install remains unsupported.
@@ -140,8 +140,7 @@ This appearance acceptance does not approve the remaining page/API families or a
 
 | Feature key | Permission category | Route | Default audience |
 | --- | --- | --- | --- |
-| `discovery.recommend` | discovery | `/recommend` | VIP/whitelist when enabled |
-| `discovery.explore` | discovery | `/discover`, `/browse`, `/media` | VIP/whitelist when enabled |
+| `discovery.explore` | discovery | `/browse`, `/media` | Any member when requests are enabled |
 | `search.resource` | search | `/resource`, `/music` | VIP/whitelist when enabled |
 | `subscribe.movie` | subscribe | `/subscribe/movie` | VIP/whitelist when enabled |
 | `subscribe.tv` | subscribe | `/subscribe/tv` | VIP/whitelist when enabled |
@@ -424,8 +423,6 @@ This source inventory does not change the approved page families above. Inherite
 | Source path | Component | EMS classification |
 |---|---|---|
 | `/dashboard` | `../pages/dashboard.vue` | Admin dashboard |
-| `/recommend` | `../pages/discover/recommend.vue` | Approved Discovery family; EMS contract mapping pending |
-| `/discover` | `../pages/discover/index.vue` | Approved Discovery family; EMS contract mapping pending |
 | `/resource` | `../pages/resource.vue` | Approved Resource search family; EMS contract mapping pending |
 | `/music` | `../pages/music/index.vue` | Approved Resource search family; EMS contract mapping pending |
 | `/music/detail` | `../pages/music/detail.vue` | Approved Resource search family; EMS contract mapping pending |

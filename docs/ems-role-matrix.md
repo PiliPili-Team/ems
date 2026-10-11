@@ -56,8 +56,7 @@ A backend policy can deny a feature even when the client flag is present.
 
 | Feature | Normal | VIP | Whitelist |
 | --- | --- | --- | --- |
-| `discovery.recommend` | — | V/E if enabled | V/E if enabled |
-| `discovery.explore` | — | V/E if enabled | V/E if enabled |
+| `discovery.explore` | V/E if enabled | V/E if enabled | V/E if enabled |
 | `search.resource` | — | V/E if enabled | V/E if enabled |
 | `subscribe.movie` | — | V/E if enabled | V/E if enabled |
 | `subscribe.tv` | — | V/E if enabled | V/E if enabled |

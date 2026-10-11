@@ -1,0 +1,57 @@
+{
+  "change": "media-request-search",
+  "batch": "calculation-logic-review",
+  "model": "jev-1.13.0",
+  "request": {
+    "questions": {
+      "mutual_exclusion_global": "Where should the choice between quota mode and points mode live so the two strategies stay mutually exclusive?",
+      "refund_on_expiry_needed": "In points mode, is refunding the exact charged points when a request expires without being handled a reasonable fairness rule?",
+      "tier_multiplier_removal_ok": "Given eligibility is now an active media account, is dropping the old VIP/whitelist quota multipliers consistent with the stated 'daily quota default 5' requirement?",
+      "atomic_charge_needed": "Must the points debit and the request creation commit atomically to avoid charging without a request or a request without a charge?",
+      "design_soundness": "How sound and complete is `proposed_design` against `requested_logic`?"
+    }
+  },
+  "answers": {
+    "mutual_exclusion_global": {
+      "type": "choice",
+      "choice": "global_admin_setting",
+      "confidence": 1.0,
+      "probabilities": {
+        "global_admin_setting": 1.0,
+        "per_user_choice": 0.0,
+        "hybrid_fallback": 0.0
+      }
+    },
+    "refund_on_expiry_needed": {
+      "type": "noul",
+      "noul": 0.88
+    },
+    "tier_multiplier_removal_ok": {
+      "type": "noul",
+      "noul": 0.89
+    },
+    "atomic_charge_needed": {
+      "type": "noul",
+      "noul": 0.96
+    },
+    "design_soundness": {
+      "type": "score",
+      "score": 2.74,
+      "confidence": 0.64,
+      "legend": {
+        "0": "Contradicts the requirements",
+        "1": "Major gaps",
+        "2": "Workable with notable gaps",
+        "3": "Sound with minor gaps",
+        "4": "Sound and complete"
+      },
+      "probabilities": {
+        "0": 0.0,
+        "1": 0.04,
+        "2": 0.26,
+        "3": 0.61,
+        "4": 0.09
+      }
+    }
+  }
+}

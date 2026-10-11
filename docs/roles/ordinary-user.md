@@ -9,7 +9,8 @@ An ordinary user has role `user`. Entitlement is evaluated separately as `normal
 
 - Login, session restore, logout, and disabled-session feedback.
 - App center and own profile/session/passkey/Telegram views allowed by the API contract.
-- VIP or whitelist discovery, search, subscription, points, shop, stream and media
+- TMDB search and media requests (requests also need an active media account),
+- VIP or whitelist subscription, points, shop, stream and media
   capabilities only when the backend grants the corresponding entitlement and feature.
 - Own resource history and status projections that are explicitly marked self-scoped.
 
