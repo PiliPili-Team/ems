@@ -66,7 +66,7 @@ A backend policy can deny a feature even when the client flag is present.
 | `manage.workflow` | — unless explicitly granted | — unless explicitly granted | — unless explicitly granted |
 | `manage.downloading` | — unless explicitly granted | — unless explicitly granted | — unless explicitly granted |
 | `manage.history` | — unless explicitly granted | — unless explicitly granted | — unless explicitly granted |
-| `manage.filemanager` | — unless explicitly granted | — unless explicitly granted | — unless explicitly granted |
+| `manage.filemanager` | — | — | — |
 | `manage.site` | — unless explicitly granted | — unless explicitly granted | — unless explicitly granted |
 
 ## Administrative edit boundaries
