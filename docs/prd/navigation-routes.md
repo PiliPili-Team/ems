@@ -74,7 +74,7 @@ flowchart TD
 | `/music` 系列 | 音乐检索 | <span class="badge-built">已实现</span> | `search.resource`（已确认保留） |
 | `/saved-searches` | 已存搜索（已确认保留） | <span class="badge-built">已实现</span> | 与发现相同 |
 | `/requests` | 求片 | <span class="badge-planned">待实现</span> | `request.self` + 有媒体账号 |
-| `/my-media` | 我的媒体账号 | <span class="badge-planned">待实现</span> | `media.self` |
+| `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
 | `/lines` | 线路 | <span class="badge-planned">待实现（接口已就绪）</span> | `line.select` |
 | `/points` | 积分中心 | <span class="badge-planned">待实现</span> | `points.self` + 功能开关 |
 | `/points/red-packets` | 红包 | <span class="badge-planned">待实现</span> | `points.self` |
