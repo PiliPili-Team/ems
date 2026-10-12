@@ -34,6 +34,7 @@
 | 停用 / 恢复 | 行操作 | 确认文案强调“仅停用 Emby 播放，不影响该用户登录与 Bot”；失败时提示“已加入重试队列” |
 | 批量停用 | 勾选多行后顶部出现批量操作条 | 确认弹窗显示选中数量；逐行返回结果，失败项单独列出 |
 | 重置媒体密码 | 行菜单 | 需要 `admin.media.write` |
+| 创建媒体账号 | 接口 `POST /admin/users/{id}/media-accounts`（任意管理员；目标为自己或普通用户）；机器人场景由用户提供用户名 | 用户名 3–32 位英文字母或数字，不能全是数字；初始密码随机，仅在响应中出现一次；他人建号的界面随用户管理页另行提案 |
 
 列表**不展示超级管理员名下的账号**。
 
@@ -54,4 +55,4 @@
 
 ## 依赖接口
 
-`/admin/media-servers*`、`/admin/media-accounts*`、`/admin/media-servers/{id}/claims*`、`/admin/outbox/jobs*`。
+`/admin/media-servers*`、`/admin/media-accounts*`、`/admin/users/{id}/media-accounts`、`/admin/media-servers/{id}/claims*`、`/admin/outbox/jobs*`。
