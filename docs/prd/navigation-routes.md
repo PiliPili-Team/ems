@@ -15,8 +15,7 @@ flowchart TD
     SHELL --> SYSTEM["系统区（admin+）"]
     SHELL --> SUPER["超管专区（super_admin）"]
 
-    PERSONAL --> P1["首页 / 应用中心 /apps"]
-    PERSONAL --> P2["发现 /browse"]
+    PERSONAL --> P2["搜索结果 /saved-searches"]
     PERSONAL --> P3["求片 /wishes"]
     PERSONAL --> P4["我的媒体 /my-media"]
     PERSONAL --> P5["线路 /lines"]
@@ -69,10 +68,9 @@ flowchart TD
 
 | 路由 | 页面 | 状态 | 读权限 / 条件 |
 |---|---|---|---|
-| `/apps` | 首页 / 应用中心（含非敏感统计） | <span class="badge-built">应用中心已实现</span> 概览待实现 | 已登录 |
-| `/browse/:paths+` `/credits/:paths+` `/person` `/media` | 发现与详情 | <span class="badge-built">已实现</span> | `discovery.explore`，且求片功能开启、用户有媒体账号 |
-| `/music` 系列 | 音乐检索 | <span class="badge-built">已实现</span> | `search.resource`（已确认保留） |
-| `/saved-searches` | 已存搜索（已确认保留） | <span class="badge-built">已实现</span> | 与发现相同 |
+| `/apps` | 首页 / 应用中心（暂不在菜单展示，样式待调整；移动端“更多”仍可进入） | <span class="badge-built">已实现</span> 已隐藏 | 已登录 |
+| `/credits/:paths+` `/person` `/media` | 影视详情（归属“搜索结果”；发现与音乐已移除） | <span class="badge-built">已实现</span> | 已登录 |
+| `/saved-searches` | 搜索结果（始终可见；求片按钮由求片开关控制） | <span class="badge-built">已实现</span> | 已登录 |
 | `/wishes` | 求片 | <span class="badge-planned">待实现</span> | `wish.self` + 有媒体账号 |
 | `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
 | `/lines` | 线路 | <span class="badge-planned">待实现（接口已就绪）</span> | `line.select` |
@@ -117,7 +115,7 @@ flowchart TD
 
 ## 登录后落地页
 
-所有角色登录后默认进入首页 `/apps`；管理员通过菜单进入 `/dashboard`。若请求带有原目标路径，优先回到该路径。
+登录后管理员进入 `/dashboard`，持有 `media.self` 的成员进入 `/my-media`，其余进入 `/saved-searches`。若请求带有原目标路径，优先回到该路径。
 
 ## 路由守卫顺序
 
