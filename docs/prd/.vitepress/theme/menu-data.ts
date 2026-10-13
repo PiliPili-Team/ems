@@ -40,7 +40,7 @@ export const groups: Group[] = [
     items: [
       { label: '首页', route: '/apps', status: 'built', access: all('V'), kind: 'home', doc: '/modules/home-dashboard', note: '个人状态与非敏感统计；概览待实现' },
       { label: '发现', route: '/browse', status: 'built', access: personal('E'), kind: 'cards', doc: '/modules/discover', note: '求片功能开启且有媒体账号才可见' },
-      { label: '求片', route: '/requests', status: 'planned', access: personal('E'), kind: 'table', doc: '/modules/requests', note: '需有媒体账号' },
+      { label: '求片', route: '/wishes', status: 'planned', access: personal('E'), kind: 'table', doc: '/modules/wishes', note: '需有媒体账号' },
       { label: '我的媒体', route: '/my-media', status: 'planned', access: personal('E'), kind: 'cards', doc: '/modules/my-media' },
       { label: '线路', route: '/lines', status: 'built', access: personal('E'), kind: 'cards', doc: '/modules/lines', note: '会员线路对 normal 显示锁定' },
       { label: '积分中心', route: '/points', status: 'planned', access: personal('E'), kind: 'home', doc: '/modules/points', note: '需开启积分功能' },
@@ -56,7 +56,7 @@ export const groups: Group[] = [
       { label: '运营仪表盘', route: '/dashboard', status: 'built', access: adminOnly('V'), kind: 'dashboard', doc: '/modules/home-dashboard', note: '含敏感内容，仅管理员' },
       { label: '用户管理', route: '/user', status: 'built', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-users' },
       { label: '邀请树 / 链式封禁', route: '/admin/users/:id/tree', status: 'planned', access: adminOnly('V'), kind: 'tree', doc: '/modules/admin-users', note: '封禁与回滚仅超管' },
-      { label: '求片处理', route: '/admin/requests', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-ops' },
+      { label: '求片处理', route: '/admin/wishes', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-ops' },
       { label: '商店与码管理', route: '/admin/shop', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-commerce' },
       { label: '红包管理', route: '/admin/red-packets', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-commerce', note: '含“允许用户发红包”开关' },
       { label: '积分调整与对账', route: '/admin/points', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-commerce', note: '显示剩余额度；差异终结仅超管' },

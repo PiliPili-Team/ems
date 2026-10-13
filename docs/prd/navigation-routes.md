@@ -17,7 +17,7 @@ flowchart TD
 
     PERSONAL --> P1["首页 / 应用中心 /apps"]
     PERSONAL --> P2["发现 /browse"]
-    PERSONAL --> P3["求片 /requests"]
+    PERSONAL --> P3["求片 /wishes"]
     PERSONAL --> P4["我的媒体 /my-media"]
     PERSONAL --> P5["线路 /lines"]
     PERSONAL --> P6["积分与红包 /points"]
@@ -26,7 +26,7 @@ flowchart TD
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
     ADMIN --> A2["用户管理 /user"]
-    ADMIN --> A3["求片处理 /admin/requests"]
+    ADMIN --> A3["求片处理 /admin/wishes"]
     ADMIN --> A4["商店 · 红包 · 积分"]
     ADMIN --> A5["媒体服务器与账号"]
     ADMIN --> A6["推流节点与线路"]
@@ -73,7 +73,7 @@ flowchart TD
 | `/browse/:paths+` `/credits/:paths+` `/person` `/media` | 发现与详情 | <span class="badge-built">已实现</span> | `discovery.explore`，且求片功能开启、用户有媒体账号 |
 | `/music` 系列 | 音乐检索 | <span class="badge-built">已实现</span> | `search.resource`（已确认保留） |
 | `/saved-searches` | 已存搜索（已确认保留） | <span class="badge-built">已实现</span> | 与发现相同 |
-| `/requests` | 求片 | <span class="badge-planned">待实现</span> | `request.self` + 有媒体账号 |
+| `/wishes` | 求片 | <span class="badge-planned">待实现</span> | `wish.self` + 有媒体账号 |
 | `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
 | `/lines` | 线路 | <span class="badge-planned">待实现（接口已就绪）</span> | `line.select` |
 | `/points` | 积分中心 | <span class="badge-planned">待实现</span> | `points.self` + 功能开关 |
@@ -92,7 +92,7 @@ flowchart TD
 | `/dashboard` | 运营仪表盘（敏感内容，仅管理员） | <span class="badge-built">已实现</span> | `admin.system.read` / `admin.streams.watch` |
 | `/user` | 用户管理 | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/users/:id/tree` | 邀请树 | <span class="badge-planned">待实现</span> | `admin.users.read` |
-| `/admin/requests` | 求片处理 | <span class="badge-planned">待实现</span> | `admin.request.write` |
+| `/admin/wishes` | 求片处理 | <span class="badge-planned">待实现</span> | `admin.wish.write` |
 | `/admin/shop` | 商品与码 | <span class="badge-planned">待实现</span> | `admin.shop.write` |
 | `/admin/red-packets` | 红包管理 | <span class="badge-planned">待实现</span> | `admin.shop.write` |
 | `/admin/points` | 积分调整与对账 | <span class="badge-planned">待实现</span> | `admin.points.adjust` |

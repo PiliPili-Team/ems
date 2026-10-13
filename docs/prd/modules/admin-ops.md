@@ -2,7 +2,7 @@
 
 <span class="badge-planned">待实现</span> 求片与通知接口为 planned；计划任务接口已实现。
 
-## 求片处理 `/admin/requests`
+## 求片处理 `/admin/wishes`
 
 | 子功能 | 展示 | 交互 |
 |---|---|---|
@@ -34,7 +34,7 @@
 
 | 能力 | admin | super_admin |
 |---|---|---|
-| 求片处理 | 有 `admin.request.write` | 是 |
+| 求片处理 | 有 `admin.wish.write` | 是 |
 | 通知与 Bot | 有 `admin.notify.write`；群组准入需 `admin.bot.access` | 是 |
 | 计划任务查看 | `admin.scheduler.read` | 是 |
 | 计划任务启停、编辑、触发 | `admin.scheduler.write` | 是 |
@@ -47,4 +47,4 @@
 
 ## 依赖接口
 
-`/admin/requests*`、`/admin/notify/*`、`/admin/bot*`、`/admin/scheduler/*`。
+`/admin/wishes*`、`/admin/notify/*`、`/admin/bot*`、`/admin/scheduler/*`。

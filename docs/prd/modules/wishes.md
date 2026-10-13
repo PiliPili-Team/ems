@@ -31,4 +31,10 @@
 
 ## 依赖接口
 
-`/requests/quota`、`/requests/tmdb/resolve`、`/requests`（列表与创建）。
+`/wishes/quota`、`/wishes/tmdb/resolve`、`/wishes`（列表与创建）。
+
+## 求片开关
+
+- 管理员可在配置 `wishes.enabled` 中控制成员是否可以提交求片,**默认关闭**。
+- 关闭时搜索、搜索结果、发现等页面照常可见;搜索结果上的“求片”按钮置灰,提示“管理员未开放求片”。
+- 对应前端特性标志 `wishSubmissionEnabled`;TMDB 未配置自有 Key 时使用内置 Key。

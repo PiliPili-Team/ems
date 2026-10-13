@@ -34,7 +34,7 @@ export default withMermaid({
           { text: 'P4 线路', link: '/modules/lines' },
           { text: 'P5 积分与红包', link: '/modules/points' },
           { text: 'P6 商店与我的码', link: '/modules/shop' },
-          { text: 'P7 求片', link: '/modules/requests' },
+          { text: 'P7 求片', link: '/modules/wishes' },
           { text: 'P8 发现', link: '/modules/discover' },
           { text: 'P9 个人资料与安全', link: '/modules/profile' },
         ],
