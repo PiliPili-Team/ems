@@ -23,6 +23,7 @@ export default withMermaid({
           { text: '导航结构与路由', link: '/navigation-routes' },
           { text: '界面草图', link: '/wireframes' },
           { text: '交付范围与验收', link: '/delivery-scope' },
+          { text: '页面设计原则', link: '/page-design' },
         ],
       },
       {

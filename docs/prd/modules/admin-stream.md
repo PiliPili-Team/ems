@@ -1,6 +1,6 @@
 # A4 推流节点与线路
 
-<span class="badge-planned">待实现</span> 后端节点、线路、类型 schema、试匹配、探测接口均已实现。
+<span class="badge-built">已实现</span> 后端节点、线路、类型 schema、试匹配、探测接口均已实现。指定用户的搜索选择器等待后端 `allowedUserIds` 接受 UID(见 [decisions](/decisions))。
 
 ## 概念
 

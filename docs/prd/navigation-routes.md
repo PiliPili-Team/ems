@@ -96,7 +96,7 @@ flowchart TD
 | `/admin/points` | 积分调整与对账 | <span class="badge-planned">待实现</span> | `admin.points.adjust` |
 | `/admin/media-servers` | 媒体服务器 | <span class="badge-planned">待实现</span> | `admin.config.media` |
 | `/admin/media-accounts` | 媒体账号管理 | <span class="badge-planned">待实现</span> | `admin.media.write` |
-| `/admin/stream` | 推流节点与线路 | <span class="badge-planned">待实现</span> | `admin.config.media` |
+| `/admin/stream` | 推流节点与线路 | <span class="badge-built">已实现</span> | `admin.config.media` |
 | `/admin/notify` | 通知与 Bot | <span class="badge-planned">待实现</span> | `admin.notify.write` |
 | `/admin/scheduler` | 计划任务 | <span class="badge-planned">待实现</span> | `admin.scheduler.read` |
 | `/admin/audit` | 审计日志 | <span class="badge-planned">待实现</span> | `admin.audit.read` |
