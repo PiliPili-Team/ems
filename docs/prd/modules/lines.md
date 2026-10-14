@@ -1,6 +1,6 @@
 # P4 线路
 
-<span class="badge-planned">待实现</span> 后端 `/lines` 与 `/me/line` 已实现。
+<span class="badge-built">已实现</span> 后端 `/lines` 与 `/me/line` 已实现。
 
 ## 目的
 

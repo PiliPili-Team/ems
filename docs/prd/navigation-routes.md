@@ -73,7 +73,7 @@ flowchart TD
 | `/saved-searches` | 搜索结果（始终可见；求片按钮由求片开关控制） | <span class="badge-built">已实现</span> | 已登录 |
 | `/wishes` | 求片 | <span class="badge-planned">待实现</span> | `wish.self` + 有媒体账号 |
 | `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
-| `/lines` | 线路 | <span class="badge-planned">待实现（接口已就绪）</span> | `line.select` |
+| `/lines` | 线路 | <span class="badge-built">已实现</span> | `line.select` |
 | `/points` | 积分中心 | <span class="badge-planned">待实现</span> | `points.self` + 功能开关 |
 | `/points/red-packets` | 红包 | <span class="badge-planned">待实现</span> | `points.self` |
 | `/shop` `/shop/codes` | 商店、我的码 | <span class="badge-planned">待实现</span> | `shop.self` |
