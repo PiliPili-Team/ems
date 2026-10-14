@@ -1,8 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="EMS Integration Compose" type="ShConfigurationType">
-        <option name="SCRIPT_TEXT" value="docker compose up --build" />
-        <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-        <option name="EXECUTE_IN_TERMINAL" value="true" />
-        <method v="2" />
-    </configuration>
-</component>

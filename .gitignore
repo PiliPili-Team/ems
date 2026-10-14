@@ -1,5 +1,4 @@
-/.agents/*
-!/.agents/AGENTS.md
+/.agents/
 /.codegraph/
 /.idea/
 .DS_Store
