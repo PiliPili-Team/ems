@@ -94,7 +94,8 @@ flowchart TD
 | `/admin/shop` | 商品与码 | <span class="badge-planned">待实现</span> | `admin.shop.write` |
 | `/admin/red-packets` | 红包管理 | <span class="badge-planned">待实现</span> | `admin.shop.write` |
 | `/admin/points` | 积分调整与对账 | <span class="badge-planned">待实现</span> | `admin.points.adjust` |
-| `/admin/media-servers` | 媒体服务器 | <span class="badge-planned">待实现</span> | `admin.config.media` |
+| `/admin/groups` | 访问分组 | <span class="badge-built">已实现</span> | `admin.groups.read`；写入 `admin.groups.write` |
+| `/admin/media-servers` | 媒体服务器 | <span class="badge-built">已实现</span> | `admin.config.media` |
 | `/admin/media-accounts` | 媒体账号管理 | <span class="badge-planned">待实现</span> | `admin.media.write` |
 | `/admin/stream` | 推流节点与线路 | <span class="badge-built">已实现</span> | `admin.config.media` |
 | `/admin/notify` | 通知与 Bot | <span class="badge-planned">待实现</span> | `admin.notify.write` |

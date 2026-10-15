@@ -82,6 +82,7 @@ A backend policy can deny a feature even when the client flag is present.
 | Update configuration | E by scope-specific permission | E, including super-only version history where documented |
 | Manage media servers/accounts/claims | E by resource permission and owner scope | E by permission and scope |
 | Manage stream nodes/lines | E if `admin.streams.watch` or the specific write permission | E |
+| Manage custom access groups and their members | V with `admin.groups.read`, E with `admin.groups.write`; ordinary/VIP/whitelist users are refused | E |
 | Manage notifications and bot access | E by specific admin permission | E |
 | Issue/revoke/rotate API keys | — | E by `super.apikeys.write` |
 | Inspect protected Swagger/OpenAPI | V | V |

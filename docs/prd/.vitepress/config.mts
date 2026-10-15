@@ -50,6 +50,7 @@ export default withMermaid({
           { text: 'A5 求片处理、通知与计划任务', link: '/modules/admin-ops' },
           { text: 'A6 系统设置与审计', link: '/modules/system' },
           { text: 'A7 超级管理员专区', link: '/modules/super' },
+          { text: 'A8 访问分组', link: '/modules/admin-groups' },
         ],
       },
       {
