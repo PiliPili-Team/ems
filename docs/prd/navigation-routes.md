@@ -97,7 +97,8 @@ flowchart TD
 | `/admin/groups` | 访问分组 | <span class="badge-built">已实现</span> | `admin.groups.read`；写入 `admin.groups.write` |
 | `/admin/media-servers` | 媒体服务器 | <span class="badge-built">已实现</span> | `admin.config.media` |
 | `/admin/media-accounts` | 媒体账号管理 | <span class="badge-planned">待实现</span> | `admin.media.write` |
-| `/admin/stream` | 推流节点与线路 | <span class="badge-built">已实现</span> | `admin.config.media` |
+| `/admin/stream/nodes` | 推流节点(含健康状态) | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
+| `/admin/stream/lines` | 推流线路 | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
 | `/admin/notify` | 通知与 Bot | <span class="badge-planned">待实现</span> | `admin.notify.write` |
 | `/admin/scheduler` | 计划任务 | <span class="badge-planned">待实现</span> | `admin.scheduler.read` |
 | `/admin/audit` | 审计日志 | <span class="badge-planned">待实现</span> | `admin.audit.read` |

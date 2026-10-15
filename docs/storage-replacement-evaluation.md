@@ -13,7 +13,7 @@ Status: evaluation only. No production code changed.
   188 `JOIN`, 6 `WITH RECURSIVE`, 58 `jsonb`, 54 indexes, 26 `ON CONFLICT`,
   2 advisory locks, 2 `NOTIFY`, `ILIKE`, offset paging.
 - Redis features: Lua scripts (rate limit, throttle, lease), `ZADD`, `INCR`, TTL keys.
-- Deployment: `EMS_RUN_ROLE` allows `full`, `backend`, `relay` as separate processes.
+- Deployment: `EMS_DEPLOY_MODE` allows `management`, `frontend_hub`, `backend_hub`, `all_in_one`; `backend_hub` runs as a separate process.
 
 ## Verdict
 

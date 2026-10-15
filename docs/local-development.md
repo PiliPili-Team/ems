@@ -28,12 +28,12 @@ runtime values through your shell or the IDE's private environment configuration
 Never commit real secrets or paste them into shared run configurations.
 
 ```bash
-export EMS_RUN_ROLE=full
-export EMS_STREAM_MODE=backend
+export EMS_DEPLOY_MODE=all_in_one
 export EMS_DATA_DIR=./data
 export EMS_API_LISTEN=127.0.0.1:23334
 export EMS_API_ORIGIN=http://127.0.0.1:23334
 export EMS_GATEWAY_LISTEN=127.0.0.1:24333
+export EMS_STREAM_BACKEND_LISTEN=127.0.0.1:24334
 export EMS_SWAGGER_LISTEN=127.0.0.1:23335
 export EMS_BOOTSTRAP_CORS_ORIGINS=http://127.0.0.1:23333
 # Set EMS_MASTER_KEY, EMS_BOOTSTRAP_TOKEN, EMS_ENCIPHER_KEY, and EMS_ENCIPHER_IV
@@ -41,16 +41,37 @@ export EMS_BOOTSTRAP_CORS_ORIGINS=http://127.0.0.1:23333
 cargo run --bin ems -- run
 ```
 
-`EMS_STREAM_MODE` is an explicit full-role deployment selector. It defaults to
-`backend`, which serves actual stream nodes on `EMS_GATEWAY_LISTEN`. `frontend`
-admits only current line-scoped relay nodes and issues recipient-bound redirects on
-that listener; `dual` additionally requires a distinct `EMS_STREAM_BACKEND_LISTEN`
-and binds both listeners in one process. Every mode rejects unknown values, extra
-backend listeners and collisions with the API or Swagger listeners before serving.
-Stream targets or provider redirects that resolve back to a bound listener fail with
-`LOOP_DETECTED`; a wrong or expired recipient-bound grant is `403`. The management API
-keeps its own listener and is unchanged in every mode. `EMS_STREAM_MODE` and
-`EMS_STREAM_BACKEND_LISTEN` are rejected for the relay-only role.
+`EMS_DEPLOY_MODE` selects what one process does. It replaces the former
+`EMS_RUN_ROLE` and `EMS_STREAM_MODE`, which are now rejected at startup.
+
+| Mode | Management API and pages | Front-end gateway | Streaming |
+| --- | --- | --- | --- |
+| `management` | yes | no | no |
+| `frontend_hub` | yes | yes (`EMS_GATEWAY_LISTEN`) | no |
+| `backend_hub` | no | no | yes (`EMS_RELAY_*`) |
+| `all_in_one` (default) | yes | yes (`EMS_GATEWAY_LISTEN`) | yes (`EMS_STREAM_BACKEND_LISTEN`) |
+
+- `management` binds no stream listener and rejects `EMS_GATEWAY_LISTEN`. The stream
+  node and line pages and their API are not mounted (404).
+- `frontend_hub` admits only current line-scoped relay nodes and issues recipient-bound
+  redirects on its listener. The nodes it routes to are separate streaming processes.
+- `backend_hub` is the standalone streaming process (the former relay role). It has no
+  database and no management API; it is configured only through `EMS_RELAY_*` and the
+  shared playback key. It serves `GET /healthz`, which answers `{"ok":true}` and nothing
+  else.
+- `all_in_one` needs a distinct `EMS_STREAM_BACKEND_LISTEN` and binds both listeners in
+  one process. Register a `stream_relay` node that points at the streaming listener to
+  route playback through it.
+
+Every mode rejects unknown values, listeners it does not own and collisions with the API or
+Swagger listeners before serving. Stream targets or provider redirects that resolve back to
+a bound listener fail with `LOOP_DETECTED`; a wrong or expired recipient-bound grant is
+`403`. The management API keeps its own listener and is unchanged in every mode.
+
+Playback grants are encrypted and authenticated; the viewer's UID and tier travel inside
+the grant, never as plain URL parameters. A front-end hub probes each `stream_relay` node's
+`/healthz` about every 15 seconds and shows the result in the node list; health never changes
+routing.
 
 Run this command from `../ems-backend`. The master key is 32 bytes encoded as hex.
 Playback encipher key and IV are text values accepted by the existing normalization;

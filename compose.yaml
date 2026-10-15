@@ -25,9 +25,10 @@ services:
       - "23334:23334"
       - "23335:23335"
     environment:
-      EMS_RUN_ROLE: full
+      EMS_DEPLOY_MODE: all_in_one
       EMS_API_LISTEN: 0.0.0.0:23334
       EMS_GATEWAY_LISTEN: 0.0.0.0:23333
+      EMS_STREAM_BACKEND_LISTEN: 0.0.0.0:23336
       EMS_API_ORIGIN: http://backend:23334
       EMS_DATA_DIR: /home/ems/data
       EMS_SWAGGER_LISTEN: 0.0.0.0:23335

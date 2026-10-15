@@ -225,7 +225,7 @@ owner is not approved for frontend exposure.
 | Swagger/OpenAPI | Versioned, secret-free document and protected locally hosted UI |
 | Identity | Internal account UUID remains primary; Telegram and Emby are external bindings |
 | Abuse protection | Bounded login, OAuth, binding, mutation, and expensive-read limits with safe 429 |
-| Stream modes | Explicit `frontend`, `backend`, and `dual` listener/routing behavior |
+| Deployment modes | `management`, `frontend_hub`, `backend_hub` and `all_in_one` select the listeners, routes and pages a process has |
 | Errors | Localized unauthorized, forbidden, validation, conflict, unavailable, and rate-limit states |
 
 ## Inventory acceptance gate
