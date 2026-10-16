@@ -74,8 +74,9 @@ flowchart TD
 | `/wishes` | 求片 | <span class="badge-planned">待实现</span> | `wish.self` + 有媒体账号 |
 | `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
 | `/lines` | 线路 | <span class="badge-built">已实现</span> | `line.select` |
-| `/points` | 积分中心 | <span class="badge-planned">待实现</span> | `points.self` + 功能开关 |
-| `/points/red-packets` | 红包 | <span class="badge-planned">待实现</span> | `points.self` |
+| `/points` | 积分中心(余额、签到、时间线) | <span class="badge-built">已实现</span> | `points.self` + 积分开关 |
+| `/points/red-packets` | 红包(可领与发红包) | <span class="badge-built">已实现</span> | `points.self` + 红包开关 |
+| `/points/red-packets/history` | 红包记录(我发的 / 我领的) | <span class="badge-built">已实现</span> | `points.self` + 红包开关 |
 | `/shop` `/shop/codes` | 商店、我的码 | <span class="badge-planned">待实现</span> | `shop.self` |
 | `/profile` | 个人资料与安全 | <span class="badge-built">已实现</span> | 已登录 |
 
@@ -92,8 +93,9 @@ flowchart TD
 | `/admin/users/:id/tree` | 邀请树 | <span class="badge-planned">待实现</span> | `admin.users.read` |
 | `/admin/wishes` | 求片处理 | <span class="badge-planned">待实现</span> | `admin.wish.write` |
 | `/admin/shop` | 商品与码 | <span class="badge-planned">待实现</span> | `admin.shop.write` |
-| `/admin/red-packets` | 红包管理 | <span class="badge-planned">待实现</span> | `admin.shop.write` |
-| `/admin/points` | 积分调整与对账 | <span class="badge-planned">待实现</span> | `admin.points.adjust` |
+| `/admin/red-packets` | 红包管理(策略、发行、记录、作废) | <span class="badge-built">已实现</span> | `admin.redpacket.read`;写:`admin.redpacket.write`;策略:`admin.redpacket.config` |
+| `/admin/checkin` | 签到设置(默认区间、分组规则、试算) | <span class="badge-built">已实现</span> | `admin.checkin.read`;写:`admin.checkin.write` |
+| `/admin/points` | 积分调整、对账与系统账户 | <span class="badge-built">已实现</span> | `admin.points.adjust` 或 `admin.points.read` |
 | `/admin/groups` | 访问分组 | <span class="badge-built">已实现</span> | `admin.groups.read`；写入 `admin.groups.write` |
 | `/admin/media-servers` | 媒体服务器 | <span class="badge-built">已实现</span> | `admin.config.media` |
 | `/admin/media-accounts` | 媒体账号管理 | <span class="badge-planned">待实现</span> | `admin.media.write` |

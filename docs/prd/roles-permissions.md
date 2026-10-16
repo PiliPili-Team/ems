@@ -67,6 +67,10 @@
 | 宿主机文件：浏览、下载 | 是 | 是 |
 | 宿主机文件：新建、重命名、删除 | 否 | 是 |
 | 对账差异终结 | 否 | 是 |
+| 积分:调整、查看他人账本与系统账户 | `admin.points.adjust` / `admin.points.read` | 是 |
+| 签到:查看与修改规则、默认区间 | `admin.checkin.read` / `admin.checkin.write` | 是;奖励上限只有超管能改(`super.checkin.ceiling`) |
+| 红包:发行、作废、查看全部 | `admin.redpacket.write` / `admin.redpacket.read` | 是;可铸造(`super.redpacket.mint`) |
+| 红包:开关、发送范围、有效期、手续费、额度 | `admin.redpacket.config` | 是 |
 
 ## 通用交互约定
 
