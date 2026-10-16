@@ -59,7 +59,7 @@ export const groups: Group[] = [
       { label: '求片处理', route: '/admin/wishes', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-ops' },
       { label: '商店与码管理', route: '/admin/shop', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-commerce' },
       { label: '红包管理', route: '/admin/red-packets', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-commerce', note: '含“允许用户发红包”开关' },
-      { label: '积分调整与对账', route: '/admin/points', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-commerce', note: '显示剩余额度；差异终结仅超管' },
+      { label: '积分对账', route: '/admin/points', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-commerce', note: '显示剩余额度；差异终结仅超管' },
       { label: '媒体服务器', route: '/admin/media-servers', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-media' },
       { label: '媒体账号管理', route: '/admin/media-accounts', status: 'planned', access: adminOnly('E'), kind: 'table', doc: '/modules/admin-media' },
       { label: '推流节点与线路', route: '/admin/stream', status: 'planned', access: adminOnly('E'), kind: 'cards', doc: '/modules/admin-stream' },
