@@ -20,7 +20,7 @@ flowchart TD
     PERSONAL --> P4["我的媒体 /my-media"]
     PERSONAL --> P5["线路 /lines"]
     PERSONAL --> P6["积分与红包 /points"]
-    PERSONAL --> P7["商店与我的礼品卡 /shop"]
+    PERSONAL --> P7["我的商店 /shop"]
     PERSONAL --> P8["个人资料 /profile"]
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
@@ -77,8 +77,8 @@ flowchart TD
 | `/points` | 积分中心(余额、签到、时间线) | <span class="badge-built">已实现</span> | `points.self` + 积分开关 |
 | `/points/red-packets` | 红包(可领与发红包) | <span class="badge-built">已实现</span> | `points.self` + 红包开关 |
 | `/points/red-packets/history` | 红包记录(我发的 / 我领的) | <span class="badge-built">已实现</span> | `points.self` + 红包开关 |
-| `/shop` | 商店 | <span class="badge-built">已实现</span> | `shop.self` + 商店开关 + 积分开关 |
-| `/shop/cards` | 我的礼品卡 | <span class="badge-built">已实现</span> | `shop.self` + (商店开关 或 持有礼品卡) |
+| `/shop` | 我的商店 | <span class="badge-built">已实现</span> | `shop.self` + 商店开关 + 积分开关 |
+| `/vouchers` | 卡券中心(旧 `/shop/cards` 跳转) | <span class="badge-built">已实现</span> | `shop.self` + (商店开关 或 持有礼品卡) |
 | `/profile` | 个人资料与安全 | <span class="badge-built">已实现</span> | 已登录 |
 
 ::: warning 路由冲突
@@ -93,7 +93,8 @@ flowchart TD
 | `/user` | 用户管理 | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/users/:id/tree` | 邀请树 | <span class="badge-planned">待实现</span> | `admin.users.read` |
 | `/admin/wishes` | 求片处理 | <span class="badge-planned">待实现</span> | `admin.wish.write` |
-| `/admin/shop` | 商品与礼品卡 | <span class="badge-built">已实现</span> | `admin.shop.write`;查看卡号:`admin.shop.reveal`(授权) |
+| `/admin/products` | 商品管理(旧 `/admin/shop` 跳转) | <span class="badge-built">已实现</span> | `admin.shop.write` |
+| `/admin/vouchers` | 卡券管理 | <span class="badge-built">已实现</span> | `admin.shop.write`;查看卡号:`admin.shop.reveal`(授权) |
 | `/admin/red-packets` | 红包管理(策略、发行、记录、作废) | <span class="badge-built">已实现</span> | `admin.redpacket.read`;写:`admin.redpacket.write`;策略:`admin.redpacket.config` |
 | `/admin/checkin` | 签到设置(默认区间、分组规则、试算) | <span class="badge-built">已实现</span> | `admin.checkin.read`;写:`admin.checkin.write` |
 | `/admin/points` | 积分调整、对账与系统账户 | <span class="badge-built">已实现</span> | `admin.points.adjust` 或 `admin.points.read` |
