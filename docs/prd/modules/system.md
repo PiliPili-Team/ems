@@ -1,6 +1,6 @@
 # A6 系统设置与审计
 
-系统设置、插件、宿主机文件、服务状态 <span class="badge-built">已实现</span>；审计日志页与 OpenAPI 页 <span class="badge-planned">待实现</span>。
+系统设置、插件、宿主机文件、服务状态 <span class="badge-built">已实现</span>；审计日志页与 OpenAPI 页 <span class="badge-built">已实现</span>。
 
 ## 系统设置 `/setting`
 
@@ -50,7 +50,7 @@
 
 ## OpenAPI `/openapi`
 
-受保护的本地托管文档页，仅 admin 及以上可见，不含任何密钥。
+内置文档页，仅 admin 及以上可见，不含任何密钥。前端以当前会话读取 `/openapi.json`,用 Swagger UI 渲染(随主题明暗切换),桌面与窄屏均可阅读。
 
 ## 角色差异
 

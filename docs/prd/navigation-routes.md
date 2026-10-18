@@ -112,10 +112,10 @@ flowchart TD
 | `/setting` | 系统设置 | <span class="badge-built">已实现</span> | `admin.config.write` |
 | `/plugins` | 插件 | <span class="badge-built">已实现</span> | admin |
 | `/filemanager` | 宿主机文件 | <span class="badge-built">已实现</span> | `admin.files.read`；写入 `super.files.write` |
-| `/openapi` | OpenAPI 文档（内置页面，仅管理员） | <span class="badge-planned">待实现</span> | `admin.system.read` |
-| `/super/admins` | 管理员管理 | <span class="badge-planned">待实现</span> | `super.admins.write` |
-| `/super/api-keys` | API Key | <span class="badge-planned">待实现</span> | `super.apikeys.write` |
-| `/super/bootstrap` | 引导配置（只读脱敏） | <span class="badge-planned">待实现</span> | `super.bootstrap.read` |
+| `/openapi` | OpenAPI 文档（内置页面，仅管理员） | <span class="badge-built">已实现</span> | `admin.system.read` |
+| `/super/admins` | 管理员管理 | <span class="badge-built">已实现</span> | `super.admins.write` |
+| `/super/api-keys` | API Key | <span class="badge-built">已实现</span> | `super.apikeys.write` |
+| `/super/bootstrap` | 引导配置（只读脱敏） | <span class="badge-built">已实现</span> | `super.bootstrap.read` |
 
 ## 登录后落地页
 
