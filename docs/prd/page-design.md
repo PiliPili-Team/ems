@@ -19,7 +19,7 @@
 | 线路 | `/lines` 选择自己的线路 | `/admin/stream` 节点与线路配置 | 拆分；共享延迟徽标等展示组件 |
 | 媒体账号 | `/my-media` 自己的账号、续期、改密 | `/admin/media-accounts` 全部账号的检索与处置 | 拆分；管理员自己的账号仍在 `/my-media` |
 | 求片 | `/wishes` 我的求片与额度 | `/admin/wishes` 处理队列 | 拆分 |
-| 商店 | `/shop` 购买与我的码 | `/admin/shop` 商品与码库存 | 拆分 |
+| 商店 | `/shop` 购买与我的礼品卡 | `/admin/shop` 商品与礼品卡 | 拆分 |
 | 积分 | `/points` 余额、签到、红包 | `/admin/points` 积分对账 | 拆分 |
 | 个人资料 | `/profile` | `/user` 用户管理 | 拆分；管理页的详情抽屉复用资料页的展示组件 |
 | 服务器列表 | — | `/admin/media-servers` | 仅管理 |
