@@ -36,7 +36,7 @@
 | 媒体服务与推流 | `admin.config.media.read` | 管理媒体服务器、节点与线路 |
 | 媒体库规则 | `admin.libraries.read` | 配置媒体库规则 |
 | 访问分组 | `admin.groups.read` | 管理分组与成员 |
-| 求片 | `admin.wish.read` | 处理求片 |
+| 心愿 | `admin.wish.read` | 处理心愿与设置个人/分组每日发放规则(`admin.wish.write`);价格和全局策略另需 `admin.config.write` |
 | 商店 | `admin.shop.read` | 管理商品、礼品卡与优惠券;查看礼品卡号(`admin.shop.reveal`,高风险) |
 | 积分 / 红包 / 签到 | `admin.points.read`、`admin.redpacket.read`、`admin.checkin.read` | 调整积分(高风险)、发放红包与改红包规则、改签到规则 |
 | 通知与 Bot | `admin.notify.read` | 管理 Bot、配置 Bot 准入 |
@@ -66,7 +66,7 @@
 |---|---|---|
 | 用户被禁用 | 管理员在后台禁用 | **唯一全站阻断**：会话撤销、拒绝登录、Bot 拒绝、Emby 连带禁用 |
 | 媒体账号 `active` | — | 全部功能可用 |
-| 媒体账号 `expired` | 到期（宽限期内） | Emby 播放、改密、在线设备不可用；**续期、线路、积分、商店、求片仍可用** |
+| 媒体账号 `expired` | 到期（宽限期内） | Emby 播放、改密、在线设备不可用；**续期、线路、积分、商店、心愿仍可用** |
 | 媒体账号 `suspended` | 管理员单独停用 | 同上；续期合法但不解除停用 |
 | 媒体账号 `purging` / `purged` | 宽限期满后清除 | 不可续期；提示重新开通或认领 |
 

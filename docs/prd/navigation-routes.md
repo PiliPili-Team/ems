@@ -16,7 +16,7 @@ flowchart TD
     SHELL --> SUPER["超管专区（super_admin）"]
 
     PERSONAL --> P2["搜索结果 /saved-searches"]
-    PERSONAL --> P3["求片 /wishes"]
+    PERSONAL --> P3["心愿中心 /wishes"]
     PERSONAL --> P4["我的媒体 /my-media"]
     PERSONAL --> P5["线路 /lines"]
     PERSONAL --> P6["积分与红包 /points"]
@@ -25,7 +25,7 @@ flowchart TD
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
     ADMIN --> A2["用户管理 /user"]
-    ADMIN --> A3["求片处理 /admin/wishes"]
+    ADMIN --> A3["心愿管理 /admin/wishes"]
     ADMIN --> A4["商店 · 红包 · 积分"]
     ADMIN --> A5["媒体服务器与账号"]
     ADMIN --> A6["推流节点与线路"]
@@ -70,8 +70,8 @@ flowchart TD
 |---|---|---|---|
 | `/apps` | 首页 / 应用中心（暂不在菜单展示，样式待调整；移动端“更多”仍可进入） | <span class="badge-built">已实现</span> 已隐藏 | 已登录 |
 | `/credits/:paths+` `/person` `/media` | 影视详情（归属“搜索结果”；发现与音乐已移除） | <span class="badge-built">已实现</span> | 已登录 |
-| `/saved-searches` | 搜索结果（始终可见；求片按钮由求片开关控制） | <span class="badge-built">已实现</span> | 已登录 |
-| `/wishes` | 求片 | <span class="badge-built">已实现</span> | `wish.self` + 有媒体账号 |
+| `/saved-searches` | 搜索结果（始终可见；心愿按钮由心愿开关控制） | <span class="badge-built">已实现</span> | 已登录 |
+| `/wishes` | 心愿中心 | <span class="badge-built">已实现</span> | `wish.self` + 心愿开关;无有效媒体账号时显示“心愿需要媒体账号”空态 |
 | `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
 | `/lines` | 线路 | <span class="badge-built">已实现</span> | `line.select` |
 | `/points` | 积分中心(余额、签到、时间线) | <span class="badge-built">已实现</span> | `points.self` + 积分开关 |
@@ -93,7 +93,7 @@ flowchart TD
 | `/user` | 用户管理 | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/users/:uid/tree` | 邀请树(用户页子页面;剪枝按钮需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/prune-actions` | 剪枝记录(用户页标签;回滚需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
-| `/admin/wishes` | 求片处理(含策略卡片) | <span class="badge-built">已实现</span> | 读 `admin.wish.read`;处理:`admin.wish.write`;策略编辑:`admin.config.write` |
+| `/admin/wishes` | 心愿管理(含常显策略页) | <span class="badge-built">已实现</span> | 读 `admin.wish.read`;处理和发放规则:`admin.wish.write`;策略编辑:`admin.config.write` |
 | `/admin/products` | 商品管理(旧 `/admin/shop` 跳转) | <span class="badge-built">已实现</span> | `admin.shop.write` |
 | `/admin/vouchers` | 卡券管理(礼品卡、优惠券两个标签) | <span class="badge-built">已实现</span> | `admin.shop.write`;查看卡号:`admin.shop.reveal`(授权) |
 | `/admin/red-packets` | 红包管理(策略、发行、记录、作废) | <span class="badge-built">已实现</span> | `admin.redpacket.read`;写:`admin.redpacket.write`;策略:`admin.redpacket.config` |
