@@ -71,7 +71,7 @@ flowchart TD
 | `/apps` | 首页 / 应用中心（暂不在菜单展示，样式待调整；移动端“更多”仍可进入） | <span class="badge-built">已实现</span> 已隐藏 | 已登录 |
 | `/credits/:paths+` `/person` `/media` | 影视详情（归属“搜索结果”；发现与音乐已移除） | <span class="badge-built">已实现</span> | 已登录 |
 | `/saved-searches` | 搜索结果（始终可见；求片按钮由求片开关控制） | <span class="badge-built">已实现</span> | 已登录 |
-| `/wishes` | 求片 | <span class="badge-planned">待实现</span> | `wish.self` + 有媒体账号 |
+| `/wishes` | 求片 | <span class="badge-built">已实现</span> | `wish.self` + 有媒体账号 |
 | `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
 | `/lines` | 线路 | <span class="badge-built">已实现</span> | `line.select` |
 | `/points` | 积分中心(余额、签到、时间线) | <span class="badge-built">已实现</span> | `points.self` + 积分开关 |
@@ -91,8 +91,9 @@ flowchart TD
 |---|---|---|---|
 | `/dashboard` | 运营仪表盘（敏感内容，仅管理员） | <span class="badge-built">已实现</span> | `admin.system.read` / `admin.streams.watch` |
 | `/user` | 用户管理 | <span class="badge-built">已实现</span> | `admin.users.read` |
-| `/admin/users/:id/tree` | 邀请树 | <span class="badge-planned">待实现</span> | `admin.users.read` |
-| `/admin/wishes` | 求片处理 | <span class="badge-planned">待实现</span> | `admin.wish.write` |
+| `/admin/users/:uid/tree` | 邀请树(用户页子页面;剪枝按钮需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
+| `/admin/prune-actions` | 剪枝记录(用户页标签;回滚需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
+| `/admin/wishes` | 求片处理(含策略卡片) | <span class="badge-built">已实现</span> | 读 `admin.wish.read`;处理:`admin.wish.write`;策略编辑:`admin.config.write` |
 | `/admin/products` | 商品管理(旧 `/admin/shop` 跳转) | <span class="badge-built">已实现</span> | `admin.shop.write` |
 | `/admin/vouchers` | 卡券管理(礼品卡、优惠券两个标签) | <span class="badge-built">已实现</span> | `admin.shop.write`;查看卡号:`admin.shop.reveal`(授权) |
 | `/admin/red-packets` | 红包管理(策略、发行、记录、作废) | <span class="badge-built">已实现</span> | `admin.redpacket.read`;写:`admin.redpacket.write`;策略:`admin.redpacket.config` |

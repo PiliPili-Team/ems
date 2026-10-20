@@ -287,10 +287,10 @@ Observed from `submodules/backend/crates/ems-api/contracts/planned-v1.json`. Sta
 | DELETE | `/admin/users/{id}` | E246 | implemented | implement-v2-identity-access | admin_user_management | admin.users.delete |
 | PATCH | `/admin/users/{id}/media-password` | E036 | implemented | implement-v2-media-accounts | media_password_reset | admin.media.write |
 | GET | `/admin/users/{id}/tree` | E037 | planned | implement-v2-invitation-governance | invitation_tree | admin.users.read |
-| GET | `/admin/users/{id}/chain-ban/preview` | E038 | planned | implement-v2-invitation-governance | chain_preview | super.chain-ban |
-| POST | `/admin/users/{id}/chain-ban` | E039 | planned | implement-v2-invitation-governance | chain_execute | super.chain-ban |
-| GET | `/admin/chain-ban-actions` | E040 | planned | implement-v2-invitation-governance | governance_history | super.chain-ban |
-| POST | `/admin/chain-ban-actions/{id}/rollback` | E041 | planned | implement-v2-invitation-governance | chain_rollback | super.chain-ban |
+| GET | `/admin/users/{id}/prune/preview` | E038 | implemented | implement-v2-invitation-governance | prune_preview | admin.users.prune |
+| POST | `/admin/users/{id}/prune` | E039 | implemented | implement-v2-invitation-governance | prune_execute | admin.users.prune |
+| GET | `/admin/prune-actions` | E040 | implemented | implement-v2-invitation-governance | prune_history | admin.users.read |
+| POST | `/admin/prune-actions/{id}/rollback` | E041 | implemented | implement-v2-invitation-governance | prune_rollback | admin.users.prune |
 | GET | `/admin/audit-logs` | E042 | implemented | establish-v2-persistence | audit_contract | admin.audit.read |
 | GET | `/super/admins` | E043 | implemented | implement-v2-identity-access | admin_roles | super.admins.write |
 | POST | `/super/admins` | E044 | implemented | implement-v2-identity-access | admin_roles | super.admins.write |
