@@ -93,7 +93,7 @@ flowchart TD
 | `/user` | 用户管理 | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/users/:uid/tree` | 邀请树(用户页子页面;剪枝按钮需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/prune-actions` | 剪枝记录(用户页标签;回滚需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
-| `/admin/wishes` | 心愿管理(含常显策略页) | <span class="badge-built">已实现</span> | 读 `admin.wish.read`;处理和发放规则:`admin.wish.write`;策略编辑:`admin.config.write` |
+| `/admin/wishes` | 心愿管理(含齿轮高级设置弹窗) | <span class="badge-built">已实现</span> | 读 `admin.wish.read`;处理和发放规则:`admin.wish.write`;策略编辑:`admin.config.write` |
 | `/admin/products` | 商品管理(旧 `/admin/shop` 跳转) | <span class="badge-built">已实现</span> | `admin.shop.write` |
 | `/admin/vouchers` | 卡券管理(礼品卡、优惠券两个标签) | <span class="badge-built">已实现</span> | `admin.shop.write`;查看卡号:`admin.shop.reveal`(授权) |
 | `/admin/red-packets` | 红包管理(策略、发行、记录、作废) | <span class="badge-built">已实现</span> | `admin.redpacket.read`;写:`admin.redpacket.write`;策略:`admin.redpacket.config` |
