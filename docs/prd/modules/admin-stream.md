@@ -1,6 +1,6 @@
 # A4 推流节点与线路
 
-<span class="badge-built">已实现</span> 节点、线路、类型 schema、试匹配、节点健康检查均已实现。节点与线路是两个独立页面(`/admin/stream/nodes`、`/admin/stream/lines`),且只在部署具备前端网关时存在(见[部署模式](#部署模式))。线路的接入范围由“层级 + 自定义分组”组成,不再逐个指定用户(见 [A8 访问分组](/modules/admin-groups))。
+<span class="badge-built">已实现</span> 节点、线路、类型 schema、试匹配、节点健康检查均已实现。节点与线路是两个独立页面(`/admin/stream/nodes`、`/admin/stream/lines`),且只在部署具备前端网关时存在(见[部署模式](#部署模式))。线路的接入范围由“层级 + 自定义分组”组成,不再逐个指定用户(见 [A8 访问分组](/modules/admin-groups))。两页的“新建”按钮均位于页面标题行右侧。
 
 ## 概念
 
