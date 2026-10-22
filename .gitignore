@@ -17,3 +17,6 @@ coverage/
 /scripts/local-sync-submodules.sh
 /.idea/
 /.git/hooks/pre-push
+
+# Local tooling scripts (QA harness, sync helpers) are not versioned.
+/scripts/
