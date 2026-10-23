@@ -1,6 +1,6 @@
 [submodule "submodules/backend"]
 	path = submodules/backend
-	url = git@github-openpilipili:PiliPili-Team/ems-backend.git
+	url = https://github.com/PiliPili-Team/ems-backend.git
 [submodule "submodules/frontend"]
 	path = submodules/frontend
-	url = git@github-openpilipili:PiliPili-Team/ems-frontend.git
+	url = https://github.com/PiliPili-Team/ems-frontend.git
