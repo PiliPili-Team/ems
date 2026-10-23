@@ -20,3 +20,6 @@ coverage/
 
 # Local tooling scripts (QA harness, sync helpers) are not versioned.
 /scripts/
+
+# OpenSpec lives outside version control by request; keep local copies on disk.
+/openspec/
