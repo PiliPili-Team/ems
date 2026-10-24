@@ -22,6 +22,7 @@ flowchart TD
     PERSONAL --> P6["积分与红包 /points"]
     PERSONAL --> P7["我的商店 /shop"]
     PERSONAL --> P8["个人资料 /profile"]
+    PERSONAL --> P9["我的工单 /feedback"]
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
     ADMIN --> A2["用户管理 /user"]
@@ -30,6 +31,7 @@ flowchart TD
     ADMIN --> A5["媒体服务器与账号"]
     ADMIN --> A6["推流节点与线路"]
     ADMIN --> A7["通知 · 计划任务 · 审计"]
+    ADMIN --> A8["工单管理 /admin/feedback"]
 
     SYSTEM --> S1["系统设置 /setting"]
     SYSTEM --> S2["插件 /plugins"]
@@ -81,6 +83,8 @@ flowchart TD
 | `/shop` | 我的商店 | <span class="badge-built">已实现</span> | `shop.self` + 商店开关 + 积分开关 |
 | `/vouchers` | 卡券中心(旧 `/shop/cards` 跳转;礼品卡、优惠券两个标签) | <span class="badge-built">已实现</span> | `shop.self` + (商店开关 或 持有礼品卡) |
 | `/profile` | 个人资料与安全 | <span class="badge-built">已实现</span> | 已登录 |
+| `/feedback` | 我的工单 | <span class="badge-built">已实现</span> | `feedback.self`；提交费与附件开关来自 `feedback` 配置域 |
+| `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
 
 ::: warning 路由冲突
 现有 `/media` 是“发现”的媒体详情页，因此“我的媒体账号”使用 `/my-media`。
@@ -108,6 +112,8 @@ flowchart TD
 | `/admin/notify` | 通知与 Bot | <span class="badge-built">已实现</span> | `admin.notify.read`;写 `admin.notify.write`;准入 `admin.bot.access`;开户分组 `admin.groups.write` |
 | `/admin/scheduler` | 计划任务(任务 / 历史两个标签) | <span class="badge-built">已实现</span> | `admin.scheduler.read`;写 `admin.scheduler.write` |
 | `/admin/audit` | 审计日志 | <span class="badge-built">已实现</span> | `admin.audit.read` |
+| `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
+| `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
 
 ### 系统区与超管专区
 

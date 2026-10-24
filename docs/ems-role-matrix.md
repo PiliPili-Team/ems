@@ -43,6 +43,7 @@ A visible page can still return backend `403` or `409` for resource-level checks
 | Subscription | — | V/E own requests | V/E own requests | V/E own requests plus admin scope where granted | V/E own requests plus admin scope where granted |
 | Workflow and organization | — unless explicitly granted | — unless explicitly granted | — unless explicitly granted | V/E by `manage.*` permission | V/E by `manage.*` permission |
 | Personal profile | V/E self | V/E self | V/E self | V/E self | V/E self |
+| Feedback tickets | V/E own (`feedback.self`) | V/E own | V/E own | V/E own; all tickets with `admin.feedback.read`; write/refund by grant | V/E all |
 | User administration | — | — | — | V/E only allowed admin operations | V/E including super-only operations |
 | Plugin administration | — | — | — | V/E by admin permission | V/E by admin permission |
 | System settings | — | — | — | V/E by admin permission | V/E including super-only settings |
@@ -84,6 +85,7 @@ A backend policy can deny a feature even when the client flag is present.
 | Manage stream nodes/lines | E if `admin.streams.watch` or the specific write permission | E |
 | Manage custom access groups and their members | V with `admin.groups.read`, E with `admin.groups.write`; ordinary/VIP/whitelist users are refused | E |
 | Manage notifications and bot access | E by specific admin permission | E |
+| Reply to and refund feedback | V all with `admin.feedback.read`; E with `admin.feedback.write`; refund with `admin.feedback.refund` | E |
 | Issue/revoke/rotate API keys | — | E by `super.apikeys.write` |
 | Inspect protected Swagger/OpenAPI | V | V |
 | Bootstrap setup | Only one-time setup exception | Only one-time setup exception |
