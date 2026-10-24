@@ -128,4 +128,7 @@
 | 2026-10-24 | 计划任务 | 「立即运行」返回 `runId` 后每 3 秒轮询历史,最长 60 秒;超过则停止并提示到历史查看 | 后端没有运行进度接口;按运行记录轮询是唯一可观测状态 |
 | 2026-10-24 | Telegram | 个人资料新增 Telegram 绑定区块：10 分钟一次性码、主 Bot 深链、`/bind <code>` 复制、3 秒轮询与解绑确认；深链由主 Bot 用户名推导，无主 Bot 时 `bind-code`/`link` 返回 409 `TELEGRAM_UNAVAILABLE` | 后端已有绑定能力但无入口，且深链不能继续依赖静态环境变量；用户换 Bot 后深链必须跟随主 Bot |
 | 2026-10-24 | Telegram | 绑定与解绑不再递增 `authorization_revision`，因此不撤销既有 Web 会话；Telegram 登录每次按绑定表实时判定，解绑后立即不能再登录或打开 Mini App | 前端在生成绑定码后必须持续轮询绑定列表；若绑定动作递增 revision，会立刻把正在轮询的 Web 会话判为失效，用户看不到成功状态。安全边界由绑定表删除保证，而不是复用权限/密码变更的会话撤销机制 |
+| 2026-10-24 | Telegram Mini App | Mini App 不新增 `/m` 页面，复用同一套响应式页面并增加专用外壳：底部五标签、Telegram 安全区/主题/返回按钮、无侧栏与全局入口；管理、系统、超管路径在路由层重定向到默认标签 | 用户已确认沿用现有页面；单独的业务视图会产生第二份实现与权限漂移。路由封锁只是体验层，后端仍独立鉴权 |
+| 2026-10-24 | Telegram Mini App | 登录失败改为固定错误码 `telegram_not_bound`、`telegram_admission_denied`、`account_disabled`、`telegram_init_expired`；小部件登录仍保留既有错误码 | Mini App 需要为每种状态呈现明确空态，而登录页小部件只显示通用失败；两套入口不能共用同一映射 |
+| 2026-10-24 | Telegram Mini App | 菜单按钮同步为管理员手动动作，不随 Bot 保存自动执行；域名未配置返回 409 `domain_not_set`，非会员 Bot 返回 422 | 保存配置不应产生对外副作用；域名是 Telegram Web App 的硬前提，必须让管理员先补齐 |
 

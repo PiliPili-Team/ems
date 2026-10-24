@@ -38,6 +38,7 @@ export default withMermaid({
           { text: 'P7 求片', link: '/modules/wishes' },
           { text: 'P8 发现', link: '/modules/discover' },
           { text: 'P9 个人资料与安全', link: '/modules/profile' },
+          { text: 'P10 Telegram Mini App', link: '/modules/miniapp' },
         ],
       },
       {
