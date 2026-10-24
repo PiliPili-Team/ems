@@ -1,6 +1,6 @@
 # P9 个人资料与安全
 
-<span class="badge-built">已实现</span> 外观设置已有独立的自定义项；Telegram 绑定与会话管理需核对完整度。
+<span class="badge-built">已实现</span> 外观设置已有独立的自定义项；Telegram 绑定支持生成一次性码、深链与解绑。
 
 ## 子功能
 
@@ -10,7 +10,7 @@
 | 密码 | 旧密码、新密码、确认 | 勾选“同时退出其他设备”；成功后提示 |
 | 通行密钥 | 已注册列表（名称、创建时间） | 添加（调起 WebAuthn）；删除需确认 |
 | 登录会话 | 当前与其他设备列表（设备、IP、最近活动） | 可撤销其他会话；当前会话标记“本设备” |
-| Telegram 绑定 | 已绑定账号列表 | “生成绑定码”显示一次性码与 Bot 深链按钮；可解绑 |
+| Telegram 绑定 | 已绑定账号列表（显示名、绑定时间） | “生成绑定码”显示 10 分钟一次性码、剩余秒数、Bot 深链与 `/bind <code>` 复制按钮；显示期间每 3 秒读取绑定列表，成功后自动收起；可确认解绑 |
 | 外观 | 主题（浅 / 深 / 跟随系统）、主题风格、布局与圆角、透明度预设 | 实时预览；保存后跨设备同步；失败保留预览并提示 |
 | 语言 | 简体中文、English | 立即切换并保存 |
 | 当前线路 | 显示所选线路 | 跳转 [线路](/modules/lines) |
@@ -27,7 +27,10 @@
 - 旧密码错误：字段内联错误；限流时显示等待时间。
 - 外观并发保存：版本冲突时提示并重新拉取。
 - 会话被撤销后：下一次请求跳转登录。
+- Telegram 未启用（没有主 Bot）：只显示“管理员尚未启用 Telegram”，不显示生成按钮。
+- 绑定码过期：提示重新生成；限流：显示等待秒数并暂时禁用按钮。
+- 解绑：只能解绑自己的绑定；解绑后该 Telegram 账号不能再登录或打开 Mini App，但**不撤销既有会话**。
 
 ## 依赖接口
 
-`/auth/me`、`PATCH /auth/password`、`/me/profile`、`/me/avatar`、`/me/passkeys`、`/me/sessions`、`/me/telegram/*`、`/me/appearance`。
+`/auth/me`、`PATCH /auth/password`、`/me/profile`、`/me/avatar`、`/me/passkeys`、`/me/sessions`、`/me/telegram/*`、`DELETE /me/telegram/bindings/{id}`、`/me/appearance`。
