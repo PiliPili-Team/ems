@@ -69,6 +69,7 @@ flowchart TD
 | 路由 | 页面 | 状态 | 读权限 / 条件 |
 |---|---|---|---|
 | `/apps` | 首页 / 应用中心（暂不在菜单展示，样式待调整；移动端“更多”仍可进入） | <span class="badge-built">已实现</span> 已隐藏 | 已登录 |
+| `/board` | 观影看板（个人） | <span class="badge-built">已实现</span> | 已登录；媒体数据模块需有效媒体账号 |
 | `/credits/:paths+` `/person` `/media` | 影视详情（归属“搜索结果”；发现与音乐已移除） | <span class="badge-built">已实现</span> | 已登录 |
 | `/saved-searches` | 搜索结果（始终可见；心愿按钮由心愿开关控制） | <span class="badge-built">已实现</span> | 已登录 |
 | `/wishes` | 心愿中心 | <span class="badge-built">已实现</span> | `wish.self` + 心愿开关;无有效媒体账号时显示“心愿需要媒体账号”空态 |
@@ -89,7 +90,7 @@ flowchart TD
 
 | 路由 | 页面 | 状态 | 读权限 |
 |---|---|---|---|
-| `/dashboard` | 运营仪表盘（敏感内容，仅管理员） | <span class="badge-built">已实现</span> | `admin.system.read` / `admin.streams.watch` |
+| `/dashboard` | 运营看板（敏感内容，仅管理员） | <span class="badge-built">已实现</span> | `admin.system.read` |
 | `/user` | 用户管理 | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/users/:uid/tree` | 邀请树(用户页子页面;剪枝按钮需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
 | `/admin/prune-actions` | 剪枝记录(用户页标签;回滚需 `admin.users.prune`) | <span class="badge-built">已实现</span> | `admin.users.read` |
@@ -100,29 +101,28 @@ flowchart TD
 | `/admin/checkin` | 签到设置(默认区间、分组规则、试算) | <span class="badge-built">已实现</span> | `admin.checkin.read`;写:`admin.checkin.write` |
 | `/admin/points` | 积分调整、对账与系统账户 | <span class="badge-built">已实现</span> | `admin.points.adjust` 或 `admin.points.read` |
 | `/admin/groups` | 访问分组 | <span class="badge-built">已实现</span> | `admin.groups.read`；写入 `admin.groups.write` |
-| `/admin/media-servers` | 媒体服务器 | <span class="badge-built">已实现</span> | `admin.config.media` |
-| `/admin/media-accounts` | 媒体账号管理 | <span class="badge-planned">待实现</span> | `admin.media.write` |
+| `/admin/media-servers` | 媒体服务器(含认领配置高级设置) | <span class="badge-built">已实现</span> | `admin.config.media.read`;写 `admin.config.media`、`admin.libraries.write`;认领开关 `admin.config.write` |
+| `/admin/media-accounts` | 媒体账号管理(账号 / 认领两个标签) | <span class="badge-built">已实现</span> | `admin.media.read`;停用/恢复/重置 `admin.media.write`;认领审批 `admin.media.claim_review` |
 | `/admin/stream/nodes` | 推流节点(含健康状态) | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
 | `/admin/stream/lines` | 推流线路 | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
-| `/admin/notify` | 通知与 Bot | <span class="badge-planned">待实现</span> | `admin.notify.write` |
+| `/admin/notify` | 通知与 Bot | <span class="badge-planned">待实现</span> | `admin.notify.read`;写 `admin.notify.write`、`admin.bot.access` |
 | `/admin/scheduler` | 计划任务 | <span class="badge-planned">待实现</span> | `admin.scheduler.read` |
-| `/admin/audit` | 审计日志 | <span class="badge-planned">待实现</span> | `admin.audit.read` |
+| `/admin/audit` | 审计日志 | <span class="badge-built">已实现</span> | `admin.audit.read` |
 
 ### 系统区与超管专区
 
 | 路由 | 页面 | 状态 | 读权限 |
 |---|---|---|---|
-| `/setting` | 系统设置 | <span class="badge-built">已实现</span> | `admin.config.write` |
+| `/setting` | 高级设置 | <span class="badge-built">已实现</span> | 已登录(各分区按权限显示) |
 | `/plugins` | 插件 | <span class="badge-built">已实现</span> | admin |
 | `/filemanager` | 宿主机文件 | <span class="badge-built">已实现</span> | `admin.files.read`；写入 `super.files.write` |
-| `/openapi` | OpenAPI 文档（内置页面，仅管理员） | <span class="badge-built">已实现</span> | `admin.system.read` |
 | `/super/admins` | 管理员管理 | <span class="badge-built">已实现</span> | `super.admins.write` |
 | `/super/api-keys` | API Key | <span class="badge-built">已实现</span> | `super.apikeys.write` |
 | `/super/bootstrap` | 引导配置（只读脱敏） | <span class="badge-built">已实现</span> | `super.bootstrap.read` |
 
 ## 登录后落地页
 
-登录后管理员进入 `/dashboard`，持有 `media.self` 的成员进入 `/my-media`，其余进入 `/saved-searches`。若请求带有原目标路径，优先回到该路径。
+登录后，持有 `admin.system.read` 的管理员进入 `/dashboard`（运营看板），其余登录用户进入 `/board`（观影看板）；`/` 与旧的 `/openapi` 都重定向到同一结果。若请求带有原目标路径，优先回到该路径。
 
 ## 路由守卫顺序
 

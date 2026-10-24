@@ -39,7 +39,7 @@
 | 心愿 | `admin.wish.read` | 处理心愿与设置个人/分组每日发放规则(`admin.wish.write`);价格和全局策略另需 `admin.config.write` |
 | 商店 | `admin.shop.read` | 管理商品、礼品卡与优惠券;查看礼品卡号(`admin.shop.reveal`,高风险) |
 | 积分 / 红包 / 签到 | `admin.points.read`、`admin.redpacket.read`、`admin.checkin.read` | 调整积分(高风险)、发放红包与改红包规则、改签到规则 |
-| 通知与 Bot | `admin.notify.read` | 管理 Bot、配置 Bot 准入 |
+| 通知与 Bot | `admin.notify.read` | 管理 Bot(`admin.notify.write`)、配置 Bot 准入(`admin.bot.access`) |
 | 计划任务 | `admin.scheduler.read` | 启停、编辑、立即运行 |
 | 系统配置 | `admin.config.read` | 发布业务配置(高风险) |
 

@@ -333,10 +333,10 @@ Observed from `submodules/backend/crates/ems-api/contracts/planned-v1.json`. Sta
 | POST | `/admin/groups/{id}/members/remove` | E267 | implemented | implement-v2-access-groups | access_groups | admin.groups.write |
 | GET | `/admin/groups/{id}/candidates` | E268 | implemented | implement-v2-access-groups | access_groups | admin.groups.read |
 | POST | `/admin/access-scope/preview` | E269 | implemented | implement-v2-access-groups | access_groups | admin.groups.read |
-| GET | `/admin/media-accounts` | E072 | implemented | implement-v2-media-accounts | media_admin | admin.media.write |
-| GET | `/admin/media-accounts/{id}` | E073 | implemented | implement-v2-media-accounts | media_admin | admin.media.write |
+| GET | `/admin/media-accounts` | E072 | implemented | implement-v2-media-accounts | media_admin | admin.media.read |
+| GET | `/admin/media-accounts/{id}` | E073 | implemented | implement-v2-media-accounts | media_admin | admin.media.read |
 | PATCH | `/admin/media-accounts/{id}` | E074 | implemented | implement-v2-media-accounts | media_admin | admin.media.write |
-| GET | `/admin/media-servers/{id}/claims` | E075 | implemented | implement-v2-media-accounts | media_admin | admin.media.claim_review |
+| GET | `/admin/media-servers/{id}/claims` | E075 | implemented | implement-v2-media-accounts | media_admin | admin.media.read |
 | PATCH | `/admin/media-servers/{id}/claims/{claimId}` | E076 | implemented | implement-v2-media-accounts | claim_review | admin.media.claim_review |
 | GET | `/admin/streams` | E077 | implemented | implement-v2-media-observation | device_statistics | admin.streams.watch |
 | POST | `/admin/streams/ticket` | E078 | implemented | implement-v2-identity-access | stream_ticket | admin.streams.watch |
