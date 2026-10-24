@@ -106,7 +106,7 @@ flowchart TD
 | `/admin/stream/nodes` | 推流节点(含健康状态) | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
 | `/admin/stream/lines` | 推流线路 | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
 | `/admin/notify` | 通知与 Bot | <span class="badge-planned">待实现</span> | `admin.notify.read`;写 `admin.notify.write`、`admin.bot.access` |
-| `/admin/scheduler` | 计划任务 | <span class="badge-planned">待实现</span> | `admin.scheduler.read` |
+| `/admin/scheduler` | 计划任务(任务 / 历史两个标签) | <span class="badge-built">已实现</span> | `admin.scheduler.read`;写 `admin.scheduler.write` |
 | `/admin/audit` | 审计日志 | <span class="badge-built">已实现</span> | `admin.audit.read` |
 
 ### 系统区与超管专区
