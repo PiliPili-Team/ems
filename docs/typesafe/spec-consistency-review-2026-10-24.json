@@ -1,0 +1,488 @@
+{
+ "batch": "spec-consistency-review",
+ "date": "2026-10-24",
+ "model": "jev-latest",
+ "results": {
+  "media-account-admin-page": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.18
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.31
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.16
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.42
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.21
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.29
+    }
+   },
+   "usage": {
+    "input_tokens": 6916,
+    "output_tokens": 117
+   }
+  },
+  "scheduler-page": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.08
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.42
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.15
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.5
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.16
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.35
+    }
+   },
+   "usage": {
+    "input_tokens": 4032,
+    "output_tokens": 117
+   }
+  },
+  "bot-registry": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.11
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.31
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.14
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.29
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.32
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.25
+    }
+   },
+   "usage": {
+    "input_tokens": 10165,
+    "output_tokens": 117
+   }
+  },
+  "telegram-account-binding": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.23
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.54
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.25
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.2
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.13
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.34
+    }
+   },
+   "usage": {
+    "input_tokens": 3209,
+    "output_tokens": 117
+   }
+  },
+  "telegram-miniapp": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.1
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.27
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.13
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.26
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.18
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.34
+    }
+   },
+   "usage": {
+    "input_tokens": 5459,
+    "output_tokens": 117
+   }
+  },
+  "lucky-foundation": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.83
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.54
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.84
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.84
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.13
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.4
+    }
+   },
+   "usage": {
+    "input_tokens": 7056,
+    "output_tokens": 117
+   }
+  },
+  "magic-prize": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.67
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.29
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.9
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.21
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.22
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.38
+    }
+   },
+   "usage": {
+    "input_tokens": 6711,
+    "output_tokens": 117
+   }
+  },
+  "lottery-draws": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.67
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.66
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.78
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.52
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.38
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.41
+    }
+   },
+   "usage": {
+    "input_tokens": 7481,
+    "output_tokens": 117
+   }
+  },
+  "mini-games": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.54
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.78
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.75
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.3
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.33
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.4
+    }
+   },
+   "usage": {
+    "input_tokens": 6581,
+    "output_tokens": 117
+   }
+  },
+  "activity-core": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.22
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.56
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.36
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.52
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.24
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.43
+    }
+   },
+   "usage": {
+    "input_tokens": 8854,
+    "output_tokens": 117
+   }
+  },
+  "activity-rewards": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.64
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.71
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.83
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.77
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.17
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.51
+    }
+   },
+   "usage": {
+    "input_tokens": 6677,
+    "output_tokens": 117
+   }
+  },
+  "feedback-tickets": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.6
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.55
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.54
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.82
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.35
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.39
+    }
+   },
+   "usage": {
+    "input_tokens": 9229,
+    "output_tokens": 117
+   }
+  },
+  "admin-rewards": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.64
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.58
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.74
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.73
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.3
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.38
+    }
+   },
+   "usage": {
+    "input_tokens": 9254,
+    "output_tokens": 117
+   }
+  },
+  "raffle-bot": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.61
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.61
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.61
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.8
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.38
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.37
+    }
+   },
+   "usage": {
+    "input_tokens": 10724,
+    "output_tokens": 117
+   }
+  },
+  "raffle-user-sponsor": {
+   "answers": {
+    "conservation": {
+     "type": "noul",
+     "noul": 0.77
+    },
+    "terminal_states": {
+     "type": "noul",
+     "noul": 0.66
+    },
+    "idempotent_money": {
+     "type": "noul",
+     "noul": 0.79
+    },
+    "default_admin_cannot_spend": {
+     "type": "noul",
+     "noul": 0.21
+    },
+    "contradiction": {
+     "type": "noul",
+     "noul": 0.18
+    },
+    "self_contained": {
+     "type": "noul",
+     "noul": 0.43
+    }
+   },
+   "usage": {
+    "input_tokens": 7153,
+    "output_tokens": 117
+   }
+  }
+ },
+ "note": "Narrow yes/no probabilities (noul = P(yes)) used as input to a human review, not as approval. Questions: conservation, terminal_states, idempotent_money, default_admin_cannot_spend, contradiction, self_contained. Low scores on specs with no money flow are expected. Final run after the 2026-10-24 AGENTS.md id-rule update."
+}
