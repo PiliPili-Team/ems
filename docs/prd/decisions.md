@@ -16,6 +16,8 @@
 | 10 | 宿主机文件 | 归入系统区，保持 `/filemanager` 路径 | [A6](/modules/system) |
 | 11 | Mini App | 首期交付 | [Mini App](/miniapp) |
 
+| 2026-10-24 | 通知与 Bot | `/admin/bot` 与全局 `notify.botAccess` 删除;统一为多 Bot 注册表,能力 `notify/member/registration/raffle`,`registration` 必须含 `member`;每 Bot 独立会话绑定、准入与管理者名单;主会员 Bot 至多一个;Top5 收件人来自绑定事件 | 旧单业务 Bot 与全局准入无法表达多 Bot、能力差异和按 Bot 的会话权限 |
+
 ## 仍待复议
 
 | 议题 | 说明 |

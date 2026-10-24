@@ -1,6 +1,6 @@
 # A5 心愿管理、通知与计划任务
 
-心愿管理 `/admin/wishes` 对持 `admin.wish.read` 的管理员开放;通知接口为 planned;计划任务接口已实现。
+心愿管理 `/admin/wishes` 对持 `admin.wish.read` 的管理员开放;通知与 Bot 页面及接口已实现;计划任务接口已实现。
 
 ## 心愿管理 `/admin/wishes`
 
@@ -14,14 +14,23 @@
 
 ## 通知与 Bot `/admin/notify`
 
+只读权限为 `admin.notify.read`；只读管理员看到「仅查看」，页面不渲染任何写控件。写操作需 `admin.notify.write`；准入规则需 `admin.bot.access`；开户分组设置同时需要 `admin.notify.write` 与 `admin.groups.write`。
+
 | 子功能 | 展示 | 交互 |
 |---|---|---|
-| Bot 配置 | 列表：名称、状态；表单：Token、代理（可选） | Token 只显示“已设置”；“发送测试”直接发消息 |
-| 订阅矩阵 | 行为会话（chatId），列为事件（每日 Top5、每周 Top5） | 勾选即保存 |
-| 推送预览 | “预览 Top5”按钮 | 展示海报、文字与链接的推送样式 |
-| Bot 群组准入 | 群组列表，规则 all / any | “探测”验证机器人在群内权限；保存后 10 分钟缓存内生效 |
+| Bot 列表 | 名称、`@username`、能力芯片、主 Bot 徽标、启停开关、绑定会话数、告警徽标 | 「新建 Bot」「预览 Top5」；停用最早创建的 Bot 不受限制；可手动指定主会员 Bot |
+| 新建 Bot | 名称、Token、类型预设、能力勾选 | Token 经 `getMe` 校验后加密保存；重复 Token 返回 409；能力 `registration` 必须同时具备 `member`；默认启用 |
+| 详情抽屉 | 基本、能力、Bot 管理者、群组与频道、准入、开户分组 | 保存提交 `expectedVersion`，409 提示并刷新；关闭丢弃未保存修改 |
+| 会话绑定 | 标题、类型、探测状态、Top5 事件、活跃度、抽奖开关 | 输入 `chatId` 后由后端 `getChat` 取标题；勾选事件即时保存；解除绑定同时移除订阅与准入引用 |
+| 探测与测试 | 机器人身份、能否发消息、能否读取群消息 | 探测每 Bot 每分钟最多 6 次；测试目标必须已绑定 |
+| 推送预览 | 每日/每周 Top5 的推送文本 | 展示后端下发的 caption；预览不发送消息 |
+| Bot 管理者 | Telegram 用户 ID 列表（最多 20） | 不要求绑定 EMS、不按角色过滤；不授予面板权限；绑定到禁用账号时命令被拒 |
+| Bot 群组准入 | 启用、all/any、会话多选 | 会话必须属于该 Bot 的绑定；保存后最多 10 分钟生效 |
+| 开户加入分组 | 搜索选择访问分组 | 开户成功后再尝试入组；失败不回滚开户，写审计与系统日志并在 Bot 卡片提示 |
 
-## 计划任务 `/admin/scheduler`
+Bot 命令门控在后端：不具备对应能力的 Bot 静默忽略命令；`/top5`、`/status` 仅 Bot 管理者可用；`/subscribe`、`/unsubscribe` 还要求发送者实时持有 `admin.notify.write`。
+
+## 计划任务 `/admin/scheduler`## 计划任务 `/admin/scheduler`
 
 页面有「任务」「历史」两个等宽标签。任务名称与说明来自三语 locale；未知任务 key 直接显示 key，功能不受影响。
 
@@ -40,17 +49,17 @@ Top5 两个任务没有参数，收件人只来自通知订阅；提交遗留的
 | 能力 | admin | super_admin |
 |---|---|---|
 | 心愿管理 | 查看:默认;流转、重新激活和个人/分组发放规则:被授予 `admin.wish.write`;全局策略编辑:`admin.config.write` | 是 |
-| 通知与 Bot | 有 `admin.notify.write`；群组准入需 `admin.bot.access` | 是 |
+| 通知与 Bot | 有 `admin.notify.write`；群组准入需 `admin.bot.access`；开户分组需 `admin.groups.write` | 是 |
 | 计划任务查看 | `admin.scheduler.read` | 是 |
 | 计划任务启停、编辑、触发 | `admin.scheduler.write` | 是 |
 
 ## 状态与边界
 
 - 手动触发时任务已有未完成运行或队列已满：后端返回 429，按钮保持「运行中」并提示稍后再试。
-- Bot Token 无效：测试失败显示 Telegram 返回的原因。
+- Bot Token 无效：创建/替换返回 422 固定分类，不回显 Telegram 原文。
 - 执行失败/超时/取消/租约过期：历史中显示固定错误分类，不显示原始诊断。
-- Top5 的收件人只在通知订阅里配置，任务参数不接受 `chatIds`。
+- Top5 的收件人只来自各 Bot 的会话绑定与事件订阅，任务参数不接受 `chatIds`。
 
 ## 依赖接口
 
-`/admin/wishes*`、`/admin/notify/*`、`/admin/bot*`、`/admin/scheduler/*`。
+`/admin/wishes*`、`/admin/notify/*`、`/admin/scheduler/*`。

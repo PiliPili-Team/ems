@@ -105,7 +105,7 @@ flowchart TD
 | `/admin/media-accounts` | 媒体账号管理(账号 / 认领两个标签) | <span class="badge-built">已实现</span> | `admin.media.read`;停用/恢复/重置 `admin.media.write`;认领审批 `admin.media.claim_review` |
 | `/admin/stream/nodes` | 推流节点(含健康状态) | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
 | `/admin/stream/lines` | 推流线路 | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
-| `/admin/notify` | 通知与 Bot | <span class="badge-planned">待实现</span> | `admin.notify.read`;写 `admin.notify.write`、`admin.bot.access` |
+| `/admin/notify` | 通知与 Bot | <span class="badge-built">已实现</span> | `admin.notify.read`;写 `admin.notify.write`;准入 `admin.bot.access`;开户分组 `admin.groups.write` |
 | `/admin/scheduler` | 计划任务(任务 / 历史两个标签) | <span class="badge-built">已实现</span> | `admin.scheduler.read`;写 `admin.scheduler.write` |
 | `/admin/audit` | 审计日志 | <span class="badge-built">已实现</span> | `admin.audit.read` |
 
