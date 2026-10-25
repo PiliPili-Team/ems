@@ -23,6 +23,7 @@ flowchart TD
     PERSONAL --> P7["我的商店 /shop"]
     PERSONAL --> P8["个人资料 /profile"]
     PERSONAL --> P9["我的工单 /feedback"]
+    PERSONAL --> P10["幸运中心 /lucky"]
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
     ADMIN --> A2["用户管理 /user"]
@@ -32,6 +33,7 @@ flowchart TD
     ADMIN --> A6["推流节点与线路"]
     ADMIN --> A7["通知 · 计划任务 · 审计"]
     ADMIN --> A8["工单管理 /admin/feedback"]
+    ADMIN --> A9["幸运中心管理 /admin/lucky"]
 
     SYSTEM --> S1["系统设置 /setting"]
     SYSTEM --> S2["插件 /plugins"]
@@ -85,6 +87,8 @@ flowchart TD
 | `/profile` | 个人资料与安全 | <span class="badge-built">已实现</span> | 已登录 |
 | `/feedback` | 我的工单 | <span class="badge-built">已实现</span> | `feedback.self`；提交费与附件开关来自 `feedback` 配置域 |
 | `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
+| `/lucky` | 幸运中心入口(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
+| `/lucky/history` | 我的记录:对局、抽奖券、限额与冷静期 | <span class="badge-built">已实现</span> | 同上 |
 
 ::: warning 路由冲突
 现有 `/media` 是“发现”的媒体详情页，因此“我的媒体账号”使用 `/my-media`。
@@ -114,6 +118,7 @@ flowchart TD
 | `/admin/audit` | 审计日志 | <span class="badge-built">已实现</span> | `admin.audit.read` |
 | `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
 | `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
+| `/admin/lucky` | 幸运中心管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
 
 ### 系统区与超管专区
 
