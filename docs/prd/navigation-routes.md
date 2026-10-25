@@ -89,6 +89,7 @@ flowchart TD
 | `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
 | `/lucky` | 幸运中心入口(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
 | `/lucky/history` | 我的记录:对局、抽奖券、限额与冷静期 | <span class="badge-built">已实现</span> | 同上 |
+| `/lucky/lottery` | 彩票:选号与机选、注单、倒计时、奖池、赔率、历史、验证 | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled` + `lucky.lottery.enabled`;关闭返回 404 |
 
 ::: warning 路由冲突
 现有 `/media` 是“发现”的媒体详情页，因此“我的媒体账号”使用 `/my-media`。
@@ -119,6 +120,7 @@ flowchart TD
 | `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
 | `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
 | `/admin/lucky` | 幸运中心管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
+| `/admin/lucky/lottery` | 彩票管理:规则与开关、即时概率与返还、期次、缩减告警、注入奖池 | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注入奖池 `super.lucky.fund` |
 
 ### 系统区与超管专区
 
