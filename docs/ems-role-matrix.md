@@ -44,6 +44,7 @@ A visible page can still return backend `403` or `409` for resource-level checks
 | Workflow and organization | — unless explicitly granted | — unless explicitly granted | — unless explicitly granted | V/E by `manage.*` permission | V/E by `manage.*` permission |
 | Personal profile | V/E self | V/E self | V/E self | V/E self | V/E self |
 | Feedback tickets | V/E own (`feedback.self`) | V/E own | V/E own | V/E own; all tickets with `admin.feedback.read`; write/refund by grant | V/E all |
+| Activity | V own score and visit when `activity.enabled` (`activity.self`); 404 when off | same | same | V rules, status, site totals and audited user lookups with `admin.activity.read`; E rules by `admin.activity.write` | V/E all |
 | Lucky center | V/E own when `lucky.enabled` (`lucky.self`); 404 when off | same | same | own as a member; overview, settings and rounds with `admin.lucky.read`; settings, ticket grants, the magic-prize pool and its publication by `admin.lucky.write`; the hand-out queue by `admin.lucky.fulfil` | V/E all, plus bankroll funding |
 | Lottery | V/E own bets when `lucky.enabled` and `lucky.lottery.enabled`; 404 when off | same | same | V rules, periods and odds with `admin.lucky.read`; E rules by `admin.lucky.write` | V/E all, plus fund the rolling pool |
 | Mini games | V/E own rounds when `lucky.enabled` and `lucky.games.enabled`; 404 when off | same | same | V rules, odds and open rounds with `admin.lucky.read`; E rules by `admin.lucky.write` | V/E all |
@@ -93,6 +94,8 @@ A backend policy can deny a feature even when the client flag is present.
 | Fund the lucky bankroll | — | E by `super.lucky.fund` |
 | Configure the lottery and publish its rules | V all with `admin.lucky.read`; E with `admin.lucky.write` | E |
 | Configure the mini games and publish their odds | V all with `admin.lucky.read`; E with `admin.lucky.write` | E |
+| Configure activity weights, caps and milestones | V all with `admin.activity.read`; E with `admin.activity.write` | E |
+| Look up a user's activity facts | V by UID, audited | V/E by UID, audited |
 | Fund a lottery rolling pool | — | E by `super.lucky.fund` |
 | Reply to and refund feedback | V all with `admin.feedback.read`; E with `admin.feedback.write`; refund with `admin.feedback.refund` | E |
 | Issue/revoke/rotate API keys | — | E by `super.apikeys.write` |

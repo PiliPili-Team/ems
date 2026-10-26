@@ -43,6 +43,7 @@
 | 计划任务 | `admin.scheduler.read` | 启停、编辑、立即运行 |
 | 工单 | `admin.feedback.read` | 回复、内部备注、关闭、重开、认领、优先级与设置(`admin.feedback.write`);全额退款(`admin.feedback.refund`,高风险) |
 | 幸运中心 | `admin.lucky.read` | 全局设置、发放抽奖券、玩法配置(`admin.lucky.write`);处理自定义奖品(`admin.lucky.fulfil`) |
+| 活跃度 | `admin.activity.read` | 修改权重、每日上限与里程碑加分(`admin.activity.write`);用户查询只读并写审计 |
 | 系统配置 | `admin.config.read` | 发布业务配置(高风险) |
 
 共 25 项可授予写权限。纯超管、不可授予的权限不变(管理员管理、API Key、引导配置、红包铸造、签到奖励上限、对账终结、宿主机文件写入、庄家注资 `super.lucky.fund`)。授权弹窗支持搜索、按业务域折叠、整组开关、高风险提示,并在底栏显示相对原来的增减。

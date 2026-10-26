@@ -24,6 +24,7 @@ flowchart TD
     PERSONAL --> P8["个人资料 /profile"]
     PERSONAL --> P9["我的工单 /feedback"]
     PERSONAL --> P10["幸运中心 /lucky"]
+    PERSONAL --> P11["活跃度 /activity"]
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
     ADMIN --> A2["用户管理 /user"]
@@ -34,6 +35,7 @@ flowchart TD
     ADMIN --> A7["通知 · 计划任务 · 审计"]
     ADMIN --> A8["工单管理 /admin/feedback"]
     ADMIN --> A9["幸运中心管理 /admin/lucky"]
+    ADMIN --> A10["活跃度管理 /admin/activity"]
 
     SYSTEM --> S1["系统设置 /setting"]
     SYSTEM --> S2["插件 /plugins"]
@@ -88,6 +90,7 @@ flowchart TD
 | `/feedback` | 我的工单 | <span class="badge-built">已实现</span> | `feedback.self`；提交费与附件开关来自 `feedback` 配置域 |
 | `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
 | `/lucky` | 幸运中心入口(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
+| `/activity` | 活跃度:今日进度、分数、连续签到、观影时长、热力图 | <span class="badge-built">已实现</span> | `activity.self` + `activity.enabled`;关闭返回 404 |
 | `/lucky/history` | 我的记录:对局、抽奖券、限额与冷静期 | <span class="badge-built">已实现</span> | 同上 |
 | `/lucky/lottery` | 彩票:选号与机选、注单、倒计时、奖池、赔率、历史、验证 | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled` + `lucky.lottery.enabled`;关闭返回 404 |
 | `/lucky/games` | 小游戏入口:五张卡片、理论返还率、当前上限、进行中 | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled` + `lucky.games.enabled`;关闭返回 404 |
@@ -126,6 +129,7 @@ flowchart TD
 | `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
 | `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
 | `/admin/lucky` | 幸运中心管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
+| `/admin/activity` | 活跃度管理:权重与上限、信号状态、近 7 天统计、按 UID 查询、达标人数 | <span class="badge-built">已实现</span> | `admin.activity.read`；写 `admin.activity.write` |
 | `/admin/lucky/lottery` | 彩票管理:规则与开关、即时概率与返还、期次、缩减告警、注入奖池 | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注入奖池 `super.lucky.fund` |
 | `/admin/lucky/games` | 小游戏管理:逐游戏开关、下注范围、赔率与即时返还校验、统计、进行中 | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write` |
 

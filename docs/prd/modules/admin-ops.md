@@ -49,6 +49,8 @@ Top5 两个任务没有参数，收件人只来自通知订阅；提交遗留的
 
 `games.settle_stale` 每分钟扫描超过 10 分钟的进行中小游戏局:21 点按停牌结算,猜大小与猜数字按放弃结算(下注不退)。玩家操作触发的惰性结算与任务使用同一幂等键;关闭游戏开关不影响已开局的结算。
 
+`activity.close_day` 每日站点时区 00:05 关闭早于今天的活跃度日事实并冻结分数,启动后补跑;`activity.sync_watch_time` 每 30 分钟同步 Playback Reporting,插件缺失或不可达时只把信号标为 `unavailable`,任务仍成功。
+
 ## 角色差异
 
 | 能力 | admin | super_admin |
