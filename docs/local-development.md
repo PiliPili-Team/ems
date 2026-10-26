@@ -87,8 +87,8 @@ reopen administrator creation. Explicit account recovery commands remain separat
 
 ## Frontend and WebStorm
 
-From `../ems-frontend`, install locked dependencies with Yarn1's
-`yarn install --frozen-lockfile` and run `yarn dev`. Configure WebStorm's package manager as Yarn; use the retained
+From `../ems-frontend`, install locked dependencies with pnpm 12 (Node 24+)
+`pnpm install --frozen-lockfile` and run `pnpm dev`. Configure WebStorm's package manager as pnpm; use the retained
 `EMS Frontend Dev` run configuration. `EMS_API_URL` defaults to the local API origin.
 
 Open the backend project with the Rust plugin and use `EMS Backend Cargo Run`.
@@ -109,9 +109,9 @@ schemas. Browser cookies apply across local ports for the same host; use
 ```bash
 # From the frontend sibling
 
-yarn typecheck
-yarn vitest run src/auth/__tests__/bootstrap.spec.ts src/pages/__tests__/initialize.spec.ts src/utils/__tests__/initialization.spec.ts
-yarn build
+pnpm typecheck
+pnpm test:run
+pnpm build
 
 # From the backend sibling; the embedded store needs no external service
 

@@ -41,7 +41,7 @@ backend remains authoritative for every protected request.
 
 ```bash
 cd submodules/backend && scripts/ems-build.sh
-cd submodules/frontend && yarn build
+cd submodules/frontend && pnpm build
 ```
 
 The integration repository pins both child commits. Run child checks before updating

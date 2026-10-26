@@ -1,0 +1,1096 @@
+{
+  "batch": "ui-next-spec-review",
+  "date": "2026-10-26",
+  "model": "jev-1.14.0",
+  "note": "Narrow yes/no probabilities (noul = P(yes)) and one readiness score, used as input to a human review, not as approval",
+  "results": {
+    "ui-next-foundation": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.9
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.74
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.28
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.14
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.26
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.84
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.13
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.95
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "readiness": {
+          "type": "score",
+          "score": 3.36,
+          "confidence": 0.69,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.63,
+            "4": 0.36
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 14543,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-theme-system": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.87
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.5
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.25
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.29
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.19
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.28
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.92
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.89
+        },
+        "readiness": {
+          "type": "score",
+          "score": 3.36,
+          "confidence": 0.68,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.62,
+            "4": 0.37
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 11891,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-brand-refresh": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.91
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.73
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.22
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.13
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.17
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.17
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.8
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.74
+        },
+        "readiness": {
+          "type": "score",
+          "score": 3.15,
+          "confidence": 0.83,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.02,
+            "3": 0.8,
+            "4": 0.18
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 7097,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-component-kit": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.93
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.71
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.31
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.15
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.17
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.88
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.21
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.95
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.82
+        },
+        "readiness": {
+          "type": "score",
+          "score": 3.24,
+          "confidence": 0.78,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.74,
+            "4": 0.25
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 6711,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-app-shell": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.88
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.52
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.3
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.23
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.91
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.3
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "readiness": {
+          "type": "score",
+          "score": 3.22,
+          "confidence": 0.8,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.76,
+            "4": 0.23
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 9917,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-auth": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.88
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.61
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.35
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.13
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.23
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.84
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.77,
+          "confidence": 0.77,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.23,
+            "3": 0.74,
+            "4": 0.02
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 7765,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-personal-media": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.86
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.79
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.26
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.13
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.18
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.14
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.85
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.84,
+          "confidence": 0.82,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.17,
+            "3": 0.79,
+            "4": 0.03
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 17982,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-points-commerce": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.91
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.79
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.25
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.19
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.1
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.81
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.82,
+          "confidence": 0.8,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.19,
+            "3": 0.77,
+            "4": 0.03
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 7387,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-profile-community": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.93
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.83
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.28
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.16
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.83
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.77,
+          "confidence": 0.77,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.23,
+            "3": 0.74,
+            "4": 0.02
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 6557,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-lucky": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.91
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.82
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.22
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.11
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.15
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.95
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.09
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.79
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.9,
+          "confidence": 0.85,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.13,
+            "3": 0.81,
+            "4": 0.05
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 7501,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-admin-ops": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.88
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.82
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.28
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.13
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.15
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.94
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.14
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.83
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.81,
+          "confidence": 0.8,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.2,
+            "3": 0.77,
+            "4": 0.02
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 10757,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-admin-commerce": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.9
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.82
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.22
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.18
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.93
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.1
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.81
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.75,
+          "confidence": 0.75,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.26,
+            "3": 0.71,
+            "4": 0.02
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 8461,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-admin-media-stream": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.87
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.78
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.27
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.13
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.16
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.93
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.1
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.79
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.8,
+          "confidence": 0.79,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.21,
+            "3": 0.76,
+            "4": 0.02
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 7111,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-admin-lucky-activity-feedback": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.9
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.83
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.26
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.1
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.15
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.93
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.11
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.8
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.81,
+          "confidence": 0.8,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.2,
+            "3": 0.77,
+            "4": 0.02
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 7420,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-pages-system-super": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.91
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.8
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.29
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.22
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.95
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.11
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.98
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.8
+        },
+        "readiness": {
+          "type": "score",
+          "score": 2.78,
+          "confidence": 0.78,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0.01,
+            "2": 0.22,
+            "3": 0.75,
+            "4": 0.02
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 6938,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    },
+    "ui-next-parity-cleanup": {
+      "answers": {
+        "scope_bounded": {
+          "type": "noul",
+          "noul": 0.99
+        },
+        "testable_requirements": {
+          "type": "noul",
+          "noul": 0.86
+        },
+        "tasks_cover_requirements": {
+          "type": "noul",
+          "noul": 0.85
+        },
+        "constraint_conflict": {
+          "type": "noul",
+          "noul": 0.22
+        },
+        "unresolved_blocker": {
+          "type": "noul",
+          "noul": 0.12
+        },
+        "internal_contradiction": {
+          "type": "noul",
+          "noul": 0.21
+        },
+        "dependencies_declared": {
+          "type": "noul",
+          "noul": 0.89
+        },
+        "scope_overlap": {
+          "type": "noul",
+          "noul": 0.17
+        },
+        "code_grounded": {
+          "type": "noul",
+          "noul": 0.96
+        },
+        "backend_specified": {
+          "type": "noul",
+          "noul": 0.77
+        },
+        "readiness": {
+          "type": "score",
+          "score": 3.22,
+          "confidence": 0.78,
+          "legend": {
+            "0": "Too vague to start: goals or scope are unclear",
+            "1": "Goals are clear but key technical decisions are missing",
+            "2": "Decisions are made but tasks or acceptance criteria are incomplete",
+            "3": "Decisions, tasks and acceptance criteria are complete; only minor details remain to settle during implementation",
+            "4": "Fully specified; an engineer could implement it without asking any further questions"
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.02,
+            "3": 0.74,
+            "4": 0.24
+          }
+        }
+      },
+      "usage": {
+        "input_tokens": 5150,
+        "output_tokens": 211
+      },
+      "model": "jev-1.14.0"
+    }
+  }
+}
