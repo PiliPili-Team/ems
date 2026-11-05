@@ -249,8 +249,6 @@ Observed from `submodules/backend/crates/ems-api/contracts/planned-v1.json`. Sta
 |---|---|---|---|---|---|---|
 | GET | `/openapi.json` | E001 | implemented | define-v2-boundaries-contracts | openapi_contract | admin.system.read |
 | GET | `/app/features` | E002 | implemented | implement-v2-config-runtime | public_appearance | public |
-| GET | `/app/appearance` | E003 | implemented | implement-v2-config-runtime | public_appearance | public |
-| GET | `/app/appearance/login-background` | E004 | implemented | implement-v2-config-runtime | public_appearance | public |
 | GET | `/app/version` | E005 | implemented | implement-v2-config-runtime | public_appearance | public |
 | GET | `/setup/status` | E006 | implemented | implement-v2-config-runtime | onboarding_origins | public |
 | POST | `/setup/admin` | E007 | implemented | implement-v2-identity-access | bootstrap_contract | operator-bootstrap |
