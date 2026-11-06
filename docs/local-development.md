@@ -36,10 +36,16 @@ export EMS_GATEWAY_LISTEN=127.0.0.1:24333
 export EMS_STREAM_BACKEND_LISTEN=127.0.0.1:24334
 export EMS_SWAGGER_LISTEN=127.0.0.1:23335
 export EMS_BOOTSTRAP_CORS_ORIGINS=http://127.0.0.1:23333
-# Set EMS_MASTER_KEY, EMS_BOOTSTRAP_TOKEN, EMS_ENCIPHER_KEY, and EMS_ENCIPHER_IV
+# Set EMS_MASTER_KEY, EMS_ENCIPHER_KEY, and EMS_ENCIPHER_IV
 # using private deployment-generated values before starting the process.
 cargo run --bin ems -- run
 ```
+
+The first start on an empty data directory creates the super administrator `admin`
+with a random 16-character password and its EMS KEY, and logs both once at WARN level.
+Sign in with that password; the first sign-in asks for a new one. Nothing is printed
+again on later starts. If either value is lost, stop the server and run
+`ems admin reset-password --username admin` or `ems admin reset-apikey`.
 
 `EMS_DEPLOY_MODE` selects what one process does. It replaces the former
 `EMS_RUN_ROLE` and `EMS_STREAM_MODE`, which are now rejected at startup.
@@ -128,8 +134,9 @@ Docker health checks, or final pinned-release validation.
 ## Compose
 
 Compose builds the exact local submodule worktrees; it does not fetch a branch.
-Provide `EMS_MASTER_KEY`, `EMS_BOOTSTRAP_TOKEN`, `EMS_ENCIPHER_KEY`
-and `EMS_ENCIPHER_IV` through private runtime environment values. The key constraints
+Provide `EMS_MASTER_KEY`, `EMS_ENCIPHER_KEY` and `EMS_ENCIPHER_IV`
+through private runtime environment values. Read the first administrator's password
+and EMS KEY from `docker compose logs backend` after the first start. The key constraints
 above also apply to containers. No usable secret defaults are included.
 
 Use Docker Compose with BuildKit/buildx support for the named integration build

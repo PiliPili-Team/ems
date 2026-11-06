@@ -13,8 +13,9 @@ owns this document; source implementation remains in the pinned child repositori
 - Roles are `user`, `admin`, and `super_admin`.
 - User tiers are `normal`, `vip`, and `whitelist`; whitelist takes precedence when
   more than one entitlement source is present.
-- `/login` is the only ordinary public UI route. `/initialize` is a one-time setup
-  exception. Backend admission remains authoritative for every protected API.
+- `/login` is the only ordinary public UI route. The first super administrator is
+  created at startup (credentials in the server log); there is no setup page. Backend
+  admission remains authoritative for every protected API.
 - A page is not implementation-ready until its API, permission, error-state, and
   behavior-test references are recorded.
 - Sensitive changes use explicit operations. Ordinary partial updates use an
@@ -24,7 +25,7 @@ owns this document; source implementation remains in the pinned child repositori
 
 | Page family | Routes | Client permission | User operation | Backend contract group |
 | --- | --- | --- | --- | --- |
-| Authentication and setup | `/login`, `/initialize`, `/service-status` | public/bootstrap | Login, setup, readiness | `/auth/*`, `/setup/*`, `/app/*` |
+| Authentication and setup | `/login`, `/service-status` | public | Login, readiness | `/auth/*`, `/setup/*`, `/app/*` |
 | Dashboard | `/dashboard` | `admin` | View system dashboard | `/admin/system`, `/stats/*` |
 | App center | `/apps` | authenticated | View enabled capabilities | `/app/features`, `/app/version` |
 | Discovery | `/browse/:paths+`, `/credits/:paths+`, `/person`, `/media` | `discovery.*` | Search and inspect media | `/stats/*`, `/requests/*`, media contract |
@@ -251,7 +252,6 @@ Observed from `submodules/backend/crates/ems-api/contracts/planned-v1.json`. Sta
 | GET | `/app/features` | E002 | implemented | implement-v2-config-runtime | public_appearance | public |
 | GET | `/app/version` | E005 | implemented | implement-v2-config-runtime | public_appearance | public |
 | GET | `/setup/status` | E006 | implemented | implement-v2-config-runtime | onboarding_origins | public |
-| POST | `/setup/admin` | E007 | implemented | implement-v2-identity-access | bootstrap_contract | operator-bootstrap |
 | POST | `/setup/media-server` | E008 | planned | implement-v2-media-accounts | media_servers | super-setup |
 | POST | `/setup/lines` | E009 | implemented | implement-v2-stream-routing | line_management | super-setup |
 | POST | `/setup/api-key/rotate` | E010 | implemented | implement-v2-identity-access | api_keys | super-setup |
@@ -459,7 +459,6 @@ This source inventory does not change the approved page families above. Inherite
 | `/filemanager` | `../pages/reorganize/filemanager.vue` | Approved organization family; EMS contract mapping pending |
 | `/apps` | `../pages/appcenter.vue` | Member application shell |
 | `login` | `../pages/login.vue` | Public authentication |
-| `initialize` | `../pages/initialize.vue` | Public bootstrap/onboarding |
 | `service-status` | `../pages/service-status.vue` | Service unavailable surface |
 | `/:pathMatch(.*)*` | `../pages/[...all].vue` | Not-found surface |
 

@@ -7,7 +7,6 @@ flowchart TD
     ROOT["EMS Web"] --> PUB["公开页"]
     ROOT --> SHELL["应用壳（登录后）"]
     PUB --> LOGIN["/login 登录"]
-    PUB --> INIT["/initialize 首次初始化"]
     PUB --> STATUS["/service-status 服务状态"]
 
     SHELL --> PERSONAL["个人区"]
@@ -66,7 +65,6 @@ flowchart TD
 | 路由 | 页面 | 状态 | 访问 |
 |---|---|---|---|
 | `/login` | 登录 | <span class="badge-built">已实现</span> | 匿名 |
-| `/initialize` | 首次初始化 | <span class="badge-built">已实现</span> | 仅初始化未完成时 |
 | `/service-status` | 服务状态 | <span class="badge-built">已实现</span> | 公开就绪信息 |
 | `/403` `/404` | 错误页 | <span class="badge-built">已实现</span> | — |
 
@@ -150,7 +148,7 @@ flowchart TD
 
 ## 路由守卫顺序
 
-1. 初始化未完成 → 跳转 `/initialize`。
+1. 后端不可达 → `/service-status`。（没有初始化页：后端首次启动时自动创建超级管理员。）
 2. 未登录 → `/login?redirect=原路径`。
 3. 用户被管理员禁用 → 强制登出并提示；**媒体账号状态不触发登出**。
 4. 缺少页面读权限 → `/403`。
