@@ -17,12 +17,12 @@ flowchart TD
     PERSONAL --> P2["搜索结果 /saved-searches"]
     PERSONAL --> P3["心愿中心 /wishes"]
     PERSONAL --> P4["我的媒体 /my-media"]
-    PERSONAL --> P5["线路 /lines"]
+    PERSONAL --> P5["我的线路 /lines"]
     PERSONAL --> P6["积分与红包 /points"]
     PERSONAL --> P7["我的商店 /shop"]
     PERSONAL --> P8["个人资料 /profile"]
     PERSONAL --> P9["我的工单 /feedback"]
-    PERSONAL --> P10["幸运中心 /lucky"]
+    PERSONAL --> P10["游戏大厅 /lucky"]
     PERSONAL --> P11["活跃度 /activity"]
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
@@ -33,15 +33,15 @@ flowchart TD
     ADMIN --> A6["推流节点与线路"]
     ADMIN --> A7["通知 · 计划任务 · 审计"]
     ADMIN --> A8["工单管理 /admin/feedback"]
-    ADMIN --> A9["幸运中心管理 /admin/lucky"]
+    ADMIN --> A9["游戏管理 /admin/lucky"]
     ADMIN --> A10["活跃度管理 /admin/activity"]
 
     SYSTEM --> S1["系统设置 /setting"]
-    SYSTEM --> S2["插件 /plugins"]
+    SYSTEM --> S2["插件管理 /admin/plugins"]
     SYSTEM --> S3["宿主机文件 /filemanager"]
 
-    SUPER --> U1["管理员 /super/admins"]
-    SUPER --> U2["API Key /super/api-keys"]
+    SUPER --> U1["权限管理 /super/admins"]
+    SUPER --> U2["密钥管理 /super/api-keys"]
     SUPER --> U3["引导配置 /super/bootstrap"]
 ```
 
@@ -78,7 +78,7 @@ flowchart TD
 | `/saved-searches` | 搜索结果（始终可见；心愿按钮由心愿开关控制） | <span class="badge-built">已实现</span> | 已登录 |
 | `/wishes` | 心愿中心 | <span class="badge-built">已实现</span> | `wish.self` + 心愿开关;无有效媒体账号时显示“心愿需要媒体账号”空态 |
 | `/my-media` | 我的媒体账号 | <span class="badge-built">已实现</span> | `media.self` |
-| `/lines` | 线路 | <span class="badge-built">已实现</span> | `line.select` |
+| `/lines` | 我的线路 | <span class="badge-built">已实现</span> | `line.select` |
 | `/points` | 积分中心(余额、签到、时间线) | <span class="badge-built">已实现</span> | `points.self` + 积分开关 |
 | `/points/red-packets` | 红包(可领与发红包) | <span class="badge-built">已实现</span> | `points.self` + 红包开关 |
 | `/points/red-packets/history` | 红包记录(我发的 / 我领的) | <span class="badge-built">已实现</span> | `points.self` + 红包开关 |
@@ -87,7 +87,7 @@ flowchart TD
 | `/profile` | 个人资料与安全 | <span class="badge-built">已实现</span> | 已登录 |
 | `/feedback` | 我的工单 | <span class="badge-built">已实现</span> | `feedback.self`；提交费与附件开关来自 `feedback` 配置域 |
 | `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
-| `/lucky` | 幸运中心入口(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
+| `/lucky` | 游戏大厅(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
 | `/activity` | 活跃度:今日进度、分数、连续签到、观影时长、热力图 | <span class="badge-built">已实现</span> | `activity.self` + `activity.enabled`;关闭返回 404 |
 | `/lucky/history` | 我的记录:对局、抽奖券、限额与冷静期 | <span class="badge-built">已实现</span> | 同上 |
 | `/lucky/lottery` | 彩票:选号与机选、注单、倒计时、奖池、赔率、历史、验证 | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled` + `lucky.lottery.enabled`;关闭返回 404 |
@@ -115,18 +115,18 @@ flowchart TD
 | `/admin/vouchers` | 卡券管理(礼品卡、优惠券两个标签) | <span class="badge-built">已实现</span> | `admin.shop.write`;查看卡号:`admin.shop.reveal`(授权) |
 | `/admin/red-packets` | 红包管理(策略、发行、记录、作废) | <span class="badge-built">已实现</span> | `admin.redpacket.read`;写:`admin.redpacket.write`;策略:`admin.redpacket.config` |
 | `/admin/checkin` | 签到设置(默认区间、分组规则、试算) | <span class="badge-built">已实现</span> | `admin.checkin.read`;写:`admin.checkin.write` |
-| `/admin/points` | 积分调整、对账与系统账户 | <span class="badge-built">已实现</span> | `admin.points.adjust` 或 `admin.points.read` |
+| `/admin/points` | 积分管理(积分调整、对账与系统账户) | <span class="badge-built">已实现</span> | `admin.points.adjust` 或 `admin.points.read` |
 | `/admin/groups` | 访问分组 | <span class="badge-built">已实现</span> | `admin.groups.read`；写入 `admin.groups.write` |
 | `/admin/media-servers` | 媒体服务器(含认领配置高级设置) | <span class="badge-built">已实现</span> | `admin.config.media.read`;写 `admin.config.media`、`admin.libraries.write`;认领开关 `admin.config.write` |
-| `/admin/media-accounts` | 媒体账号管理(账号 / 认领两个标签) | <span class="badge-built">已实现</span> | `admin.media.read`;停用/恢复/重置 `admin.media.write`;认领审批 `admin.media.claim_review` |
+| `/admin/media-accounts` | 账号管理(账号 / 认领两个标签) | <span class="badge-built">已实现</span> | `admin.media.read`;停用/恢复/重置 `admin.media.write`;认领审批 `admin.media.claim_review` |
 | `/admin/stream/nodes` | 推流节点(含健康状态) | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
 | `/admin/stream/lines` | 推流线路 | <span class="badge-built">已实现</span> | `admin.config.media`;部署需具备前端网关 |
-| `/admin/notify` | 通知与 Bot | <span class="badge-built">已实现</span> | `admin.notify.read`;写 `admin.notify.write`;准入 `admin.bot.access`;开户分组 `admin.groups.write` |
+| `/admin/notify` | 通知管理 | <span class="badge-built">已实现</span> | `admin.notify.read`;写 `admin.notify.write`;准入 `admin.bot.access`;开户分组 `admin.groups.write` |
 | `/admin/scheduler` | 计划任务(任务 / 历史两个标签) | <span class="badge-built">已实现</span> | `admin.scheduler.read`;写 `admin.scheduler.write` |
-| `/admin/audit` | 审计日志 | <span class="badge-built">已实现</span> | `admin.audit.read` |
+| `/admin/audit` | 审计管理 | <span class="badge-built">已实现</span> | `admin.audit.read` |
 | `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
 | `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
-| `/admin/lucky` | 幸运中心管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
+| `/admin/lucky` | 游戏管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
 | `/admin/activity` | 活跃度管理:权重与上限、信号状态、近 7 天统计、按 UID 查询、达标人数 | <span class="badge-built">已实现</span> | `admin.activity.read`；写 `admin.activity.write` |
 | `/admin/lucky/lottery` | 彩票管理:规则与开关、即时概率与返还、期次、缩减告警、注入奖池 | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注入奖池 `super.lucky.fund` |
 | `/admin/lucky/games` | 小游戏管理:逐游戏开关、下注范围、赔率与即时返还校验、统计、进行中 | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write` |
@@ -136,10 +136,11 @@ flowchart TD
 | 路由 | 页面 | 状态 | 读权限 |
 |---|---|---|---|
 | `/setting` | 高级设置 | <span class="badge-built">已实现</span> | 已登录(各分区按权限显示) |
-| `/plugins` | 插件 | <span class="badge-built">已实现</span> | admin |
+| `/plugins` | 我的插件(受众内已启用的插件,点开进入 `/plugins/:id`;无可用插件时菜单隐藏) | <span class="badge-built">已实现</span> | 登录用户 |
+| `/admin/plugins` | 插件管理 | <span class="badge-planned">待实现</span> | admin |
 | `/filemanager` | 宿主机文件 | <span class="badge-built">已实现</span> | `admin.files.read`；写入 `super.files.write` |
-| `/super/admins` | 管理员管理 | <span class="badge-built">已实现</span> | `super.admins.write` |
-| `/super/api-keys` | API Key | <span class="badge-built">已实现</span> | `super.apikeys.write` |
+| `/super/admins` | 权限管理 | <span class="badge-built">已实现</span> | `super.admins.write` |
+| `/super/api-keys` | 密钥管理 | <span class="badge-built">已实现</span> | `super.apikeys.write` |
 | `/super/bootstrap` | 引导配置（只读脱敏） | <span class="badge-built">已实现</span> | `super.bootstrap.read` |
 
 ## 登录后落地页
@@ -153,3 +154,5 @@ flowchart TD
 3. 用户被管理员禁用 → 强制登出并提示；**媒体账号状态不触发登出**。
 4. 缺少页面读权限 → `/403`。
 5. 功能开关关闭 → 菜单隐藏，直接访问 `/404`。
+
+> 2026-11-06 用户决定:菜单名与页面标题在三种语言下逐字一致(`tests/config/menu-titles.spec.ts` 检查);改名见 OpenSpec `ui-semantic-labels`。
