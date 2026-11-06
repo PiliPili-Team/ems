@@ -42,7 +42,8 @@ cargo run --bin ems -- run
 ```
 
 The first start on an empty data directory creates the super administrator `admin`
-with a random 16-character password and its EMS KEY, and logs both once at WARN level.
+with a random 16-character password and its EMS KEY, and prints both once to the console (the terminal or `docker logs`). The redacting
+log pipeline, log files and the live log viewer only record that they were printed.
 Sign in with that password; the first sign-in asks for a new one. Nothing is printed
 again on later starts. If either value is lost, stop the server and run
 `ems admin reset-password --username admin` or `ems admin reset-apikey`.
