@@ -17,6 +17,19 @@ API: 23334
 Swagger: 23335
 ```
 
+## HTTPS in production
+
+Serve the web app and API over HTTPS with HSTS (`Strict-Transport-Security`) in every
+production deployment, and set the public domain to its `https://` origin; the backend logs a
+warning at start-up when it is not.
+
+EMS account passwords are sealed in the browser to a one-time X25519 key from
+`POST /auth/transport-key` (AES-256-GCM, 120-second keys, one use each). This keeps passwords
+out of passive captures and proxy or access logs, even on plain-HTTP LAN access. It does not
+stop an attacker who can change traffic, since they can replace the page script or the key.
+Only HTTPS stops that, so sealing is an extra layer, not a replacement. Media server (Emby)
+passwords are not sealed yet.
+
 ## Stream modes
 
 - `frontend`: client-facing stream frontend forwarding to a backend.
