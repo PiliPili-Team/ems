@@ -45,6 +45,8 @@
 | 幸运中心 | `admin.lucky.read` | 全局设置、发放抽奖券、玩法配置(`admin.lucky.write`);处理自定义奖品(`admin.lucky.fulfil`) |
 | 活跃度 | `admin.activity.read` | 修改权重、每日上限与里程碑加分(`admin.activity.write`);用户查询只读并写审计 |
 | 系统配置 | `admin.config.read` | 发布业务配置(高风险) |
+
+自助安全接口对所有角色相同:`POST /auth/reauth`、`GET/PATCH /me/username`、通行密钥注册只作用于本人(`self.manage`),匿名 401;改名只对仍有改名次数的 Telegram 开户账号开放(否则 403)。`POST /auth/telegram/signup` 只认开户凭证,不需要会话。注册设置(`registration.enabled`、`registration.mode`)需 `admin.config.write`,其他身份看不到入口,接口返回 403。
 | API 令牌 | 无(默认 403) | 列出 API 令牌并显示、复制完整密钥(`admin.apikeys.read`,高风险,每次显示写审计);新建、改名、轮换与吊销仍只限超管 |
 
 共 27 项可授予权限。纯超管、不可授予的权限不变(管理员管理、API Key 的新建与变更、引导配置、红包铸造、签到奖励上限、对账终结、宿主机文件写入、庄家注资 `super.lucky.fund`)。授权弹窗支持搜索、按业务域折叠、整组开关、高风险提示,并在底栏显示相对原来的增减。
