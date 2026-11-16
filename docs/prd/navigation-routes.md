@@ -90,6 +90,8 @@ flowchart TD
 | `/feedback` | 我的工单 | <span class="badge-built">已实现</span> | `feedback.self`；提交费与附件开关来自 `feedback` 配置域 |
 | `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
 | `/mail`、`/mail/:id` | 我的邮件:列表与详情、领取附件;不在侧栏,从个人中心信封图标进入 | <span class="badge-built">已实现</span> | `mail.self`;仅本人,越权 404 |
+| `/gifts`、`/gifts/:id` | 礼物:我的礼物、礼物商店、详情与流转、转赠与佩戴 | <span class="badge-built">已实现</span> | `gifts.self`;别人的礼物仅在佩戴或公开时可看,否则 404 |
+| `/members/:uid` | 成员名片(只读,无账号信息) | <span class="badge-built">已实现</span> | `gifts.self`;未知或停用成员 404 |
 | `/lucky` | 游戏大厅(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
 | `/activity` | 活跃度:今日进度、分数、连续签到、观影时长、热力图 | <span class="badge-built">已实现</span> | `activity.self` + `activity.enabled`;关闭返回 404 |
 | `/lucky/history` | 我的记录:对局、抽奖券、限额与冷静期 | <span class="badge-built">已实现</span> | 同上 |
@@ -130,6 +132,7 @@ flowchart TD
 | `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
 | `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
 | `/admin/mail` | 邮件管理(已发、撰写、撤回、限制) | <span class="badge-built">已实现</span> | `admin.mail.read`;写 `admin.mail.write`;改限制仅超管 |
+| `/admin/gifts` | 礼物管理(目录、款式与图片、持有查询) | <span class="badge-built">已实现</span> | `admin.gifts.read`;写 `admin.gifts.write` |
 | `/admin/lucky` | 游戏管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
 | `/admin/activity` | 活跃度管理:权重与上限、信号状态、近 7 天统计、按 UID 查询、达标人数 | <span class="badge-built">已实现</span> | `admin.activity.read`；写 `admin.activity.write` |
 | `/admin/lucky/lottery` | 彩票管理:规则与开关、即时概率与返还、期次、缩减告警、注入奖池 | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注入奖池 `super.lucky.fund` |
@@ -146,6 +149,7 @@ flowchart TD
 | `/super/admins` | 权限管理 | <span class="badge-built">已实现</span> | `super.admins.write` |
 | `/super/api-keys` | 密钥管理 | <span class="badge-built">已实现</span> | `super.apikeys.write` |
 | `/super/bootstrap` | 引导配置（只读脱敏） | <span class="badge-built">已实现</span> | `super.bootstrap.read` |
+| `/super/gifts` | 礼物铸造(保留编号、铸造) | <span class="badge-built">已实现</span> | `super.gifts.mint` |
 
 ## 登录后落地页
 

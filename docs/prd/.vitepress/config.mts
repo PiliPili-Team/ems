@@ -42,6 +42,7 @@ export default withMermaid({
           { text: 'P11 工单与反馈', link: '/modules/feedback' },
           { text: 'P12 幸运中心', link: '/modules/lucky' },
           { text: 'P13 我的邮件', link: '/modules/mail' },
+          { text: 'P14 礼物', link: '/modules/gifts' },
         ],
       },
       {
