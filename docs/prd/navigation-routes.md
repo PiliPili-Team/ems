@@ -24,6 +24,7 @@ flowchart TD
     PERSONAL --> P9["我的工单 /feedback"]
     PERSONAL --> P10["游戏大厅 /lucky"]
     PERSONAL --> P11["活跃度 /activity"]
+    PERSONAL --> P12["邮件 /mail"]
 
     ADMIN --> A1["运营仪表盘 /dashboard"]
     ADMIN --> A2["用户管理 /user"]
@@ -35,6 +36,7 @@ flowchart TD
     ADMIN --> A8["工单管理 /admin/feedback"]
     ADMIN --> A9["游戏管理 /admin/lucky"]
     ADMIN --> A10["活跃度管理 /admin/activity"]
+    ADMIN --> A11["邮件管理 /admin/mail"]
 
     SYSTEM --> S1["系统设置 /setting"]
     SYSTEM --> S2["插件管理 /admin/plugins"]
@@ -87,6 +89,7 @@ flowchart TD
 | `/profile` | 个人资料与安全 | <span class="badge-built">已实现</span> | 已登录 |
 | `/feedback` | 我的工单 | <span class="badge-built">已实现</span> | `feedback.self`；提交费与附件开关来自 `feedback` 配置域 |
 | `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
+| `/mail`、`/mail/:id` | 邮件列表与详情、领取附件 | <span class="badge-built">已实现</span> | `mail.self`;仅本人,越权 404 |
 | `/lucky` | 游戏大厅(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
 | `/activity` | 活跃度:今日进度、分数、连续签到、观影时长、热力图 | <span class="badge-built">已实现</span> | `activity.self` + `activity.enabled`;关闭返回 404 |
 | `/lucky/history` | 我的记录:对局、抽奖券、限额与冷静期 | <span class="badge-built">已实现</span> | 同上 |
@@ -126,6 +129,7 @@ flowchart TD
 | `/admin/audit` | 审计管理 | <span class="badge-built">已实现</span> | `admin.audit.read` |
 | `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
 | `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
+| `/admin/mail` | 邮件管理(已发、撰写、撤回、限制) | <span class="badge-built">已实现</span> | `admin.mail.read`;写 `admin.mail.write`;改限制仅超管 |
 | `/admin/lucky` | 游戏管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
 | `/admin/activity` | 活跃度管理:权重与上限、信号状态、近 7 天统计、按 UID 查询、达标人数 | <span class="badge-built">已实现</span> | `admin.activity.read`；写 `admin.activity.write` |
 | `/admin/lucky/lottery` | 彩票管理:规则与开关、即时概率与返还、期次、缩减告警、注入奖池 | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注入奖池 `super.lucky.fund` |
