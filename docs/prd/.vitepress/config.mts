@@ -41,7 +41,7 @@ export default withMermaid({
           { text: 'P10 Telegram Mini App', link: '/modules/miniapp' },
           { text: 'P11 工单与反馈', link: '/modules/feedback' },
           { text: 'P12 幸运中心', link: '/modules/lucky' },
-          { text: 'P13 邮件', link: '/modules/mail' },
+          { text: 'P13 我的邮件', link: '/modules/mail' },
         ],
       },
       {
