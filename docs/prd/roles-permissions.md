@@ -44,7 +44,7 @@
 | 工单 | `admin.feedback.read` | 回复、内部备注、关闭、重开、认领、优先级与设置(`admin.feedback.write`);全额退款(`admin.feedback.refund`,高风险) |
 | 幸运中心 | `admin.lucky.read` | 全局设置、发放抽奖券、玩法配置(`admin.lucky.write`);处理自定义奖品(`admin.lucky.fulfil`) |
 | 邮件 | `admin.mail.read` | 发送带附件的邮件与撤回未领附件(`admin.mail.write`,高风险);邮件限制只有超管能改 |
-| 礼物 | `admin.gifts.read` | 编辑礼物目录、名称、价格、限购与图片(`admin.gifts.write`,可授予,高风险);保留编号与铸造仅超管(`super.gifts.mint`);成员购买、转赠、佩戴与名片为 `gifts.self` |
+| 礼物 | `admin.gifts.read` | 编辑礼物目录、名称、价格、限购与图片,市场设置与强制下架(`admin.gifts.write`,可授予,高风险);成交记录与市场设置可读(`admin.gifts.read`);保留编号与铸造仅超管(`super.gifts.mint`);成员购买、转赠、佩戴、名片与市场挂单 / 购买为 `gifts.self` |
 | 活跃度 | `admin.activity.read` | 修改权重、每日上限与里程碑加分(`admin.activity.write`);用户查询只读并写审计 |
 | 系统配置 | `admin.config.read` | 发布业务配置(高风险) |
 
