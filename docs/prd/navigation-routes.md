@@ -37,6 +37,7 @@ flowchart TD
     ADMIN --> A9["游戏管理 /admin/lucky"]
     ADMIN --> A10["活跃度管理 /admin/activity"]
     ADMIN --> A11["邮件管理 /admin/mail"]
+    ADMIN --> A12["我的薪资 /payroll"]
 
     SYSTEM --> S1["系统设置 /setting"]
     SYSTEM --> S2["插件管理 /admin/plugins"]
@@ -45,6 +46,7 @@ flowchart TD
     SUPER --> U1["权限管理 /super/admins"]
     SUPER --> U2["密钥管理 /super/api-keys"]
     SUPER --> U3["引导配置 /super/bootstrap"]
+    SUPER --> U4["薪资管理 /super/payroll"]
 ```
 
 ## 侧边菜单分组
@@ -133,6 +135,7 @@ flowchart TD
 | `/admin/feedback` | 工单管理（列表、摘要、筛选） | <span class="badge-built">已实现</span> | `admin.feedback.read`；写 `admin.feedback.write`；退款 `admin.feedback.refund` |
 | `/admin/feedback/:id` | 工单详情、回复、内部备注、退款 | <span class="badge-built">已实现</span> | 同上；内部备注仅管理员可见 |
 | `/admin/mail` | 邮件管理(已发、撰写、撤回、限制) | <span class="badge-built">已实现</span> | `admin.mail.read`;写 `admin.mail.write`;改限制仅超管 |
+| `/payroll` | 我的薪资(本月进度、工资单与领取);管理区菜单 | <span class="badge-built">已实现</span> | `payroll.self`(管理员与超管;普通用户 403;超管可看但不领薪) |
 | `/admin/gifts` | 礼物管理(目录、款式与图片、持有查询、市场设置 / 挂单 / 成交) | <span class="badge-built">已实现</span> | `admin.gifts.read`;写 `admin.gifts.write` |
 | `/admin/lucky` | 游戏管理(总览、注资、设置、发券、对局检索) | <span class="badge-built">已实现</span> | `admin.lucky.read`；写 `admin.lucky.write`；注资 `super.lucky.fund`；总开关关闭时管理员仍可进入 |
 | `/admin/activity` | 活跃度管理:权重与上限、信号状态、近 7 天统计、按 UID 查询、达标人数 | <span class="badge-built">已实现</span> | `admin.activity.read`；写 `admin.activity.write` |
@@ -151,6 +154,7 @@ flowchart TD
 | `/super/api-keys` | 密钥管理 | <span class="badge-built">已实现</span> | `super.apikeys.write` |
 | `/super/bootstrap` | 引导配置（只读脱敏） | <span class="badge-built">已实现</span> | `super.bootstrap.read` |
 | `/super/gifts` | 礼物铸造(保留编号、铸造) | <span class="badge-built">已实现</span> | `super.gifts.mint` |
+| `/super/payroll` | 薪资管理(任务、进度登记、工资单、薪资设置) | <span class="badge-built">已实现</span> | `super.payroll` |
 
 ## 登录后落地页
 
