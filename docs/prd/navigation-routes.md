@@ -92,7 +92,7 @@ flowchart TD
 | `/feedback` | 我的工单 | <span class="badge-built">已实现</span> | `feedback.self`；提交费与附件开关来自 `feedback` 配置域 |
 | `/feedback/:id` | 工单对话、联系方式、评价 | <span class="badge-built">已实现</span> | 仅本人；越权 404 |
 | `/mail`、`/mail/:id` | 我的邮件:列表与详情、领取附件;不在侧栏,从个人中心信封图标进入 | <span class="badge-built">已实现</span> | `mail.self`;仅本人,越权 404 |
-| `/gifts`、`/gifts/:id` | 礼物:我的礼物、礼物商店、详情与流转、转赠与佩戴 | <span class="badge-built">已实现</span> | `gifts.self`;别人的礼物仅在佩戴或公开时可看,否则 404 |
+| `/gifts`、`/gifts/:id` | 礼物中心(侧栏名称):我的礼物、礼物商店、详情与流转、转赠与佩戴 | <span class="badge-built">已实现</span> | `gifts.self`;别人的礼物仅在佩戴或公开时可看,否则 404 |
 | `/gifts/market`、`/gifts/market/:id` | 礼物市场:挂单列表与筛选、购买、挂单礼物详情 | <span class="badge-built">已实现</span> | `gifts.self`;市场关闭时购买 404 |
 | `/members/:uid` | 成员名片(只读,无账号信息) | <span class="badge-built">已实现</span> | `gifts.self`;未知或停用成员 404 |
 | `/lucky` | 游戏大厅(只列已开启玩法) | <span class="badge-built">已实现</span> | `lucky.self` + `lucky.enabled`；总开关关闭返回 404 |
@@ -153,7 +153,7 @@ flowchart TD
 | `/super/admins` | 权限管理 | <span class="badge-built">已实现</span> | `super.admins.write` |
 | `/super/api-keys` | 密钥管理 | <span class="badge-built">已实现</span> | `super.apikeys.write` |
 | `/super/bootstrap` | 引导配置（只读脱敏） | <span class="badge-built">已实现</span> | `super.bootstrap.read` |
-| `/super/gifts` | 礼物铸造(保留编号、铸造) | <span class="badge-built">已实现</span> | `super.gifts.mint` |
+| `/super/gifts` | 礼物配置(保留编号、铸造) | <span class="badge-built">已实现</span> | `super.gifts.mint` |
 | `/super/payroll` | 薪资管理(任务、进度登记、工资单、薪资设置) | <span class="badge-built">已实现</span> | `super.payroll` |
 
 ## 登录后落地页
