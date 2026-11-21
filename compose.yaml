@@ -36,6 +36,7 @@ services:
       EMS_ENCIPHER_KEY: ${EMS_ENCIPHER_KEY:?EMS_ENCIPHER_KEY is required}
       EMS_ENCIPHER_IV: ${EMS_ENCIPHER_IV:?EMS_ENCIPHER_IV is required}
       EMS_BOOTSTRAP_CORS_ORIGINS: ${EMS_BOOTSTRAP_CORS_ORIGINS:-http://127.0.0.1:23333}
+      EMS_TG_OWNER_ID: ${EMS_TG_OWNER_ID:-}
     volumes:
       - ems-data:/home/ems/data
     healthcheck:

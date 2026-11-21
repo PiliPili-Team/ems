@@ -39,7 +39,7 @@
 | 心愿 | `admin.wish.read` | 处理心愿与设置个人/分组每日发放规则(`admin.wish.write`);价格和全局策略另需 `admin.config.write` |
 | 商店 | `admin.shop.read` | 管理商品、礼品卡与优惠券;查看礼品卡号(`admin.shop.reveal`,高风险) |
 | 积分 / 红包 / 签到 | `admin.points.read`、`admin.redpacket.read`、`admin.checkin.read` | 调整积分(高风险)、发放红包与改红包规则、改签到规则 |
-| 通知与 Bot | `admin.notify.read` | 管理 Bot(`admin.notify.write`)、配置 Bot 准入(`admin.bot.access`)、设置开户分组(`admin.groups.write`) |
+| 通知与 Bot | `admin.notify.read` | 管理全部 Bot(`admin.notify.write`)、设置开户分组(`admin.groups.write`)。另可把管理员指派为某个 Bot 的「Bot 管理员」:不需要任何权限点,只看到并管理被指派的 Bot(模块开关、绑定、频道与停用列表等日常设置),改名、启停、令牌、主 Bot、指派 Bot 管理员与删除仍需 `admin.notify.write`;普通用户不能被指派,撤销指派或降为普通用户即时失效,侧栏入口随指派显示 |
 | 计划任务 | `admin.scheduler.read` | 启停、编辑、立即运行 |
 | 工单 | `admin.feedback.read` | 回复、内部备注、关闭、重开、认领、优先级与设置(`admin.feedback.write`);全额退款(`admin.feedback.refund`,高风险) |
 | 幸运中心 | `admin.lucky.read` | 全局设置、发放抽奖券、玩法配置(`admin.lucky.write`);处理自定义奖品(`admin.lucky.fulfil`) |
@@ -52,7 +52,7 @@
 自助安全接口对所有角色相同:`POST /auth/reauth`、`GET/PATCH /me/username`、通行密钥注册只作用于本人(`self.manage`),匿名 401;改名只对仍有改名次数的 Telegram 开户账号开放(否则 403)。`POST /auth/telegram/signup` 只认开户凭证,不需要会话。注册设置(`registration.enabled`、`registration.mode`)需 `admin.config.write`,其他身份看不到入口,接口返回 403。
 | API 令牌 | 无(默认 403) | 列出 API 令牌并显示、复制完整密钥(`admin.apikeys.read`,高风险,每次显示写审计);新建、改名、轮换与吊销仍只限超管 |
 
-共 30 项可授予权限。纯超管、不可授予的权限不变(管理员管理、API Key 的新建与变更、引导配置、红包铸造、签到奖励上限、对账终结、宿主机文件写入、庄家注资 `super.lucky.fund`、薪资管理 `super.payroll`)。授权弹窗支持搜索、按业务域折叠、整组开关、高风险提示,并在底栏显示相对原来的增减。
+共 29 项可授予权限。纯超管、不可授予的权限不变(管理员管理、API Key 的新建与变更、引导配置、红包铸造、签到奖励上限、对账终结、宿主机文件写入、庄家注资 `super.lucky.fund`、薪资管理 `super.payroll`)。授权弹窗支持搜索、按业务域折叠、整组开关、高风险提示,并在底栏显示相对原来的增减。
 
 ## 菜单渲染规则
 
