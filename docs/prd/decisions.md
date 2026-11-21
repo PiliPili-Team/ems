@@ -242,3 +242,14 @@
 | 2026-11-19 | 测试 | `ems-redb/tests/lucky_funds.rs` 基于过时前提,暂停(`#[ignore]`)待重新设计 | 用户要求(change lucky-funds-redesign) |
 | 2026-11-19 | 接口 / 礼物 | 安全头中间件只在接口未设置时写入 `Cache-Control: no-store`(原先覆盖一切,反馈图片的一天缓存与所有图片缓存都失效);礼物款式图、封面与内置符号按版本寻址,返回 `private, max-age=31536000, immutable`;前端无论令牌还是 Cookie 会话都只取一次并共享,命中缓存时不淡入 | 用户反馈:手机 / PWA 每次都重新加载礼物图(change gift-image-cache) |
 | 2026-11-19 | 礼物 / 签到 | 每人同时至多佩戴 5 件礼物(原 1 件),已满时佩戴返回 409 `EQUIP_FULL`,卸下改为逐件 `POST /gifts/{id}/unequip`;每件佩戴中的典藏品固定 +20% 加成,与层级等其他加成相加后 `ceil(基础 × (1 + Σ加成))`,仍受封顶;去掉礼物目录的「佩戴加成」配置(迁移时丢弃);普通礼物可佩戴、占位、不加成;名片 `equipped` 改为按佩戴先后的列表,头像角标为最先佩戴的一件;签到区间返回 `wornCollectibles`,加成行分列层级与礼物加成;2 件 5 × 1.4 = 7(用户已确认) | 用户需求(change gift-equip-slots) |
+| 2026-11-19 | Bot | Bot 模块重做(change bot-redesign 及 bot-moderation、bot-red-packet、bot-feedback、bot-announcements、bot-personal-notify、bot-media、bot-invite、bot-ops):多 Bot 各服务一个超级群,一次性绑定码绑定,未绑定群自动退出;绑定后自动建群权限分组;退群或被 /ban 停用 EMS 账号(管理员豁免);功能按 Bot 独立开关默认全开;指派的管理员获得该 Bot 权限;Rich Messages + 按钮 + 仅本人可见;频道身份发言白名单;活跃度群发言按 Bot 的 activity 模块统计、上限跨群合并;不做游戏 | 用户需求 |
+
+## 2026-11-20 Bot 打磨与 Telegram 换绑
+
+- 一个账号只绑定一个 Telegram 账号；解绑须由已绑定的 Telegram 账号向 Bot 发送解绑码，网页不再能直接删除绑定。
+- 原账号无法使用时，提交免费的「Telegram 解绑申请」工单，由管理员在用户详情强制解绑（权限 `admin.users.update`，矩阵同用户管理：超级管理员对任何人，管理员仅对普通用户）。
+- 「发送测试」默认消息为 `Ciallo～(∠·ω< )⌒★`，可改写。
+- Bot 文案、命令菜单、入群链接名称与网页文案一律使用管理员设置的品牌名称，未设置时为 `EMS`；构建时生成的离线提示不提产品名。
+- Bot 回复使用统一版式：带图标的标题、加粗并排的关键数字、引用块提示、进度条；少量字段不用表格。
+- `/admin/notify` 页面路由改为 `/admin/bot`（接口路径不变）。
+
