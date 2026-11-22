@@ -39,7 +39,7 @@
 | 心愿 | `admin.wish.read` | 处理心愿与设置个人/分组每日发放规则(`admin.wish.write`);价格和全局策略另需 `admin.config.write` |
 | 商店 | `admin.shop.read` | 管理商品、礼品卡与优惠券;查看礼品卡号(`admin.shop.reveal`,高风险) |
 | 积分 / 红包 / 签到 | `admin.points.read`、`admin.redpacket.read`、`admin.checkin.read` | 调整积分(高风险)、发放红包与改红包规则、改签到规则 |
-| 通知与 Bot | `admin.notify.read` | 管理全部 Bot(`admin.notify.write`)、设置开户分组(`admin.groups.write`)。另可把管理员指派为某个 Bot 的「Bot 管理员」:不需要任何权限点,只看到并管理被指派的 Bot(模块开关、绑定、频道与停用列表等日常设置),改名、启停、令牌、主 Bot、指派 Bot 管理员与删除仍需 `admin.notify.write`;普通用户不能被指派,撤销指派或降为普通用户即时失效,侧栏入口随指派显示 |
+| 通知与 Bot | `admin.notify.read` | 管理全部 Bot(`admin.notify.write`)、设置开户分组(`admin.groups.write`)。另可把管理员指派为某个 Bot 的「Bot 管理员」:不需要任何权限点,只看到并管理被指派的 Bot(模块开关、绑定、频道与停用列表等日常设置),改名、启停、令牌、主 Bot、指派 Bot 管理员与删除仍需 `admin.notify.write`;普通用户不能被指派,撤销指派或降为普通用户即时失效,侧栏入口随指派显示。Bot 管理员在 Telegram 中:`/botadmin` 仅 Owner;`/addpoints` `/delpoints` 需是该 Bot 的 Bot 管理员并实时持有 `admin.points.adjust`;`/gift` 需实时持有 `admin.shop.write`(积分卡仅超管);`/draw` 发布含商店奖品的抽奖需 `admin.shop.write`(Owner 除外)。网页抽奖列表与详情随 `admin.notify.read` 或该 Bot 的 Bot 管理员,取消与标记发放随 `admin.notify.write` 或该 Bot 的 Bot 管理员;运行视图与该页同范围,Bot 日志另需 `admin.system.read`;告警私聊 Owner 与开启「接收告警」的该 Bot 管理员(需已绑定 Telegram 且可被私聊)。群管两类执行者:Bot 管理员与群内有限制成员权限的 Telegram 管理员 |
 | 计划任务 | `admin.scheduler.read` | 启停、编辑、立即运行 |
 | 工单 | `admin.feedback.read` | 回复、内部备注、关闭、重开、认领、优先级与设置(`admin.feedback.write`);全额退款(`admin.feedback.refund`,高风险) |
 | 幸运中心 | `admin.lucky.read` | 全局设置、发放抽奖券、玩法配置(`admin.lucky.write`);处理自定义奖品(`admin.lucky.fulfil`) |
