@@ -48,11 +48,12 @@
 | 薪资 | `payroll.self` | 查看本人本月任务进度与工资单并领取(管理员与超管默认持有,普通用户、VIP、白名单 403;超管不领薪);任务、手动登记、工资单总览与薪资设置仅超管(`super.payroll`,不可授予) |
 | 活跃度 | `admin.activity.read` | 修改权重、每日上限与里程碑加分(`admin.activity.write`);用户查询只读并写审计 |
 | 系统配置 | `admin.config.read` | 发布业务配置(高风险) |
+| 系统日志 | `admin.system.read`(脱敏视图) | 查看日志原值(`admin.system.reveal`,高风险):历史、导出与实时流带 `reveal=true` 时返回未脱敏的原始内容,包括密码、token 与密钥;默认始终脱敏,开关按查看者、按次生效;未授权的管理员与普通用户 403;每次查看写审计(只记筛选是否使用、时间范围与条数,不记日志内容) |
 
 自助安全接口对所有角色相同:`POST /auth/reauth`、`GET/PATCH /me/username`、通行密钥注册只作用于本人(`self.manage`),匿名 401;改名只对仍有改名次数的 Telegram 开户账号开放(否则 403)。`POST /auth/telegram/signup` 只认开户凭证,不需要会话。注册设置(`registration.enabled`、`registration.mode`)需 `admin.config.write`,其他身份看不到入口,接口返回 403。
 | API 令牌 | 无(默认 403) | 列出 API 令牌并显示、复制完整密钥(`admin.apikeys.read`,高风险,每次显示写审计);新建、改名、轮换与吊销仍只限超管 |
 
-共 28 项可授予权限。纯超管、不可授予的权限不变(管理员管理、API Key 的新建与变更、引导配置、红包铸造、签到奖励上限、对账终结、宿主机文件写入、庄家注资 `super.lucky.fund`、薪资管理 `super.payroll`、删除用户 `admin.users.delete`、回收站 `super.trash`)。除超管在回收站彻底删除外,后台的删除一律是软删除(进回收站);媒体账号到期只停用,不会被自动删除。授权弹窗支持搜索、按业务域折叠、整组开关、高风险提示,并在底栏显示相对原来的增减。
+共 29 项可授予权限。纯超管、不可授予的权限不变(管理员管理、API Key 的新建与变更、引导配置、红包铸造、签到奖励上限、对账终结、宿主机文件写入、庄家注资 `super.lucky.fund`、薪资管理 `super.payroll`、删除用户 `admin.users.delete`、回收站 `super.trash`)。除超管在回收站彻底删除外,后台的删除一律是软删除(进回收站);媒体账号到期只停用,不会被自动删除。授权弹窗支持搜索、按业务域折叠、整组开关、高风险提示,并在底栏显示相对原来的增减。
 
 ## 菜单渲染规则
 
